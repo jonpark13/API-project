@@ -1,4 +1,4 @@
-# `<name of application here>`
+# `SoundCloud API Proj`
 
 ## Database Schema Design
 
