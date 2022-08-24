@@ -1582,3 +1582,6 @@ Return songs filtered by query parameters.
       }
     }
     ```
+    
+    ![image](https://user-images.githubusercontent.com/36808975/186514994-2e46636a-d9b0-4134-a019-e1da0470bb2c.png)
+
