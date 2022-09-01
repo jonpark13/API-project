@@ -34,15 +34,16 @@ router.post('/', restoreUser, async (req, res) => {
             }
         })
     }
-
-    let checkAlbum = await Album.findByPk(albumId)
-    console.log(checkAlbum)
-    if(!checkAlbum) {
-        res.status(404)
-        return res.json({
-            "message": "Album couldn't be found",
-            "statusCode": 404
-          })
+    
+    if(albumId){
+        let checkAlbum = await Album.findByPk(albumId)
+        if(!checkAlbum) {
+            res.status(404)
+            return res.json({
+                "message": "Album couldn't be found",
+                "statusCode": 404
+              })
+        }
     }
 
     let newSong = await Song.create({
@@ -64,6 +65,11 @@ router.delete('/:id', async (req, res) => {
 
     if(user.id === getSong.userId){
         await getSong.destroy()
+        res.status(200)
+        return res.json({
+            "message": "Successfully deleted",
+            "statusCode": 200
+          })
     }
 })
 
@@ -110,7 +116,8 @@ router.get('/:id', restoreUser, async (req, res) => {
     const getSong = await Song.findByPk(req.params.id,
         { include: [
             {
-                model: User
+                model: User,
+                // as: 'Artist'
             },
             {
                 model: Album

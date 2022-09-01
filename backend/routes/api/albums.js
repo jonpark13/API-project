@@ -8,7 +8,7 @@ const { User, Song, Album } = require('../../db/models');
 const router = express.Router();
 
 // Current users albums
-router.post('/current', async (req, res) => {
+router.get('/current', async (req, res) => {
     const { user } = req
     const getAlbums = await Album.findAll({
         where: {
@@ -18,11 +18,98 @@ router.post('/current', async (req, res) => {
     res.json(getAlbums)
 });
 
+// Get album by id
+router.get('/:albumId', async (req, res) => {
+    const getAlbums = await Album.findByPk(req.params.albumId,
+        { include: [
+            {
+                model: User,
+                // as: 'Artist'
+            },
+            {
+                model: Song
+            }
+        ]}
+    )
+    if(!getAlbums){
+        res.status(404)
+        return res.json({
+            "message": "Album couldn't be found",
+            "statusCode": res.statusCode
+        })
+    }
+    res.json(getAlbums)
+});
+
+router.put('/:albumId', async (req, res) => {
+    const { user } = req
+    const { title, description, imageUrl } = req.body
+    if(!title){
+        res.status(400)
+        return res.json({
+            "message": "Validation Error",
+            "statusCode": 400,
+            "errors": {
+                "title": "Album title is required"
+            }
+        })
+    }
+
+    const getAlbum = await Album.findByPk(req.params.albumId)
+
+    if(user.id === getAlbum.userId){
+        getAlbum.title = title,
+        getAlbum.description = description,
+        getAlbum.previewImage = imageUrl
+    }
+    
+    await getAlbum.save()
+    res.json(getAlbum)
+})
+
+// Delete an album
+router.delete('/:albumId', async (req, res) => {
+    const { user } = req
+    
+    const getAlbum = await Album.findByPk(req.params.id)
+
+    if(user.id === getAlbum.userId){
+        await getAlbum.destroy()
+
+        res.status(200)
+        return res.json({
+            "message": "Successfully deleted",
+            "statusCode": 200
+          })
+    }
+
+
+})
+
 // Create an album
 router.post('/', async (req, res) => {
-    const getAlbums = await Album.findAll({})
-    res.json(getAlbums)
-    });
+    const { user } = req
+    const { title, description, imageUrl } = req.body
+    if(!title){
+        res.status(400)
+        return res.json({
+            "message": "Validation Error",
+            "statusCode": 400,
+            "errors": {
+                "title": "Album title is required"
+            }
+        })
+    }
+
+    let newAlbum = await Album.create({
+        userId: user.id,
+        title,
+        description,
+        previewImage: imageUrl // adding in preview Images
+    })
+    await newAlbum.save() //?
+    res.json(newAlbum)
+});
 
 // Get all albums
 router.get('/', async (req, res) => {
