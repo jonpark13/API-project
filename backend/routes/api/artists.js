@@ -1,7 +1,7 @@
 const express = require('express')
 
 const { restoreUser } = require('../../utils/auth');
-const { User, Song, Album } = require('../../db/models');
+const { User, Song, Album, Playlist } = require('../../db/models');
 
 const { sequelize, Op } = require("sequelize");
 // const { check } = require('express-validator');
@@ -49,6 +49,27 @@ router.get('/:id/albums', async (req, res) => {
     })
 
     res.json({Albums: getAllAlbums})
+})
+
+// Get all playlists by artist id
+router.get('/:id/playlists', async (req, res) => {
+    const findArtist = await User.findByPk(req.params.id)
+
+    if(!findArtist){
+        res.status(404)
+        return res.json({
+            "message": "Artist couldn't be found",
+            "statusCode": 404
+          })
+    }
+
+    const getAllPlaylists = await Playlist.findAll({
+        where: {
+            userId: req.params.id
+        }
+    })
+
+    res.json({Playlists: getAllPlaylists})
 })
 
 // Get artist by id

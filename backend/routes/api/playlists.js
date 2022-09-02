@@ -42,9 +42,15 @@ router.post('/:playlistId/songs', requireAuth, async (req, res) => {
 });
 
 // Get playlist of current user
-// router.get('/current', async (req, res) => {
+router.get('/current', requireAuth, async (req, res) => {
+    const { user } = req
+    let findPlaylist = await Playlist.findAll({
+        where: {
+            userId: user.id
+        }})
 
-// })
+    res.json({Playlists: findPlaylist})
+})
 
 // Get playlist by id
 router.get('/:playlistId', async (req, res) => {

@@ -23,7 +23,7 @@ router.put('/:id', requireAuth, async (req, res) => {
         })
     }
 
-    const getComment = await Comment.findByPK(req.params.id)
+    const getComment = await Comment.findByPk(req.params.id)
 
     if(!getComment){
         res.status(404)
@@ -47,7 +47,7 @@ router.put('/:id', requireAuth, async (req, res) => {
 // Delete comment by id
 router.delete('/:id', requireAuth, async (req, res) => {
     let { user } = req
-    const getComment = await Comment.findByPK(req.params.id)
+    const getComment = await Comment.findByPk(req.params.id)
 
     if(!getComment){
         res.status(404)

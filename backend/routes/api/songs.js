@@ -4,15 +4,76 @@ const { restoreUser } = require('../../utils/auth');
 const { User, Song, Album, Comment } = require('../../db/models');
 // const { check } = require('express-validator');
 // const { handleValidationErrors } = require('../../utils/validation');
+const { Op } = require("sequelize")
 
 const router = express.Router();
 
 
 // Get all songs
 router.get('/', async (req, res) => {
-    const getSongs = await Song.findAll({})
-    res.json(getSongs)
-    });
+    let { page, size, title, createdAt } = req.query
+
+    if(!size) {
+        size = 20
+    }
+    if(!page) {
+        page = 1
+    }
+    let pag = {}
+    if(page >= 1 && size >= 1 ){
+        pag.limit = size
+        pag.offset = size * (page - 1)
+    }
+    if( size > 20){
+      pag.limit = 20
+    }
+
+    if (isNaN(size) || isNaN(page) || size < 0 || page < 0) {
+        res.status(400);
+        return res.json({
+            "message": "Validation Error",
+            "statusCode": 400,
+            "errors": {
+              "page": "Page must be greater than or equal to 0",
+              "size": "Size must be greater than or equal to 0",
+              "createdAt": "CreatedAt is invalid"
+            }
+        });
+    }
+    const where = {};
+
+    if(title){
+        where.title = title
+    }
+    if(createdAt){
+        let checkDate = new Date(createdAt)
+        if(checkDate == 'Invalid Date'){
+            res.status(400);
+        return res.json({
+            "message": "Validation Error",
+            "statusCode": 400,
+            "errors": {
+              "page": "Page must be greater than or equal to 0",
+              "size": "Size must be greater than or equal to 0",
+              "createdAt": "CreatedAt is invalid"
+            }
+        });
+        }
+        where.createdAt = {
+            [Op.lt]: createdAt
+        }
+    }
+    
+    const getSongs = await Song.findAll({
+        where,
+        ...pag
+    })
+    res.json({
+        getSongs,
+        page,
+        size
+    })
+});
 
 // Create a song w / w/o album
 router.post('/', restoreUser, async (req, res) => {
@@ -70,6 +131,14 @@ router.delete('/:id', async (req, res) => {
     const { user } = req
     
     const getSong = await Song.findByPk(req.params.id)
+
+    if(!getSong){
+        res.status(404)
+        return res.json({
+            "message": "Song couldn't be found",
+            "statusCode": res.statusCode
+        })
+    }
 
     if(user.id === getSong.userId){
         await getSong.destroy()
@@ -144,6 +213,16 @@ router.get('/:id', restoreUser, async (req, res) => {
 
 // Get all comments by song id
 router.get('/:id/comments', async (req, res) => {
+    const getSong = await Song.findByPk(req.params.id)
+
+    if(!getSong){
+        res.status(404)
+        return res.json({
+            "message": "Song couldn't be found",
+            "statusCode": res.statusCode
+        })
+    }
+
     const getSongComments = await Comment.findAll({
         where: {
             songId: req.params.id
@@ -151,14 +230,6 @@ router.get('/:id/comments', async (req, res) => {
         include: User
 
     })
-
-    if(!getSongComments){
-        res.status(404)
-        return res.json({
-            "message": "Song couldn't be found",
-            "statusCode": res.statusCode
-        })
-    }
 
     res.json({Comments: getSongComments})
 })
