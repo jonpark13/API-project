@@ -22,6 +22,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       User.hasMany(models.Song, {foreignKey: "userId"})
       User.hasMany(models.Album, {foreignKey: "userId"})
+      User.hasMany(models.Comment, {foreignKey: "userId"})
     }
     static getCurrentUserById(id) {
       return User.scope("currentUser").findByPk(id);

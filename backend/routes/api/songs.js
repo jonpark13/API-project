@@ -1,23 +1,18 @@
 const express = require('express')
 
 const { restoreUser } = require('../../utils/auth');
-const { User, Song, Album } = require('../../db/models');
+const { User, Song, Album, Comment } = require('../../db/models');
 // const { check } = require('express-validator');
 // const { handleValidationErrors } = require('../../utils/validation');
 
 const router = express.Router();
 
-// Get all songs by current user
-router.get('/current', restoreUser, async (req, res) => {
-    const { user } = req
-    // console.log(user.toSafeObject())
-    const getSongs = await Song.findAll({
-        where: {
-            userId: user.id
-        }
-    })
-    res.json({Songs: getSongs})
-});
+
+// Get all songs
+router.get('/', async (req, res) => {
+    const getSongs = await Song.findAll({})
+    res.json(getSongs)
+    });
 
 // Create a song w / w/o album
 router.post('/', restoreUser, async (req, res) => {
@@ -58,6 +53,19 @@ router.post('/', restoreUser, async (req, res) => {
     res.json(newSong)
 })
 
+// Get all songs by current user
+router.get('/current', restoreUser, async (req, res) => {
+    const { user } = req
+    // console.log(user.toSafeObject())
+    const getSongs = await Song.findAll({
+        where: {
+            userId: user.id
+        }
+    })
+    res.json({Songs: getSongs})
+});
+
+// Delete a song
 router.delete('/:id', async (req, res) => {
     const { user } = req
     
@@ -133,11 +141,51 @@ router.get('/:id', restoreUser, async (req, res) => {
     }
     return res.json(getSong)
 });
-                
-// Get all songs
-router.get('/', async (req, res) => {
-const getSongs = await Song.findAll({})
-res.json(getSongs)
-});
+
+// Get all comments by song id
+router.get('/:id/comments', async (req, res) => {
+    const getSongComments = await Comment.findAll({
+        where: {
+            songId: req.params.id
+        },
+        include: User
+
+    })
+
+    res.json({Comments: getSongComments})
+})
+
+// Create comment by song id
+router.post('/:id/comments', async (req, res) => {
+    const { user } = req
+    const { body } = req.body
+    if(!body){
+        res.status(400)
+        return res.json({
+            "message": "Validation error",
+            "statusCode": 400,
+            "errors": {
+                "body": "Comment body text is required"
+            }
+        })
+    }
+
+    const getSong = await Song.findByPk(req.params.id)
+    if(!getSong){
+        res.status(404)
+        return res.json({
+            "message": "Song couldn't be found",
+            "statusCode": res.statusCode
+        })
+    }
+
+    let newComment = await Comment.create({
+        userId: user.id,
+        songId: req.params.id,
+        body
+    })
+    await newComment.save() //?
+    res.json(newComment)
+})
 
 module.exports = router;
