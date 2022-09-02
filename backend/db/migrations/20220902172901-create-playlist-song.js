@@ -3,6 +3,7 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('PlaylistSongs', {
       id: {
+        unique: true,
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,

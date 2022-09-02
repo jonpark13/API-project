@@ -16,6 +16,12 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Comment.init({
+    id: {
+      primaryKey: true,
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      unique: true
+    },
     userId: {
       type: DataTypes.INTEGER,
       allowNull:false

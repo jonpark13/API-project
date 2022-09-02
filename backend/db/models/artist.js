@@ -14,6 +14,12 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Artist.init({
+    id: {
+      primaryKey: true,
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      unique: true
+    },
     username: DataTypes.INTEGER,
     totalSongs: DataTypes.INTEGER,
     totalAlbums: DataTypes.INTEGER,
