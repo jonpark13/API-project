@@ -41,6 +41,7 @@ router.get('/:albumId', async (req, res) => {
     res.json(getAlbums)
 });
 
+// Edit album by id
 router.put('/:albumId', async (req, res) => {
     const { user } = req
     const { title, description, imageUrl } = req.body
@@ -57,6 +58,14 @@ router.put('/:albumId', async (req, res) => {
 
     const getAlbum = await Album.findByPk(req.params.albumId)
 
+    if(!getAlbum){
+        res.status(404)
+        return res.json({
+            "message": "Album couldn't be found",
+            "statusCode": 404
+          })
+    }
+
     if(user.id === getAlbum.userId){
         getAlbum.title = title,
         getAlbum.description = description,
@@ -68,12 +77,20 @@ router.put('/:albumId', async (req, res) => {
 })
 
 // Delete an album
-router.delete('/:albumId', async (req, res) => {
+router.delete('/:id', requireAuth,async (req, res) => {
     const { user } = req
     
     const getAlbum = await Album.findByPk(req.params.id)
 
-    if(user.id === getAlbum.userId){
+    if(!getAlbum){
+        res.status(404)
+        return res.json({
+            "message": "Album couldn't be found",
+            "statusCode": 404
+        })
+    }
+
+    if(user.id == getAlbum.userId){
         await getAlbum.destroy()
 
         res.status(200)
@@ -82,7 +99,12 @@ router.delete('/:albumId', async (req, res) => {
             "statusCode": 200
           })
     }
-
+    
+    else {
+        return res.json({
+            messsage: "Wrong User"
+        })
+    }
 
 })
 

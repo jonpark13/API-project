@@ -8,7 +8,7 @@ const { User, Song, Album, Comment } = require('../../db/models');
 const router = express.Router();
 
 // Edit comment by id
-router.put('/:id', async (req, res) => {
+router.put('/:id', requireAuth, async (req, res) => {
     let { user } = req
     let { body } = req.body
 
@@ -23,7 +23,7 @@ router.put('/:id', async (req, res) => {
         })
     }
 
-    const getComment = await Comment.findByPK(req.params.id)
+    const getComment = await Comment.findByPk(req.params.id)
 
     if(!getComment){
         res.status(404)
@@ -35,15 +35,19 @@ router.put('/:id', async (req, res) => {
 
     if(user.id === getComment.userId){
         getComment.body = body
+        await getComment.save()
+        return res.json(getComment)
     }
-    await getComment.save()
-    res.json(getComment)
+
+    res.json({
+        message: 'Wrong User'
+    })
 });
 
-// Edit comment by id
-router.put('/:id', async (req, res) => {
+// Delete comment by id
+router.delete('/:id', requireAuth, async (req, res) => {
     let { user } = req
-    const getComment = await Comment.findByPK(req.params.id)
+    const getComment = await Comment.findByPk(req.params.id)
 
     if(!getComment){
         res.status(404)
@@ -61,6 +65,10 @@ router.put('/:id', async (req, res) => {
             "statusCode": 200
           })
     }
+
+    res.json({
+        message: 'Wrong User'
+    })
 })
 
 module.exports = router;
