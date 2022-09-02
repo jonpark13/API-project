@@ -11,10 +11,13 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      PlaylistSong(models.Playlist, {foreignKey: "playlistId"})
+      PlaylistSong(models.Song, {foreignKey: "songId"})
     }
   }
   PlaylistSong.init({
-    playlistId: DataTypes.INTEGER
+    playlistId: DataTypes.INTEGER,
+    songId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'PlaylistSong',

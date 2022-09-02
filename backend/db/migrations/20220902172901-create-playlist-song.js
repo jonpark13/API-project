@@ -11,6 +11,12 @@ module.exports = {
       playlistId: {
         type: Sequelize.INTEGER
       },
+      playlistId: {
+        type: Sequelize.INTEGER
+      },
+      songId: {
+        type: Sequelize.INTEGER
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
