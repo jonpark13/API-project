@@ -1,6 +1,6 @@
 const express = require('express')
 
-const { restoreUser } = require('../../utils/auth');
+const { restoreUser, requireAuth } = require('../../utils/auth');
 const { User, Song, Album } = require('../../db/models');
 // const { check } = require('express-validator');
 // const { handleValidationErrors } = require('../../utils/validation');
@@ -87,7 +87,7 @@ router.delete('/:albumId', async (req, res) => {
 })
 
 // Create an album
-router.post('/', async (req, res) => {
+router.post('/', requireAuth, async (req, res) => {
     const { user } = req
     const { title, description, imageUrl } = req.body
     if(!title){

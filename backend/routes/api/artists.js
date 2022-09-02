@@ -1,6 +1,6 @@
 const express = require('express')
 
-const { restoreUser } = require('../../utils/auth');
+const { restoreUser, requireAuth } = require('../../utils/auth');
 const { User, Song, Album } = require('../../db/models');
 
 const { sequelize, Op } = require("sequelize");

@@ -1,6 +1,6 @@
 const express = require('express')
 
-const { restoreUser } = require('../../utils/auth');
+const { restoreUser, requireAuth } = require('../../utils/auth');
 const { User, Song, Album, Comment } = require('../../db/models');
 // const { check } = require('express-validator');
 // const { handleValidationErrors } = require('../../utils/validation');
@@ -52,7 +52,7 @@ router.put('/:id', async (req, res) => {
             "statusCode": 404
           })
     }
-
+    console.log('test')
     if(user.id === getComment.userId){
         await getComment.destroy()
         res.status(200)
