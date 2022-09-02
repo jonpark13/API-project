@@ -1,11 +1,35 @@
 const express = require('express')
 
 const { restoreUser, requireAuth } = require('../../utils/auth');
-const { User, Song, Album, Comment } = require('../../db/models');
+const { User, Song, Album, Comment, Playlist } = require('../../db/models');
 // const { check } = require('express-validator');
 // const { handleValidationErrors } = require('../../utils/validation');
 
 const router = express.Router();
+
+// Create a playlist
+router.post('/', requireAuth, async (req, res) => {
+    const { user } = req
+    const { name, imageUrl } = req.body
+    if(!name){
+        res.status(400)
+        return res.json({
+            "message": "Validation Error",
+            "statusCode": 400,
+            "errors": {
+                "name": "Playlist name is required"
+            }
+        })
+    }
+
+    let newPlaylist = await Playlist.create({
+        userId: user.id,
+        name,
+        imageUrl: imageUrl
+    })
+    await newPlaylist.save() //?
+    res.json(newPlaylist)
+});
 
 // Edit comment by id
 router.put('/:id', requireAuth, async (req, res) => {

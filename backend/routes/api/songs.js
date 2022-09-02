@@ -152,6 +152,14 @@ router.get('/:id/comments', async (req, res) => {
 
     })
 
+    if(!getSongComments){
+        res.status(404)
+        return res.json({
+            "message": "Song couldn't be found",
+            "statusCode": res.statusCode
+        })
+    }
+
     res.json({Comments: getSongComments})
 })
 
