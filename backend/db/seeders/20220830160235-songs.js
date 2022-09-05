@@ -25,7 +25,7 @@ module.exports = {
       },
       {
         "userId": 2,
-        "albumId": 1,
+        "albumId": 2,
         "title": "Noday",
         "description": "A song about nothing.",
         "url": "audio url",
