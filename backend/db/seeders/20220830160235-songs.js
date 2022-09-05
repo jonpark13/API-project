@@ -4,7 +4,6 @@ module.exports = {
   async up (queryInterface, Sequelize) {
     return queryInterface.bulkInsert('Songs', [
       {
-        "id": 1,
         "userId": 1,
         "albumId": 1,
         "title": "Yesterday",
@@ -15,7 +14,6 @@ module.exports = {
         "previewImage": "image url"
       },
       {
-        "id": 2,
         "userId": 1,
         "albumId": 1,
         "title": "Today",
@@ -26,7 +24,6 @@ module.exports = {
         "previewImage": "image url"
       },
       {
-        "id": 3,
         "userId": 2,
         "albumId": 1,
         "title": "Noday",
