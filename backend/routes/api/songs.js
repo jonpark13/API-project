@@ -1,6 +1,6 @@
 const express = require('express')
 
-const { restoreUser } = require('../../utils/auth');
+const { restoreUser, requireAuth } = require('../../utils/auth');
 const { User, Song, Album, Comment } = require('../../db/models');
 // const { check } = require('express-validator');
 // const { handleValidationErrors } = require('../../utils/validation');
@@ -127,7 +127,7 @@ router.get('/current', restoreUser, async (req, res) => {
 });
 
 // Delete a song
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', requireAuth, async (req, res) => {
     const { user } = req
     
     const getSong = await Song.findByPk(req.params.id)
