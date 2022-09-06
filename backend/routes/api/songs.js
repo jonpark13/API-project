@@ -147,6 +147,10 @@ router.delete('/:id', requireAuth, async (req, res) => {
             "message": "Successfully deleted",
             "statusCode": 200
           })
+    } else {
+        return res.json({
+            messsage: "Wrong User"
+        })
     }
 })
 
