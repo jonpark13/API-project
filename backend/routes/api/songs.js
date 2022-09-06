@@ -69,7 +69,7 @@ router.get('/', async (req, res) => {
         ...pag
     })
     res.json({
-        getSongs,
+        Songs: getSongs,
         page,
         size
     })

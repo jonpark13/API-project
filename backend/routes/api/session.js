@@ -22,11 +22,20 @@ const validateLogin = [
 router.get(
     '/',
     restoreUser,
-    (req, res) => {
+    async (req, res) => {
       const { user } = req;
+      
+      let getUser = await User.findOne({
+        where: {
+          id: user.id
+        }
+      })
+
+      console.log(getUser)
       if (user) {
         return res.json({
-          user: user.toSafeObject()
+          ...user.toSafeObject(),
+
         });
       } else return res.json({});
     }
@@ -51,9 +60,9 @@ router.post(
   
       await setTokenCookie(res, user);
   
-      return res.json({
+      return res.json(
         user
-      });
+      );
     }
   );
 
