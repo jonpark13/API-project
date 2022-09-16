@@ -31,7 +31,7 @@ router.get(
         }
       })
 
-      console.log(getUser)
+      // console.log(getUser)
       if (user) {
         return res.json({
           ...user.toSafeObject(),

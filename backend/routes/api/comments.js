@@ -56,7 +56,7 @@ router.delete('/:id', requireAuth, async (req, res) => {
             "statusCode": 404
           })
     }
-    console.log('test')
+    // console.log('test')
     if(user.id === getComment.userId){
         await getComment.destroy()
         res.status(200)
