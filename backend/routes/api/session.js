@@ -25,11 +25,11 @@ router.get(
     async (req, res) => {
       const { user } = req;
       
-      let getUser = await User.findOne({
-        where: {
-          id: user.id
-        }
-      })
+      // let getUser = await User.findOne({
+      //   where: {
+      //     id: user.id
+      //   }
+      // })
 
       // console.log(getUser)
       if (user) {
