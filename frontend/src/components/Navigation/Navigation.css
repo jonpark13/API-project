@@ -22,3 +22,12 @@
     background-color: rgb(51,51,51);
     color:rgb(244,244,244)
 }
+
+.searchForm {
+    display: flex;
+}
+
+.searchInput {
+    display: flex;
+    border-radius: 5px;
+}

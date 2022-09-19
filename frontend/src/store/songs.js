@@ -33,20 +33,9 @@ export const songsGrab = () => async (dispatch) => {
     return data;
 };
 
-export const lookupSong = (song) => async (dispatch) => {
-    const {
-        userId,
-        albumId,
-        title,
-        description,
-        url,
-        previewImage } = song
-    const response = await csrfFetch('/api/songs', {
-        method: 'POST',
-        body: JSON.stringify({
-            credential,
-            password,
-        })
+export const searchQuery = (songTitle) => async (dispatch) => {
+    const response = await csrfFetch(`/api/songs?title=${songTitle}`, {
+        method: 'GET'
     })
     const data = await response.json()
     // console.log(data)
@@ -54,26 +43,26 @@ export const lookupSong = (song) => async (dispatch) => {
     return data;
 };
 
-export const createSong = (song) => async (dispatch) => {
-    const {
-        userId,
-        albumId,
-        title,
-        description,
-        url,
-        previewImage } = song
-    const response = await csrfFetch('/api/songs', {
-        method: 'POST',
-        body: JSON.stringify({
-            credential,
-            password,
-        })
-    })
-    const data = await response.json()
-    // console.log(data)
-    dispatch(getSongs(data))
-    return data;
-};
+// export const createSong = (song) => async (dispatch) => {
+//     const {
+//         userId,
+//         albumId,
+//         title,
+//         description,
+//         url,
+//         previewImage } = song
+//     const response = await csrfFetch('/api/songs', {
+//         method: 'POST',
+//         body: JSON.stringify({
+//             credential,
+//             password,
+//         })
+//     })
+//     const data = await response.json()
+//     // console.log(data)
+//     dispatch(getSongs(data))
+//     return data;
+// };
 
 const initialState = {}
 

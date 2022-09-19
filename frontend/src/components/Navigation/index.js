@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
+import Search from './Search'
 import './Navigation.css'
 
 function Navigation({ isLoaded }){
@@ -34,6 +35,7 @@ function Navigation({ isLoaded }){
         </li>
       </ul>
     </div>
+    <Search />
     <div>
       {isLoaded && sessionLinks}
     </div>
