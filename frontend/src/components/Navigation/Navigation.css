@@ -1,0 +1,24 @@
+.navBar {
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    top:0%;
+    right: 0%;
+    background-color: rgb(51,51,51);
+    justify-content: center;
+}
+
+.navList {
+    display:flex;
+    flex-direction: row;
+    list-style: none;
+    margin: 0%;
+    padding: 0%;
+}
+
+.navBut {
+    background-color: rgb(51,51,51);
+    color:rgb(244,244,244)
+}
