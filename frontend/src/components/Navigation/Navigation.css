@@ -2,10 +2,10 @@
     display:flex;
     flex-direction: row;
     align-items: center;
-    position: absolute;
+    position: static;
     width: 100%;
-    top:0%;
-    right: 0%;
+    /* top:0%;
+    right: 0%; */
     background-color: rgb(51,51,51);
     justify-content: center;
 }
