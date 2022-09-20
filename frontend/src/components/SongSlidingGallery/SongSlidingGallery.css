@@ -1,0 +1,40 @@
+.galleryBox {
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+    width: max-content;
+    align-items: center;
+    padding: 5px;
+    flex-basis: 33%;
+}
+
+.imgBox {
+    height: 173px;
+    width: 173px;
+    background-color:blue;
+    border: 1px black solid;
+    overflow: auto;
+}
+
+.leftArr {
+    position:relative ;
+    left: 5%
+}
+
+.rightArr {
+    position:relative;
+    left: 95%
+}
+
+.arrows {
+    height:32px;
+    width:32px;
+    background-color: white;
+    border: 1px solid #e5e5e5;
+    border-radius: 3px;
+}
+
+.arrows:hover {
+    color: #f50;
+    border-color: #f50;
+}

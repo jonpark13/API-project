@@ -31,3 +31,10 @@
     display: flex;
     border-radius: 5px;
 }
+
+.createAcc {
+    background-color: rgb(255,85,0);
+    cursor:pointer;
+    color: white;
+    border-radius: 3px;
+}
