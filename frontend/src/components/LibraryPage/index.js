@@ -16,9 +16,7 @@ function LibraryPage() {
         dispatch(songsActions.songsGrab())
         dispatch(sessionActions.refreshUser())
     },[])
-
-    if (sessionUser) return(<Redirect to="/login" />)
-
+    
     return (
         <>
         <div className='mainPage'>
