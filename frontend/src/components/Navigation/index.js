@@ -11,16 +11,31 @@ function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
 
   let sessionLinks
+  let libraryBut
   if (sessionUser) {
     sessionLinks = (
       <ProfileButton user={sessionUser} />
+    )
+    libraryBut = (
+      <>
+        <li className='navBut'>
+          <NavLink exact to="/library" onClick={() => console.log('clicked library')} className='navBut'>Library</NavLink>
+        </li>
+      </>
     )
   } 
   else {
     sessionLinks = (
       <>
-        <LoginFormModal />
+        <LoginFormModal name={'Log In'}/>
         <NavLink to="/signup"><button className='createAcc'>Create account</button></NavLink>
+      </>
+    )
+    libraryBut = (
+      <>
+        <li className='navBut'>
+          <LoginFormModal name={'Library'}/>
+        </li>
       </>
     )
   }
@@ -31,11 +46,12 @@ function Navigation({ isLoaded }){
       <ul className='navList'>
         <img src={logo} className='logo'></img>
         <li>
-          <NavLink exact to="/"><button className='navBut'>Home</button></NavLink>
+          <NavLink exact to="/" className='navBut'>Home</NavLink>
         </li>
         <li className='navBut'>
           TEST
         </li>
+        {isLoaded && libraryBut}
       </ul>
     </div>
     <Search />

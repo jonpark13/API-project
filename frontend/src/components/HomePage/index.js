@@ -4,7 +4,7 @@ import * as songsActions from '../../store/songs'
 import { useDispatch, useSelector } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import SongSlidingGallery from '../SongSlidingGallery'
-import './DiscoverPage.css'
+import './HomePage.css'
 
 // const shuffleList = (arr) => {
 //     let rem = arr.length
@@ -20,29 +20,28 @@ import './DiscoverPage.css'
 //     return arr
 // }
 
-function DiscoverPage() {
+function HomePage() {
     const dispatch = useDispatch();
+    const sessionUser = useSelector((state) => state.session.user);
     const songsList = useSelector(state => state.songs)
-    const imageList = songsList.Songs
 
-   
     useEffect(() => {
         dispatch(songsActions.songsGrab())
+        dispatch(sessionActions.refreshUser())
     },[])
+
+    if (sessionUser) return <Redirect to="/discover" />
 
     return (
         <>
         <div className='mainPage'>
-            DISCOVERPAGE
+            HOMEPAGE
         </div>
         <div>
             {JSON.stringify(songsList)}
         </div>
-        <SongSlidingGallery songs={imageList} />
-        <SongSlidingGallery songs={imageList} />
-        {/* {!imageList && shuffleList(imageList)} */}
         </>
     );
 }
 
-export default DiscoverPage;
+export default HomePage;

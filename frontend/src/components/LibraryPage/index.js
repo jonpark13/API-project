@@ -3,46 +3,32 @@ import * as sessionActions from '../../store/session'
 import * as songsActions from '../../store/songs'
 import { useDispatch, useSelector } from 'react-redux'
 import { Redirect } from 'react-router-dom'
+import LoginFormModal from '../LoginFormModal';
 import SongSlidingGallery from '../SongSlidingGallery'
-import './DiscoverPage.css'
+import './LibraryPage.css'
 
-// const shuffleList = (arr) => {
-//     let rem = arr.length
-//     console.log(rem)
-//     while (rem--) {
-//         let randPos = Math.floor(Math.random() * (rem))
-//         let curr = arr[rem]
-//         arr[rem] = arr[randPos]
-//         arr[randPos] = curr
-
-//     }
-
-//     return arr
-// }
-
-function DiscoverPage() {
+function LibraryPage() {
     const dispatch = useDispatch();
+    const sessionUser = useSelector((state) => state.session.user);
     const songsList = useSelector(state => state.songs)
-    const imageList = songsList.Songs
 
-   
     useEffect(() => {
         dispatch(songsActions.songsGrab())
+        dispatch(sessionActions.refreshUser())
     },[])
+
+    if (sessionUser) return(<Redirect to="/login" />)
 
     return (
         <>
         <div className='mainPage'>
-            DISCOVERPAGE
+            Playlists
         </div>
         <div>
             {JSON.stringify(songsList)}
         </div>
-        <SongSlidingGallery songs={imageList} />
-        <SongSlidingGallery songs={imageList} />
-        {/* {!imageList && shuffleList(imageList)} */}
         </>
     );
 }
 
-export default DiscoverPage;
+export default LibraryPage;
