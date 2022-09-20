@@ -5,6 +5,7 @@ import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import Search from './Search'
 import './Navigation.css'
+import logo from '../../assets/images/VVlogo.png'
 
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
@@ -28,6 +29,7 @@ function Navigation({ isLoaded }){
     <div className='navBar'>
     <div>
       <ul className='navList'>
+        <img src={logo} className='logo'></img>
         <li>
           <NavLink exact to="/"><button className='navBut'>Home</button></NavLink>
         </li>
