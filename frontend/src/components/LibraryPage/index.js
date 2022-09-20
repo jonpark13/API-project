@@ -4,7 +4,7 @@ import * as songsActions from '../../store/songs'
 import { useDispatch, useSelector } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import LoginFormModal from '../LoginFormModal';
-import SongSlidingGallery from '../SongSlidingGallery'
+import Gallery from '../Gallery'
 import './LibraryPage.css'
 
 function LibraryPage() {
@@ -16,14 +16,14 @@ function LibraryPage() {
         dispatch(songsActions.songsGrab())
         dispatch(sessionActions.refreshUser())
     },[])
-    
+
     return (
         <>
         <div className='mainPage'>
             Playlists
         </div>
         <div>
-            {JSON.stringify(songsList)}
+            <Gallery songs={songsList.Songs} />
         </div>
         </>
     );

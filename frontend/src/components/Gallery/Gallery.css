@@ -1,0 +1,82 @@
+/* .galleryBox {
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    width: max-content;
+    align-items: center;
+    padding: 5px;
+    flex-basis: 33%;
+} */
+
+.galleryBox {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    box-sizing: border-box;
+    width: max-content;
+    align-items:flex-start;
+    justify-items: center;
+    padding: 5px;
+    flex-basis: 33%;
+    border-style: none;
+}
+
+.imgBox {
+    height: 220px;
+    width: 173px;
+    background-color:white;
+    object-fit:fill;
+    overflow: hidden;
+    align-content: center;
+    margin: 5px 5px;
+    border-style: none;
+}
+
+.imgFill {
+    justify-content: center;
+    height: 173px;
+    width: 173px;
+    background-color:white;
+    margin: 5px 5px;
+    border: 1px #ccc solid;
+}
+
+.imgO { 
+    border: 1px rgba(111, 111, 111, 0.459) solid;
+}
+
+.leftArr {
+    position:relative ;
+    left: 5%
+}
+
+.rightArr {
+    position:relative;
+    left: 95%
+}
+
+.arrows {
+    height:32px;
+    width:32px;
+    background-color: white;
+    border: 1px solid #e5e5e5;
+    border-radius: 3px;
+}
+
+.arrows:hover {
+    color: #f50;
+    border-color: #f50;
+}
+
+.titleText {
+    color: #333;
+    font-size: 14px;
+    font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif
+}
+
+.artistText {
+    color: #999;
+    font-size: 12px;
+    font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+}
