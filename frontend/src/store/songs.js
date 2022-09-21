@@ -1,6 +1,8 @@
 import { csrfFetch } from './csrf'
 
+
 const GET_SONGS = 'songs/getSongs'
+const GET_SONG = 'songs/getSong'
 const ADD_SONG = 'songs/addSong'
 const FIND_SONG = 'songs/findSong'
 
@@ -11,10 +13,10 @@ const getSongs = (songs) => {
     }
 }
 
-const findSong = (song) => {
+const getSong = (single_song) => {
     return {
-        type: FIND_SONG,
-        song
+        type: GET_SONG,
+        single_song
     }
 }
 
@@ -30,6 +32,13 @@ export const songsGrab = () => async (dispatch) => {
     const data = await response.json()
     // console.log(data)
     dispatch(getSongs(data))
+    return data;
+};
+
+export const songSingleGrab = (id) => async (dispatch) => {
+    const response = await csrfFetch(`/api/songs/${id}`)
+    const data = await response.json()
+    dispatch(getSong(data))
     return data;
 };
 
@@ -73,6 +82,13 @@ const songsReducer = (state = initialState, action) => {
             newState = Object.assign({}, state)
             newState = action.songs
             return newState
+        case GET_SONG:
+            return {
+                ...state,
+                singleSong: {
+                    [action.single_song.id]: action.single_song
+                }
+            }
         case ADD_SONG:
             newState = Object.assign({}, state)
             newState = action.songs

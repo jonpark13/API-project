@@ -25,9 +25,10 @@ function DiscoverPage() {
     const songsList = useSelector(state => state.songs)
     const imageList = songsList.Songs
 
-   
+    
     useEffect(() => {
         dispatch(songsActions.songsGrab())
+        dispatch(songsActions.songSingleGrab(1))
     },[])
 
     return (

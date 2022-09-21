@@ -10,7 +10,7 @@ const Gallery = ({songs}) => {
     return (
         <div className='galleryBox'>
             {!!songs.length && songs.map((e,i) => (
-                <div className="imgBox" >
+                <div className="imgBox" key={i}>
                     {/* <img src={e.previewImage} alt={e.title}/> */}
                     <img className='imgO' src={`https://picsum.photos/seed/${i}/173`} alt='test'/>
                     <text className='titleText'>{e.title}</text>
