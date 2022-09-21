@@ -9,10 +9,10 @@
     flex-basis: 33%;
 } */
 
-.galleryBox {
+.miniGalleryBox {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(4, 1fr);
+    grid-template-rows: repeat(1, 1fr);
     box-sizing: border-box;
     width: max-content;
     align-items:flex-start;
@@ -24,7 +24,6 @@
 
 .imgBox:hover .imgO {
     mix-blend-mode: multiply;
-    transition: mix-blend-mode 0.2s linear
 }
 
 .imgCont {
@@ -56,6 +55,8 @@
 .imgO { 
     background-color: #333;
     border: 1px rgba(111, 111, 111, 0.459) solid;
+    mix-blend-mode: normal;
+    transition: mix-blend-mode 1s linear
 }
 
 .leftArr {

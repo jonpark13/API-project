@@ -1,21 +1,20 @@
 import React, {useState} from 'react'
-import './Gallery.css'
+import './MiniGallery.css'
 
-const Gallery = ({songs}) => {
-    songs = Array(3).fill(songs).flat()
+const MiniGallery = ({list}) => {
     let remArrLen
-    if(songs.length < 24){
-        remArrLen = 24 - songs.length
+    if(list.length < 6){
+        remArrLen = 6 - list.length
     }
     return (
-        <div className='galleryBox'>
-            {!!songs.length && songs.map((e,i) => (
+        <div className='miniGalleryBox'>
+            {!!list.length && list.map((e,i) => (
                 <div className="imgBox" key={i}>
                     {/* <img src={e.previewImage} alt={e.title}/> */}
                     <div className='imgCont'>
                         <img className='imgO' src={`https://picsum.photos/seed/${i}/173`} alt='test'/>
                     </div>
-                    <text className='titleText'>{e.title}</text>
+                    <text className='titleText'>{e.name}</text>
                     <br />
                     <text className='artistText'>{e.userId}</text>
                 </div>
@@ -27,4 +26,4 @@ const Gallery = ({songs}) => {
     )
 }
 
-export default Gallery
+export default MiniGallery
