@@ -24,6 +24,7 @@ function LibraryPage() {
     return (
         <>
         <div className='libPage'>
+            <div className='libContent'>
             NEW NAV BAR GOES HERE
             <div>
                 {JSON.stringify(sessionUser)}
@@ -40,6 +41,7 @@ function LibraryPage() {
                 Object.keys(playlists).length &&
                 <MiniGallery list={playlists.Playlists} />
                 }
+            </div>
             </div>
         </div>
         </>

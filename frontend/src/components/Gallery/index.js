@@ -17,7 +17,7 @@ const Gallery = ({songs}) => {
                     </div>
                     <text className='titleText'>{e.title}</text>
                     <br />
-                    <text className='artistText'>{e.userId}</text>
+                    <text className='artistText'>{e.User.username}</text>
                 </div>
             ))}
             {

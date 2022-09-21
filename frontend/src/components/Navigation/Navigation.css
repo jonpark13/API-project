@@ -4,11 +4,20 @@
     align-items: center;
     position: fixed;
     width: 100%;
+    height: 45px;
     /* top:0%;
     right: 0%; */
     background-color: rgb(51,51,51);
     justify-content: center;
     z-index: 100;
+}
+
+.navContent {
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    width: 1200px;
+    justify-content: space-between;
 }
 
 .navList {
