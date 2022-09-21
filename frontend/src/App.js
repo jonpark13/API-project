@@ -7,6 +7,7 @@ import DiscoverPage from './components/DiscoverPage'
 import HomePage from './components/HomePage';
 import Navigation from './components/Navigation';
 import LibraryPage from './components/LibraryPage';
+import MusicPlayer from './components/MusicPlayer';
 import * as sessionActions from './store/session';
 
 function App() {
@@ -19,7 +20,7 @@ function App() {
 
   return (
     <>
-      <Navigation isLoaded={isLoaded} />
+      <Navigation isLoaded={isLoaded}/>
       {isLoaded && (
         <Switch>
           <Route path="/login">
@@ -42,6 +43,7 @@ function App() {
           </Route>
         </Switch>
       )}
+      <MusicPlayer />
     </>
   );
 }

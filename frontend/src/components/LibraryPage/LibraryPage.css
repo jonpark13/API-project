@@ -1,4 +1,7 @@
-.mainPage {
-    display: grid;
-    position: static
+.libPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 10px;
+    justify-content: space-between;
 }

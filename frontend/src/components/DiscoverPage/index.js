@@ -35,13 +35,13 @@ function DiscoverPage() {
         <>
         <div className='mainPage'>
             DISCOVERPAGE
-        </div>
-        <div>
+            <div>
             {JSON.stringify(songsList)}
         </div>
         <SongSlidingGallery songs={imageList} />
         <SongSlidingGallery songs={imageList} />
         {/* {!imageList && shuffleList(imageList)} */}
+        </div>
         </>
     );
 }

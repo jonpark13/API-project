@@ -23,24 +23,24 @@ function LibraryPage() {
 
     return (
         <>
-        <div className='mainPage'>
+        <div className='libPage'>
             NEW NAV BAR GOES HERE
-        </div>
-        <div>
-            {JSON.stringify(sessionUser)}
-        </div>
-        <div>
-            {
-            Object.keys(songsList).length &&
-            <Gallery songs={songsList.Songs} />
-            }
-        </div>
-        <div>Playlists</div>
-        <div>
-            {
-            Object.keys(playlists).length &&
-            <MiniGallery list={playlists.Playlists} />
-            }
+            <div>
+                {JSON.stringify(sessionUser)}
+            </div>
+            <div>
+                {
+                Object.keys(songsList).length &&
+                <Gallery songs={songsList.Songs} />
+                }
+            </div>
+            <div>Playlists</div>
+            <div>
+                {
+                Object.keys(playlists).length &&
+                <MiniGallery list={playlists.Playlists} />
+                }
+            </div>
         </div>
         </>
     );

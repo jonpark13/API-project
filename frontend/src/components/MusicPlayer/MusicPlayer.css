@@ -1,0 +1,23 @@
+.musicFoot {
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    position: fixed;
+    justify-content: center;
+    bottom: 0%;
+    width: 100%;
+    background-color: #f1f3f4;
+}
+
+
+.musicCont {
+    display: flex;
+    width: 1200px;
+    overflow: hidden;
+    align-items: center;
+}
+
+.other {
+    width: auto;
+    display: inline;
+}
