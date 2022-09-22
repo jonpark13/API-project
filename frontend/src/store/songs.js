@@ -4,6 +4,7 @@ import { csrfFetch } from './csrf'
 const GET_SONGS = 'songs/getSongs'
 const GET_SONG = 'songs/getSong'
 const ADD_SONG = 'songs/addSong'
+const DELETE_SONG = 'songs/deleteSong'
 const FIND_SONG = 'songs/findSong'
 
 const getSongs = (songs) => {
@@ -24,6 +25,14 @@ const addSong = (song) => {
     return {
         type: ADD_SONG,
         song
+    }
+}
+
+const delSong = (song, id) => {
+    return {
+        type: DELETE_SONG,
+        song,
+        id
     }
 }
 
@@ -49,6 +58,16 @@ export const searchQuery = (songTitle) => async (dispatch) => {
     const data = await response.json()
     // console.log(data)
     dispatch(getSongs(data))
+    return data;
+};
+
+export const deleteSong = (id) => async (dispatch) => {
+    const response = await csrfFetch(`/api/songs/${id}`, {
+        method: 'DELETE'
+    })
+    const data = await response.json()
+    // console.log(data)
+    dispatch(delSong(data, id))
     return data;
 };
 
@@ -93,7 +112,11 @@ const songsReducer = (state = initialState, action) => {
                 }
             }
         case ADD_SONG:
-            return { ...state, Songs: {...state.Songs, [action.song.id - 1]: action.song}}
+            return { ...state, Songs: [...state.Songs, action.song]}
+        case DELETE_SONG:
+            return { ...state, Songs: state.Songs.filter(
+                (e) => e.id !== action.id
+              )}
         default:
             return state
     }

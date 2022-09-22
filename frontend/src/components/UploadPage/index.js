@@ -8,6 +8,23 @@ import './UploadPage.css'
 
 function UploadPage() {
     const dispatch = useDispatch();
+    const songsList = useSelector(state => state.songs)
+    const imageList = songsList.Songs
+
+    
+    useEffect(() => {
+        dispatch(songsActions.songsGrab())
+    },[])
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log('hit')
+        return dispatch(songsActions.deleteSong(10))
+            .catch(async (res) => {
+                const data = await res.json();
+                console.log('data', data)
+            });
+    };
 
     return (
         <div className='uploadPage'>
@@ -16,8 +33,10 @@ function UploadPage() {
             <div className='formCont'>
                 <UploadFormPage />
             </div>
+            <div>
+                <button onClick={handleSubmit}>delete song 6</button>
             </div>
-
+            </div>
         </div>
     );
 }

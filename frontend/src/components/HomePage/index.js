@@ -81,7 +81,7 @@ function HomePage() {
             <div>
                 {
                 Object.keys(songsList).length &&
-                <Gallery songs={songsList} />
+                <Gallery songs={songsList.Songs} />
                 }
                 </div>
         </div>
