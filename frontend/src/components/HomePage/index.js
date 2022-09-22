@@ -9,6 +9,7 @@ import Search from '../Navigation/Search'
 import Gallery from '../Gallery'
 import SongSlidingGallery from '../SongSlidingGallery'
 import './HomePage.css'
+import LoginDemo from '../LoginFormModal/LoginDemo'
 
 // const shuffleList = (arr) => {
 //     let rem = arr.length
@@ -67,7 +68,9 @@ function HomePage() {
             <div className='splash' style={{backgroundImage: `url(https://source.unsplash.com/1200x450?music%20festival)`}}>
                 <div className='actionBut'>
                     <LoginFormModal name={'Sign In'}/>
+                    <LoginDemo />
                     <CreateAccountModal name={'Create Account'} />
+
                 </div>
             </div>
                 <Search />
