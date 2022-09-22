@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import './Gallery.css'
+import playButton from '../../assets/images/playButFinal.png'
 
 const Gallery = ({songs}) => {
     songs = Array(3).fill(songs).flat()
@@ -14,9 +15,9 @@ const Gallery = ({songs}) => {
                     {/* <img src={e.previewImage} alt={e.title}/> */}
                     <div className='imgCont'>
                         <img className='imgO' src={`https://picsum.photos/seed/${i}/173`} alt='test'/>
+                        <img className='playButOverlay' src={playButton} />
                     </div>
                     <div className='titleText'>{e.title}</div>
-                    <br />
                     <div className='artistText'>{e.User.username}</div>
                 </div>
             ))}

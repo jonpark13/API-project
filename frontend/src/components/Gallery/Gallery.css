@@ -31,7 +31,15 @@
     transition: mix-blend-mode 0.2s linear
 }
 
+.imgBox:hover .playButOverlay {
+    z-index: 99;
+}
+
 .imgCont {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
     background: linear-gradient(to top, rgba(255, 255, 255, 0), rgba(93, 93, 93, 0.8) 00%, rgba(255,255,255,0) 30%);
     height: 173px;
     width: 173px;
@@ -60,6 +68,8 @@
 .imgO { 
     background-color: #333;
     border: 1px rgba(111, 111, 111, 0.459) solid;
+    mix-blend-mode: normal;
+    transition: mix-blend-mode 0.2s linear
 }
 
 .leftArr {
@@ -96,3 +106,12 @@
     font-size: 12px;
     font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
 }
+
+.playButOverlay {
+    position: absolute;
+    z-index: -1;
+    height:70px;
+    width: 70px;
+    transition: z-index linear
+}
+

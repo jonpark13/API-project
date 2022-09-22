@@ -9,10 +9,10 @@ const MiniGallery = ({list}) => {
     return (
         <div className='miniGalleryBox'>
             {!!list.length && list.map((e,i) => (
-                <div className="imgBox" key={i}>
+                <div className="mimgBox" key={i}>
                     {/* <img src={e.previewImage} alt={e.title}/> */}
-                    <div className='imgCont'>
-                        <img className='imgO' src={`https://picsum.photos/seed/${i}/173`} alt='test'/>
+                    <div className='mimgCont'>
+                        <img className='mimgO' src={`https://picsum.photos/seed/${i}/173`} alt='test'/>
                     </div>
                     <div className='titleText'>{e.name}</div>
                     <br />
@@ -20,7 +20,7 @@ const MiniGallery = ({list}) => {
                 </div>
             ))}
             {
-                Array(remArrLen).fill(<div className="imgFill"></div>)
+                Array(remArrLen).fill(<div className="mimgFill"></div>)
             }
         </div>
     )
