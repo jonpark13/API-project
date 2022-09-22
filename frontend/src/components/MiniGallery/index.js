@@ -14,9 +14,9 @@ const MiniGallery = ({list}) => {
                     <div className='imgCont'>
                         <img className='imgO' src={`https://picsum.photos/seed/${i}/173`} alt='test'/>
                     </div>
-                    <text className='titleText'>{e.name}</text>
+                    <div className='titleText'>{e.name}</div>
                     <br />
-                    <text className='artistText'>{e.userId}</text>
+                    <div className='artistText'>{e.userId}</div>
                 </div>
             ))}
             {

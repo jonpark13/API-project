@@ -8,8 +8,8 @@ import HomePage from './components/HomePage';
 import Navigation from './components/Navigation';
 import LibraryPage from './components/LibraryPage';
 import MusicPlayer from './components/MusicPlayer';
-import * as sessionActions from './store/session';
 import UploadPage from './components/UploadPage';
+import * as sessionActions from './store/session';
 
 function App() {
   const dispatch = useDispatch()
@@ -43,8 +43,8 @@ function App() {
           <Route path="/upload">
             <UploadPage />
           </Route>
-          <Route>
-            <div>404</div>
+          <Route path="*">
+            <div>404 *</div>
           </Route>
           </>
         </Switch>

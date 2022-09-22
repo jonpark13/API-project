@@ -59,7 +59,7 @@ function HomePage() {
     //         })
     // },[])
 
-    if (sessionUser) return <Redirect to="/discover" />
+    if (sessionUser.id) return <Redirect to="/discover" />
 
     return (
         <>
@@ -81,7 +81,7 @@ function HomePage() {
             <div>
                 {
                 Object.keys(songsList).length &&
-                <Gallery songs={songsList.Songs} />
+                <Gallery songs={songsList} />
                 }
                 </div>
         </div>

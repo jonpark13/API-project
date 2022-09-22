@@ -15,9 +15,9 @@ const Gallery = ({songs}) => {
                     <div className='imgCont'>
                         <img className='imgO' src={`https://picsum.photos/seed/${i}/173`} alt='test'/>
                     </div>
-                    <text className='titleText'>{e.title}</text>
+                    <div className='titleText'>{e.title}</div>
                     <br />
-                    <text className='artistText'>{e.User.username}</text>
+                    <div className='artistText'>{e.User.username}</div>
                 </div>
             ))}
             {

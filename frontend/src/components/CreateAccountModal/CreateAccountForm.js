@@ -15,7 +15,7 @@ function CreateAccountForm() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
-  if (sessionUser) return <Redirect to="/discover" />; // turned off for vis
+  if (sessionUser.id) return <Redirect to="/discover" />; // turned off for vis
 
   const handleSubmit = (e) => {
     e.preventDefault();

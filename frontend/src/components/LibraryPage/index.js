@@ -25,7 +25,7 @@ function LibraryPage() {
         <>
         <div className='libPage'>
             <div className='libContent'>
-            NEW NAV BAR GOES HERE
+            <div>NEW NAV BAR GOES HERE</div>
             <div>
                 {JSON.stringify(sessionUser)}
             </div>

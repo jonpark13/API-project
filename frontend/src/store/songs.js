@@ -52,26 +52,29 @@ export const searchQuery = (songTitle) => async (dispatch) => {
     return data;
 };
 
-// export const createSong = (song) => async (dispatch) => {
-//     const {
-//         userId,
-//         albumId,
-//         title,
-//         description,
-//         url,
-//         previewImage } = song
-//     const response = await csrfFetch('/api/songs', {
-//         method: 'POST',
-//         body: JSON.stringify({
-//             credential,
-//             password,
-//         })
-//     })
-//     const data = await response.json()
-//     // console.log(data)
-//     dispatch(getSongs(data))
-//     return data;
-// };
+export const createSong = (song) => async (dispatch) => {
+    const {
+        userId,
+        albumId,
+        title,
+        description,
+        url,
+        previewImage } = song
+    const response = await csrfFetch('/api/songs', {
+        method: 'POST',
+        body: JSON.stringify({
+            userId,
+            albumId,
+            title,
+            description,
+            url,
+            previewImage
+        })
+    })
+    const data = await response.json()
+    dispatch(addSong(data))
+    return data;
+};
 
 const initialState = {}
 
@@ -90,8 +93,7 @@ const songsReducer = (state = initialState, action) => {
                 }
             }
         case ADD_SONG:
-            newState = Object.assign({}, state)
-            newState = action.songs
+            return { ...state, Songs: {...state.Songs, [action.song.id - 1]: action.song}}
         default:
             return state
     }

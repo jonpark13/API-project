@@ -6,13 +6,14 @@ import LoginFormModal from '../LoginFormModal';
 import Search from './Search'
 import './Navigation.css'
 import logo from '../../assets/images/VVlogo.png'
+import LoginDemo from '../LoginFormModal/LoginDemo';
 
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
 
   let sessionLinks
   let libraryBut
-  if (sessionUser) {
+  if (sessionUser.id) {
     sessionLinks = (
       <ProfileButton user={sessionUser} />
     )
@@ -54,6 +55,8 @@ function Navigation({ isLoaded }){
             {isLoaded && libraryBut}
           </ul>
           <Search />
+          <NavLink to="/upload" className='navBut'>Upload</NavLink>
+          <LoginDemo />
         <div>
           {isLoaded && sessionLinks}
         </div>
