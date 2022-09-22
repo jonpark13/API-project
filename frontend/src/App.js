@@ -20,9 +20,13 @@ function App() {
 
   return (
     <>
-      <Navigation isLoaded={isLoaded}/>
       {isLoaded && (
         <Switch>
+          <Route exact path="/">
+            <HomePage />
+          </Route>
+          <>
+          <Navigation isLoaded={isLoaded}/>
           <Route path="/login">
             <LoginFormPage />
           </Route>
@@ -35,12 +39,10 @@ function App() {
           <Route path="/library">
             <LibraryPage />
           </Route>
-          <Route exact path="/">
-            <HomePage />
-          </Route>
           <Route>
             <div>404</div>
           </Route>
+          </>
         </Switch>
       )}
       <MusicPlayer />

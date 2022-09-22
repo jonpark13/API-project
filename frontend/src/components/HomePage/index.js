@@ -2,7 +2,11 @@ import React, { useEffect, useState } from 'react'
 import * as sessionActions from '../../store/session'
 import * as songsActions from '../../store/songs'
 import { useDispatch, useSelector } from 'react-redux'
-import { Redirect } from 'react-router-dom'
+import { Redirect, NavLink } from 'react-router-dom'
+import LoginFormModal from '../LoginFormModal'
+import CreateAccountModal from '../CreateAccountModal'
+import Search from '../Navigation/Search'
+import Gallery from '../Gallery'
 import SongSlidingGallery from '../SongSlidingGallery'
 import './HomePage.css'
 
@@ -60,14 +64,23 @@ function HomePage() {
         <>
         <div className='homePage'>
         <div className='homeContent'>
-            <div className='splash'>
-                {/* {!!testImg.length && testImg.map((e,i) => {
-                    return <div key={i} style={{backgroundImage: `url(${e})`,height:'100%',width:'100%'}}>test</div>
-                })} */}
-                {<div style={{backgroundImage: `url(https://source.unsplash.com/1200x450?festival,music)`,height:'100%',width:'100%'}}></div>}
+            <div className='splash' style={{backgroundImage: `url(https://source.unsplash.com/1200x450?music%20festival)`}}>
+                <div className='actionBut'>
+                    <LoginFormModal name={'Sign In'}/>
+                    <CreateAccountModal name={'Create Account'} />
+                </div>
             </div>
-            {JSON.stringify(songsList)}
-            {/* <button onClick={() => {clickTest()}}>test</button> */}
+                <Search />
+                {JSON.stringify(songsList)}
+            <div className='newsText'>
+                Hear what’s trending in the SoundCloud community
+            </div>
+            <div>
+                {
+                Object.keys(songsList).length &&
+                <Gallery songs={songsList.Songs} />
+                }
+                </div>
         </div>
         </div>
         </>

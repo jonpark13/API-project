@@ -22,6 +22,10 @@
     border-style: none;
 }
 
+.imgBox:hover {
+    cursor: pointer;
+}
+
 .imgBox:hover .imgO {
     mix-blend-mode: multiply;
 }
