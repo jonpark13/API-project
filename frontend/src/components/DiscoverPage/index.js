@@ -33,7 +33,8 @@ function DiscoverPage() {
 
     return (
         <>
-        <div className='mainPage'>
+        <div className='discPage'>
+            <div className='discContent'>
             DISCOVERPAGE
             <div>
             {JSON.stringify(songsList)}
@@ -41,6 +42,7 @@ function DiscoverPage() {
         {/* <SongSlidingGallery songs={imageList} />
         <SongSlidingGallery songs={imageList} /> */}
         {/* {!imageList && shuffleList(imageList)} */}
+        </div>
         </div>
         </>
     );

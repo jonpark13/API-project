@@ -1,7 +1,17 @@
-.mainPage {
+.discPage {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 50px 10px;
-    justify-content: space-between;
+    background-color: #f2f2f2;
+    height:100vh
+}
+
+.discContent {
+    display: flex;
+    width: 1200px;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 0px;
+    background-color: white;
+    height: 100vh
 }

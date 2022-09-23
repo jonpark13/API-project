@@ -1,0 +1,13 @@
+.playlistModal {
+    display:flex;
+    flex-direction: column;
+}
+
+.playlistItem {
+    display: flex;
+    flex-direction: row;
+}
+
+.saveB {
+    background-color: aqua;
+}

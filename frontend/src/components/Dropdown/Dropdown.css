@@ -1,0 +1,41 @@
+.container {
+    position: relative;
+    display: inline-block;
+}
+
+.button {
+    padding: 0;
+    width: 50px;
+    border: 0;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+    outline: 0;
+    font-size: 40px;
+}
+
+.dropdownCont {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 150px;
+    height: 75px;
+    z-index: 999;
+    border: 1px solid #f4f4f4;
+    border-radius: 5px;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  li {
+    color:#333;
+    padding: 8px;
+  }
+  
+  li:hover {
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+  }

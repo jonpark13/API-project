@@ -55,7 +55,7 @@
     width: 173px;
     background-color:white;
     object-fit:fill;
-    overflow: hidden;
+    overflow: visible;
     align-content: center;
     margin: 5px 5px;
     border-style: none;
@@ -129,3 +129,34 @@
     right: 0%;
     transition: z-index linear
 }
+
+.dropdownCont {
+    position: absolute;
+    top: 100%;
+    left: 10%;
+    width: 150px;
+    height: 75px;
+    z-index: 100;
+    border: 1px solid #f4f4f4;
+    border-radius: 5px;
+    background-color: white;
+  }
+  
+  ul {
+    display: flex;
+    flex-direction: column;
+    height:100%;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  li {
+    color:#333;
+    padding: 8px;
+  }
+  
+  li:hover {
+    color: rgb(0, 0, 0);
+    background-color: rgb(222, 222, 222);
+    cursor: pointer;
+  }

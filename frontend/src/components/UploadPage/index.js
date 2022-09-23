@@ -5,6 +5,7 @@ import * as playlistActions from '../../store/playlists'
 import { useDispatch, useSelector } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import UploadFormPage from './UploadForm'
+import Dropdown from '../Dropdown'
 import './UploadPage.css'
 
 function UploadPage() {
@@ -101,6 +102,9 @@ function UploadPage() {
             </div>
             <div>
                 {JSON.stringify(playlist)}
+            </div>
+            <div>
+                <Dropdown />
             </div>
             </div>
         </div>
