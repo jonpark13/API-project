@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, useLocation } from 'react-router-dom';
 import LoginFormPage from './components/LoginFormPage';
 import SignupFormPage from './components/SignupFormPage';
 import DiscoverPage from './components/DiscoverPage'
@@ -13,21 +13,22 @@ import * as sessionActions from './store/session';
 
 function App() {
   const dispatch = useDispatch()
+  const location = useLocation()
+  console.log(location)
   const [isLoaded, setIsLoaded] = useState(false);
-
+  // console.log(location.pathname, 'path')
+  // console.log(isLoaded)
   useEffect(() => {
     dispatch(sessionActions.refreshUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
   return (
     <>
-      {isLoaded && (
+      {isLoaded && location.pathname !== '/' && <Navigation isLoaded={isLoaded}/>}
         <Switch>
           <Route exact path="/">
             <HomePage />
           </Route>
-          <>
-          <Navigation isLoaded={isLoaded}/>
           <Route path="/login">
             <LoginFormPage />
           </Route>
@@ -44,11 +45,9 @@ function App() {
             <UploadPage />
           </Route>
           <Route path="*">
-            <div>404 *</div>
+            <div style={{fontSize: 400}}>* 404 *</div>
           </Route>
-          </>
         </Switch>
-      )}
       <MusicPlayer />
     </>
   );

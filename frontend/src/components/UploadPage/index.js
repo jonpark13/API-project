@@ -26,6 +26,22 @@ function UploadPage() {
             });
     };
 
+    const handleSubmit2 = (e) => {
+        e.preventDefault();
+        console.log('hit')
+        return dispatch(songsActions.editingSong({
+            title:'afterEdit',
+            description:'afterEdit',
+            url:'afterEdit',
+            imageUrl:'afterEdit',
+            id: 11
+        }))
+            .catch(async (res) => {
+                const data = await res.json();
+                console.log('data', data)
+            });
+    };
+
     return (
         <div className='uploadPage'>
             <div className='uploadContent'>
@@ -35,6 +51,10 @@ function UploadPage() {
             </div>
             <div>
                 <button onClick={handleSubmit}>delete song 6</button>
+                <button onClick={handleSubmit2}>edit song</button>
+            </div>
+            <div>
+                {JSON.stringify(songsList)}
             </div>
             </div>
         </div>

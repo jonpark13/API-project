@@ -34,6 +34,7 @@ export const login = (user) => async (dispatch) => {
 };
 
 export const refreshUser = () => async (dispatch) => {
+  console.log('hitrefresh')
   const response = await csrfFetch('/api/session')
   const data = await response.json()
   let { id, username, firstName } = data
@@ -77,7 +78,7 @@ const sessionReducer = (state = initialState, action) => {
       return newState
     case REMOVE_USER:
       newState = Object.assign({}, state)
-      newState.user = null
+      newState.user = { id: null, username: null, firstName: null }
       return newState
     default:
       return state

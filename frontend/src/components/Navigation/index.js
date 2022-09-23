@@ -12,7 +12,7 @@ function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
 
   let sessionLinks
-  let libraryBut
+  let libraryBut, uploadBut
   if (sessionUser.id) {
     sessionLinks = (
       <ProfileButton user={sessionUser} />
@@ -20,7 +20,14 @@ function Navigation({ isLoaded }){
     libraryBut = (
       <>
         <li className='navBut'>
-          <NavLink exact to="/library" onClick={() => console.log('clicked library')} className='navBut'>Library</NavLink>
+          <NavLink exact to="/library" className='navBut'>Library</NavLink>
+        </li>
+      </>
+    )
+    uploadBut = (
+      <>
+        <li className='navBut'>
+        <NavLink to="/upload" className='navBut'>Upload</NavLink>
         </li>
       </>
     )
@@ -36,6 +43,13 @@ function Navigation({ isLoaded }){
       <>
         <li className='navBut'>
           <LoginFormModal name={'Library'}/>
+        </li>
+      </>
+    )
+    uploadBut = (
+      <>
+        <li className='navBut'>
+        <LoginFormModal name={'Upload'}/>
         </li>
       </>
     )
@@ -55,7 +69,7 @@ function Navigation({ isLoaded }){
             {isLoaded && libraryBut}
           </ul>
           <Search />
-          <NavLink to="/upload" className='navBut'>Upload</NavLink>
+          {isLoaded && uploadBut}
           <LoginDemo />
         <div>
           {isLoaded && sessionLinks}

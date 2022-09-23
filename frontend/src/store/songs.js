@@ -5,6 +5,7 @@ const GET_SONGS = 'songs/getSongs'
 const GET_SONG = 'songs/getSong'
 const ADD_SONG = 'songs/addSong'
 const DELETE_SONG = 'songs/deleteSong'
+const EDIT_SONG = 'songs/editSong'
 const FIND_SONG = 'songs/findSong'
 
 const getSongs = (songs) => {
@@ -24,6 +25,12 @@ const getSong = (single_song) => {
 const addSong = (song) => {
     return {
         type: ADD_SONG,
+        song
+    }
+}
+const editSong = (song) => {
+    return {
+        type: EDIT_SONG,
         song
     }
 }
@@ -60,6 +67,31 @@ export const searchQuery = (songTitle) => async (dispatch) => {
     dispatch(getSongs(data))
     return data;
 };
+
+export const editingSong = (song) => async (dispatch) => {
+    const {
+        title,
+        description,
+        url,
+        imageUrl,
+        albumId,
+        id
+    } = song
+    const response = await csrfFetch(`api/songs/${id}`, {
+        method: 'PUT',
+        body: JSON.stringify({
+            title,
+            description,
+            url,
+            imageUrl,
+            albumId
+        })
+    })
+    const data = await response.json()
+    console.log(data, 'hit')
+    dispatch(editSong(data))
+    return data;
+}
 
 export const deleteSong = (id) => async (dispatch) => {
     const response = await csrfFetch(`/api/songs/${id}`, {
@@ -103,7 +135,7 @@ const songsReducer = (state = initialState, action) => {
         case GET_SONGS:
             newState = Object.assign({}, state)
             newState = action.songs
-            return newState
+            return {...state, ...newState}
         case GET_SONG:
             return {
                 ...state,
@@ -113,6 +145,14 @@ const songsReducer = (state = initialState, action) => {
             }
         case ADD_SONG:
             return { ...state, Songs: [...state.Songs, action.song]}
+        case EDIT_SONG:
+            let newArr = state.Songs.map(e => {
+                if(e.id === action.song.id){
+                    return {...e, ...action.song}
+                }
+                return e
+            })
+            return {...state, Songs: [...newArr]}
         case DELETE_SONG:
             return { ...state, Songs: state.Songs.filter(
                 (e) => e.id !== action.id

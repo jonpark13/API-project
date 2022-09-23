@@ -23,7 +23,7 @@ import './DiscoverPage.css'
 function DiscoverPage() {
     const dispatch = useDispatch();
     const songsList = useSelector(state => state.songs)
-    const imageList = songsList.Songs
+    // const imageList = songsList.Songs
 
     
     useEffect(() => {
@@ -38,8 +38,8 @@ function DiscoverPage() {
             <div>
             {JSON.stringify(songsList)}
         </div>
-        <SongSlidingGallery songs={imageList} />
-        <SongSlidingGallery songs={imageList} />
+        {/* <SongSlidingGallery songs={imageList} />
+        <SongSlidingGallery songs={imageList} /> */}
         {/* {!imageList && shuffleList(imageList)} */}
         </div>
         </>

@@ -33,7 +33,7 @@ function HomePage() {
 
     useEffect(() => {
         dispatch(songsActions.songsGrab())
-        dispatch(sessionActions.refreshUser())
+        // dispatch(sessionActions.refreshUser())
     },[])
 
     // const clickTest = () => {
@@ -68,7 +68,6 @@ function HomePage() {
             <div className='splash' style={{backgroundImage: `url(https://source.unsplash.com/1200x450?music%20festival)`}}>
                 <div className='actionBut'>
                     <LoginFormModal name={'Sign In'}/>
-                    <LoginDemo />
                     <CreateAccountModal name={'Create Account'} />
 
                 </div>
