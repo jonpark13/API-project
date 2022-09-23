@@ -36,9 +36,9 @@ router.post('/:playlistId/songs', requireAuth, async (req, res) => {
         playlistId: Number(req.params.playlistId),
         songId: songId
     })
-    // console.log(addSongToPlaylist)
+    console.log(addSongToPlaylist)
     await addSongToPlaylist.save() //?
-    res.json(addSongToPlaylist)
+    res.json(getSong)
 });
 
 // Get playlist of current user

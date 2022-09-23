@@ -4,7 +4,8 @@ import { csrfFetch } from './csrf'
 const GET_PLAYLISTS = 'playlist/getPlaylists'
 const GET_PLAYLIST = 'playlist/getPlaylist'
 const ADD_PLAYLIST = 'playlist/addPlaylist'
-const ADDTO_PLAYLIST = 'playlist/AddToPlaylist'
+const ADDTO_PLAYLIST = 'playlist/addToPlaylist'
+const DELETE_PLAYLIST = 'playlist/deletePlaylist'
 
 const getPlaylists = (playlists) => {
     return {
@@ -27,11 +28,18 @@ const addPlaylist = (playlist) => {
     }
 }
 
-const addToPlaylist = (playlist, songId) => {
+const addToPlaylist = (playlist, song) => {
     return {
         type: ADDTO_PLAYLIST,
         playlist,
-        songId
+        song
+    }
+}
+
+const delPlaylist = (playlist) => {
+    return {
+        type: DELETE_PLAYLIST,
+        playlist
     }
 }
 
@@ -67,16 +75,24 @@ export const createPlaylist = (playlist) => async (dispatch) => {
     return data;
 };
 
-export const addSongToPlaylist = (playlist, songId) => async (dispatch) => {
-    const response = await csrfFetch(`/api/${playlist}/songs`, {
+export const addSongToPlaylist = (playlist, song) => async (dispatch) => {
+    const response = await csrfFetch(`/api/playlists/${playlist}/songs`, {
         method: 'POST',
         body: JSON.stringify({
-            songId
+            songId:song
         })
     })
     const data = await response.json()
-    // console.log(data)
-    dispatch(addToPlaylist(data))
+    dispatch(addToPlaylist(playlist, data))
+    return data;
+};
+
+export const deletePlaylist = (playlist) => async (dispatch) => {
+    const response = await csrfFetch(`/api/playlists/${playlist}`, {
+        method: 'DELETE'
+    })
+    const data = await response.json()
+    dispatch(delPlaylist({playlist, data}))
     return data;
 };
 
@@ -99,9 +115,18 @@ const playlistsReducer = (state = initialState, action) => {
                 ...state, selectedPlaylist: action.playlist
             }
         case ADDTO_PLAYLIST:
-            return {
-                ...state, allPlaylists: { ...state.Playlists, [action.playlist]:action.songId}
+            let res = state.selectedPlaylist.Songs.find(e => e.id === action.song.id)
+            if(!res){
+                console.log(action.song,'song', action.playlist, 'pl')
+                return {
+                    ...state, selectedPlaylist: { ...state.selectedPlaylist, Songs: [...state.selectedPlaylist.Songs, action.song]}
+                }
             }
+        case DELETE_PLAYLIST:
+            let currState = {...state}
+            console.log(state.Playlists, 'state', currState, 'curr', action.playlist, 'id')
+            delete currState.Playlists[action.playlist.playlist]
+            return currState
         default:
             return state
     }

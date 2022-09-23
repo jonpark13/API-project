@@ -11,10 +11,12 @@ function UploadPage() {
     const dispatch = useDispatch();
     const songsList = useSelector(state => state.songs)
     const sessionUser = useSelector((state) => state.session.user);
+    const playlist = useSelector(state => state.playlists)
     const imageList = songsList.Songs
 
     useEffect(() => {
         dispatch(songsActions.songsGrab())
+        dispatch(playlistActions.playlistsCurrGrab())
     },[])
 
     const handleSubmit = (e) => {
@@ -57,6 +59,22 @@ function UploadPage() {
             });
     };
 
+    const handleSubmit4 = (e) => {
+        e.preventDefault();
+        return dispatch(playlistActions.addSongToPlaylist(5,4))
+            .catch(async (res) => {
+                const data = await res.json();
+                console.log('data', data)
+            });
+    };
+
+    const handleSubmit5 = (e) => {
+        e.preventDefault();
+        return dispatch(playlistActions.deletePlaylist(10))
+            .catch(async (res) => {
+                const data = await res.json();
+            });
+    };
 
     return (
         <div className='uploadPage'>
@@ -74,6 +92,15 @@ function UploadPage() {
             </div>
             <div>
                 <button onClick={handleSubmit3}>create playlist</button>
+            </div>
+            <div>
+                <button onClick={handleSubmit4}>add song to playlist</button>
+            </div>
+            <div>
+                <button onClick={handleSubmit5}>delete playlist</button>
+            </div>
+            <div>
+                {JSON.stringify(playlist)}
             </div>
             </div>
         </div>
