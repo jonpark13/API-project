@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import * as sessionActions from '../../store/session'
 import * as songsActions from '../../store/songs'
+import * as playlistActions from '../../store/playlists'
 import { useDispatch, useSelector } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import UploadFormPage from './UploadForm'
@@ -9,9 +10,9 @@ import './UploadPage.css'
 function UploadPage() {
     const dispatch = useDispatch();
     const songsList = useSelector(state => state.songs)
+    const sessionUser = useSelector((state) => state.session.user);
     const imageList = songsList.Songs
 
-    
     useEffect(() => {
         dispatch(songsActions.songsGrab())
     },[])
@@ -42,6 +43,21 @@ function UploadPage() {
             });
     };
 
+    const handleSubmit3 = (e) => {
+        e.preventDefault();
+        console.log('hit')
+        return dispatch(playlistActions.createPlaylist({
+            userId:sessionUser.id,
+            name: 'testPLaylist',
+            imageUrl: 'test'
+        }))
+            .catch(async (res) => {
+                const data = await res.json();
+                console.log('data', data)
+            });
+    };
+
+
     return (
         <div className='uploadPage'>
             <div className='uploadContent'>
@@ -55,6 +71,9 @@ function UploadPage() {
             </div>
             <div>
                 {JSON.stringify(songsList)}
+            </div>
+            <div>
+                <button onClick={handleSubmit3}>create playlist</button>
             </div>
             </div>
         </div>

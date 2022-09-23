@@ -14,7 +14,6 @@ import * as sessionActions from './store/session';
 function App() {
   const dispatch = useDispatch()
   const location = useLocation()
-  console.log(location)
   const [isLoaded, setIsLoaded] = useState(false);
   // console.log(location.pathname, 'path')
   // console.log(isLoaded)
