@@ -73,9 +73,8 @@ function HomePage() {
                         </div>
                     </div>
 
-                    <Search />
                     <div className='newsText'>
-                        Hear what’s trending in the SoundCloud community
+                        Hear what’s trending in the community
                     </div>
                     <div>
                         {

@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 function PlaylistOptions() {
+  const playlists = useSelector(state => state.playlists)
+  let lists = playlists.Playlist
 
   return (
     <div className="playlistModal">
-      test
+      {JSON.stringify(playlists)}
     </div>
   );
 }
@@ -13,7 +15,7 @@ function PlaylistOptions() {
 export default PlaylistOptions;
 
 
-//{Object.keys(list).map((e, i) => (
+// {Object.keys(list).map((e, i) => (
 //   <div className="playlistItem" key={i}>
 //   {/* <img src={e.previewImage} alt={e.title}/> */}
 //   <div className='mimgCont'>
