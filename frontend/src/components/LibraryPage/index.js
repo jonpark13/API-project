@@ -16,7 +16,7 @@ function LibraryPage() {
     const playlists = useSelector(state => state.playlists)
 
     useEffect(() => {
-        dispatch(sessionActions.refreshUser())
+        // dispatch(sessionActions.refreshUser())
         dispatch(songsActions.songsGrab())
         dispatch(playlistActions.playlistsCurrGrab())
     },[])

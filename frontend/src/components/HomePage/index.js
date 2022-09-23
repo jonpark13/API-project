@@ -34,7 +34,7 @@ function HomePage() {
     useEffect(() => {
         dispatch(songsActions.songsGrab())
         // dispatch(sessionActions.refreshUser())
-    },[])
+    }, [])
 
     // const clickTest = () => {
     //     fetch(`https://source.unsplash.com/1600x900/?festival`)
@@ -63,28 +63,31 @@ function HomePage() {
 
     return (
         <>
-        <div className='homePage'>
-        <div className='homeContent'>
-            <div className='splash' style={{backgroundImage: `url(https://source.unsplash.com/1200x450?music%20festival)`}}>
-                <div className='actionBut'>
-                    <LoginFormModal name={'Sign In'}/>
-                    <CreateAccountModal name={'Create Account'} />
+            <div className='homePage'>
+                <div className='homeContent'>
+                    <div className='splash' style={{ backgroundImage: `url(https://source.unsplash.com/1200x450?music%20festival)` }}>
+                        <div className='actionBut'>
+                            <LoginFormModal name={'Sign In'} />
+                            <CreateAccountModal name={'Create Account'} />
 
+                        </div>
+                    </div>
+
+                    <Search />
+                    <div className='newsText'>
+                        Hear what’s trending in the SoundCloud community
+                    </div>
+                    <div>
+                        {
+                            Object.keys(songsList).length &&
+                            <Gallery songs={songsList.Songs} />
+                        }
+                    </div>
+                    <div>
+                       <button className='exploreBut'>Explore trending playlists</button>
+                    </div>
                 </div>
             </div>
-                <Search />
-                {JSON.stringify(songsList)}
-            <div className='newsText'>
-                Hear what’s trending in the SoundCloud community
-            </div>
-            <div>
-                {
-                Object.keys(songsList).length &&
-                <Gallery songs={songsList.Songs} />
-                }
-                </div>
-        </div>
-        </div>
         </>
     );
 }

@@ -21,9 +21,9 @@ function UploadFormPage() {
     //   url,
     //   previewImage: imageUrl
 
-    useEffect(() => {
-        dispatch(sessionActions.refreshUser())
-    }, [])
+    // useEffect(() => {
+    //     dispatch(sessionActions.refreshUser())
+    // }, [])
 
     const [errors, setErrors] = useState([]);
 

@@ -54,7 +54,8 @@
     color: white;
     border-radius: 3px;
     border: 0;
-    padding: 0px 10px
+    padding: 0px 10px;
+    font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
 }
 
 .createAccCond:hover {
@@ -67,4 +68,18 @@
     padding: 20px 10px;
     font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
 
+}
+
+.exploreBut {
+    background-color: rgb(0, 158, 194);
+    cursor:pointer;
+    color: white;
+    border-radius: 3px;
+    border: 0;
+    height: 50px;
+    width: 300px;
+    padding: 0px 10px;
+    margin-bottom: 50%;
+    font-size: larger;
+    font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
 }

@@ -32,7 +32,7 @@ function LoginForm() {
       <label>
         Username or Email
         <input
-          type="text"
+          type="username"
           value={credential}
           onChange={(e) => setCredential(e.target.value)}
           required
@@ -42,6 +42,7 @@ function LoginForm() {
         Password
         <input
           type="password"
+          autoComplete="current-password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
