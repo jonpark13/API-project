@@ -31,7 +31,7 @@ const Gallery = ({songs}) => {
                         <img className='imgO' src={`https://picsum.photos/seed/${i}/173`} alt='test'/>
                         <img className='playButOverlay' src={playButton} />
                         <img className='ellipsesOverlay' src={ellipses} onClick={() => {setOpen(i)}} />
-                        <div class="dropdownCont" hidden={!(open === i)}>
+                        <div className="dropdownCont" hidden={!(open === i)}>
                             <ul>
                                 <li>Add to Next Up</li>
                                 <PlaylistModal />

@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center;
     background-color: #f2f2f2;
-    height:100vh;
+    height: 100%
 }
 
 .homeContent {
@@ -18,6 +18,8 @@
 }
 
 .splash {
+    display:flex;
+    position: relative;
     flex-shrink: 0;
     width: 100%;
     height: 450px;
@@ -25,13 +27,73 @@
     background-position:bottom
 }
 
+.botSplashCont {
+    display:flex;
+    position: relative;
+    flex-shrink: 0;
+    width: 100%;
+    height: 450px;
+    background-size: cover;
+    background-position:bottom;
+    background: linear-gradient(to left, rgba(255, 255, 255, 0) 15%, rgba(0, 0, 0, 0.307) 30%,  rgba(0, 0, 0, 0.854) 45%,rgb(0, 0, 0) 55%);
+}
+
+.botSplashLeft {
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+    flex-shrink: 0;
+    width: 45%;
+    height: 450px;
+    background-color: black;
+}
+
+.botSplashRight {
+    display:flex;
+    position: relative;
+    flex-shrink: 0;
+    width: 55%;
+    height: 450px;
+    background-size: cover;
+    background-position:bottom;
+    mix-blend-mode: multiply;
+    background-color: black;
+}
+
+.botSplashLeft .botSplashText:first-child{
+    font-size: 32px;
+}
+
+.botSplashText {
+    font-size: 22px;
+    color: white;
+    margin: 5px 40px;
+    font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+}
+
 .actionBut {
     display: flex;
+    align-items: center;
     justify-content: space-between;
     position: relative;
-    top:5%;
-    left:70%;
-    width: 200px
+    top:0%;
+    left:60%;
+    width: 220px;
+    height:100px;
+}
+
+.homeLogoCont {
+    display: flex;
+    position: relative;
+    top:0%;
+    left:0%;
+    width: 200px;
+    height: 100px;
+    margin: 0%;
+}
+.homeLogo {
+    height: 80px;
+    margin: 2px 12px
 }
 
 .signInCond {
@@ -49,6 +111,7 @@
 }
 
 .createAccCond {
+    height: 30px;
     background-color: rgb(0, 158, 194);
     cursor:pointer;
     color: white;
@@ -70,6 +133,14 @@
 
 }
 
+.lnewsText {
+    color: #333;
+    font-size: 30px;
+    padding: 20px 10px;
+    font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+
+}
+
 .exploreBut {
     background-color: rgb(0, 158, 194);
     cursor:pointer;
@@ -79,7 +150,57 @@
     height: 50px;
     width: 300px;
     padding: 0px 10px;
-    margin-bottom: 50%;
+    margin: 20px;
     font-size: larger;
+    font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+}
+
+.botCreateBut {
+    display:flex;
+    height: 50px;
+    width: 230px;
+    padding: 0px 10px;
+    margin: 20px;
+}
+
+.botCreateBut .createAccCond{
+    width:100%;
+    font-size: larger;
+    height: 50px;
+}
+
+.botSignBut {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 10px;
+    margin: 20px;
+    height: 50px;
+    width: 340px;
+}
+
+.botSignBut .signInCond {
+    font-size: larger;
+    background-color: rgb(255, 255, 255);
+    color: #333;
+    height: 45px;
+    width: 100px;
+    box-sizing: border-box;
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 3px;
+}
+
+.botSignBut .signInCond:hover {
+    border: 1px solid rgb(189, 189, 189);
+    border-radius: 3px;
+}
+
+.botSignText {
+    color: white;
+    font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+}
+
+.text {
     font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
 }

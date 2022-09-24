@@ -10,6 +10,7 @@ import Gallery from '../Gallery'
 import SongSlidingGallery from '../SongSlidingGallery'
 import './HomePage.css'
 import LoginDemo from '../LoginFormModal/LoginDemo'
+import HomeLogo from '../../assets/images/VVHomeLogo.png'
 
 // const shuffleList = (arr) => {
 //     let rem = arr.length
@@ -66,6 +67,9 @@ function HomePage() {
             <div className='homePage'>
                 <div className='homeContent'>
                     <div className='splash' style={{ backgroundImage: `url(https://source.unsplash.com/1200x450?music%20festival)` }}>
+                        <div className='homeLogoCont'>
+                         <img src={HomeLogo} className='homeLogo' />
+                        </div>
                         <div className='actionBut'>
                             <LoginFormModal name={'Sign In'} />
                             <CreateAccountModal name={'Create Account'} />
@@ -84,6 +88,32 @@ function HomePage() {
                     </div>
                     <div>
                        <button className='exploreBut'>Explore trending playlists</button>
+                    </div>
+                    <div className='botSplashCont'>
+                        <div className='botSplashLeft'>
+                            <div className='botSplashText'>
+                                Calling all creators
+                            </div>
+                            <div className='botSplashText'>
+                                Get on SoundCloud to connect with fans, share your sounds, and grow your audience. What are you waiting for?
+                            </div>
+                        </div>
+                        <div className='botSplashRight' style={{ backgroundImage: `url(https://source.unsplash.com/450x450?music%20festival)` }}>
+                        </div>
+                    </div>
+                    
+                    <div className='lnewsText'>
+                    Thanks for listening. Now join in.
+                    </div>
+                    <div className='newsText'>
+                        Save tracks, follow artists and build playlists. All for free.
+                    </div>
+                    <div className='botCreateBut'>
+                        <CreateAccountModal name={'Create Account'} />
+                    </div>
+                    <div className='botSignBut'>
+                        <div className='text'>Already have an account? </div>
+                        <LoginFormModal name={'Sign In'} />
                     </div>
                 </div>
             </div>
