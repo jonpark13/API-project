@@ -4,6 +4,7 @@ import * as songsActions from '../../store/songs'
 import { useDispatch, useSelector } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import SongSlidingGallery from '../SongSlidingGallery'
+import Gallery from '../Gallery'
 import './DiscoverPage.css'
 
 // const shuffleList = (arr) => {
@@ -36,6 +37,12 @@ function DiscoverPage() {
         <div className='discPage'>
             <div className='discContent'>
             DISCOVERPAGE
+            <div>
+                        {
+                            Object.keys(songsList).length &&
+                            <Gallery songs={songsList.Songs} />
+                        }
+                    </div>
             <div>
             {JSON.stringify(songsList)}
         </div>

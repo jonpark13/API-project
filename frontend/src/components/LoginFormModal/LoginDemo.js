@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
 
-function LoginDemo() {
+function LoginDemo({css}) {
   const dispatch = useDispatch();
   const [errors, setErrors] = useState([]);
 
@@ -20,7 +20,7 @@ function LoginDemo() {
 
   return (
     <div>
-        <button onClick={() => loginAsDemo()}>Demo</button>
+        <button className={css} onClick={() => loginAsDemo()}>Demo</button>
     </div>
   );
 }

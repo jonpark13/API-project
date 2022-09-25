@@ -70,7 +70,7 @@ function Navigation({ isLoaded }){
           </ul>
           <Search />
           {isLoaded && uploadBut}
-          <LoginDemo />
+          <LoginDemo css={'navDemoBut'}/>
         <div>
           {isLoaded && sessionLinks}
         </div>
