@@ -20,17 +20,45 @@
     justify-content: space-between;
 }
 
-.navList {
+.navListLinks {
     display:flex;
+    align-items: center;
     flex-direction: row;
     list-style: none;
     margin: 0%;
     padding: 0%;
 }
 
+.navListSessions {
+    display:flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 350px;
+    list-style: none;
+    margin: 0%;
+    padding: 0%;
+}
+
 .navBut {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height:45px;
     background-color: rgb(51,51,51);
-    color:rgb(244,244,244)
+    color:rgb(244,244,244);
+    text-decoration:none;
+    font-size: 13.3px;
+    font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+}
+
+.light {
+    background-color: rgb(51,51,51);
+}
+
+.dark {
+    background-color: #111;
 }
 
 .searchForm {
@@ -50,8 +78,8 @@
 }
 
 .logo {
-    width: 60px;
-    height: 40px
+    width: 70px;
+    height: 45px
 }
 
 .navDemoBut {
@@ -65,4 +93,31 @@
     font-size: larger;
     font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
     padding: 0%;
+  }
+
+  .createAccCond {
+    background-color: rgb(0, 158, 194);
+    cursor:pointer;
+    color: white;
+    border-radius: 3px;
+    border: 0;
+    height: 30px;
+    width: 120px;
+    font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+    padding: 0%;
+  }
+
+  .uploadNavBar {
+    display: flex;
+    width: 100px;
+    height: 30px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    cursor:pointer;
+    color: white;
+    background-color: rgb(51,51,51);
+    padding: 0;
+    border: none;
+    background: none;
   }

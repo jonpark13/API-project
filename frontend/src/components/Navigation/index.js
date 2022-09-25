@@ -7,8 +7,9 @@ import Search from './Search'
 import './Navigation.css'
 import logo from '../../assets/images/VVlogo.png'
 import LoginDemo from '../LoginFormModal/LoginDemo';
+import CreateAccountModal from '../CreateAccountModal';
 
-function Navigation({ isLoaded }){
+function Navigation({ isLoaded }) {
   const sessionUser = useSelector(state => state.session.user);
 
   let sessionLinks
@@ -19,38 +20,38 @@ function Navigation({ isLoaded }){
     )
     libraryBut = (
       <>
-        <li className='navBut'>
-          <NavLink exact to="/library" className='navBut'>Library</NavLink>
-        </li>
+        <div className='navBut light'>
+          <NavLink exact to="/library" className={isActive => isActive ? 'navBut dark' : 'navBut light'}>Library</NavLink>
+        </div>
       </>
     )
     uploadBut = (
       <>
-        <li className='navBut'>
-        <NavLink to="/upload" className='navBut'>Upload</NavLink>
-        </li>
+        <div className='navBut light'>
+          <NavLink to="/upload" className={isActive => isActive ? 'navBut dark' : 'navBut light'}>Upload</NavLink>
+        </div>
       </>
     )
-  } 
+  }
   else {
     sessionLinks = (
       <>
-        <LoginFormModal name={'Sign in'}/>
-        <NavLink to="/signup"><button className='createAcc'>Create account</button></NavLink>
+        <LoginFormModal name={'Sign in'} css={'signInCond'} />
+        <CreateAccountModal name={'Create Account'} />
       </>
     )
     libraryBut = (
       <>
-        <li className='navBut'>
-          <LoginFormModal name={'Library'}/>
-        </li>
+
+        <LoginFormModal name={'Library'} css={'uploadNavBar'} />
+
       </>
     )
     uploadBut = (
       <>
-        <li className='navBut'>
-        <LoginFormModal name={'Upload'}/>
-        </li>
+
+        <LoginFormModal name={'Upload'} css={'uploadNavBar'} />
+
       </>
     )
   }
@@ -58,21 +59,15 @@ function Navigation({ isLoaded }){
   return (
     <div className='navBar'>
       <div className='navContent'>
-          <ul className='navList'>
-            <img src={logo} className='logo'></img>
-            <li>
-              <NavLink exact to="/" className='navBut'>Home</NavLink>
-            </li>
-            <li className='navBut'>
-              TEST
-            </li>
-            {isLoaded && libraryBut}
-          </ul>
-          <Search />
-          {isLoaded && uploadBut}
-          <LoginDemo css={'navDemoBut'}/>
-        <div>
+        <div className='navListLinks'>
+          <img src={logo} className='logo'></img>
+          <NavLink exact to="/discover" className={isActive => isActive ? 'navBut dark' : 'navBut light'}>Home</NavLink>
+          {isLoaded && libraryBut}
+        </div>
+        {/* <Search /> */}
+        <div className='navListSessions'>
           {isLoaded && sessionLinks}
+          {isLoaded && uploadBut}
         </div>
       </div>
     </div>

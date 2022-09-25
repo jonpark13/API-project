@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import * as sessionActions from '../../store/session'
 import * as songsActions from '../../store/songs'
 import { useDispatch, useSelector } from 'react-redux'
-import { Redirect, NavLink } from 'react-router-dom'
+import { Redirect, NavLink, useHistory } from 'react-router-dom'
 import LoginFormModal from '../LoginFormModal'
 import CreateAccountModal from '../CreateAccountModal'
 import Search from '../Navigation/Search'
@@ -29,6 +29,7 @@ import HomeLogo from '../../assets/images/VVHomeLogo.png'
 function HomePage() {
     const [testImg, setTestImg] = useState([])
     const dispatch = useDispatch();
+    const history = useHistory()
     const sessionUser = useSelector((state) => state.session.user);
     const songsList = useSelector(state => state.songs)
 
@@ -71,7 +72,7 @@ function HomePage() {
                          <img src={HomeLogo} className='homeLogo' />
                         </div>
                         <div className='actionBut'>
-                            <LoginFormModal name={'Sign In'} />
+                            <LoginFormModal name={'Sign In'} css={'signInCond'}/>
                             <CreateAccountModal name={'Create Account'} />
 
                         </div>
@@ -87,7 +88,7 @@ function HomePage() {
                         }
                     </div>
                     <div>
-                       <button className='exploreBut'>Explore trending playlists</button>
+                       <button className='exploreBut' onClick={() => history.push('/discover')}>Explore trending playlists</button>
                     </div>
                     <div className='botSplashCont'>
                         <div className='botSplashLeft'>
@@ -113,7 +114,7 @@ function HomePage() {
                     </div>
                     <div className='botSignBut'>
                         <div className='text'>Already have an account? </div>
-                        <LoginFormModal name={'Sign In'} />
+                        <LoginFormModal name={'Sign In'} css={'signInCond'}/>
                     </div>
                 </div>
             </div>

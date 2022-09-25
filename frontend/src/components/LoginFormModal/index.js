@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import LoginForm from './LoginForm';
 
-function LoginFormModal({name}) {
+function LoginFormModal({name, css}) {
   const [showModal, setShowModal] = useState(false);
 
   return (
     <>
-      <button onClick={() => setShowModal(true)} className='signInCond'>{name}</button>
+      <button onClick={() => setShowModal(true)} className={css}>{name}</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <LoginForm />

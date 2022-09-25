@@ -36,7 +36,7 @@ function DiscoverPage() {
         <>
         <div className='discPage'>
             <div className='discContent'>
-            DISCOVERPAGE
+            <div className='discTitle'>Discover Tracks and Playlists</div>
             <div>
                         {
                             Object.keys(songsList).length &&
@@ -44,7 +44,7 @@ function DiscoverPage() {
                         }
                     </div>
             <div>
-            {JSON.stringify(songsList)}
+            {/* {JSON.stringify(songsList)} */}
         </div>
         {/* <SongSlidingGallery songs={imageList} />
         <SongSlidingGallery songs={imageList} /> */}

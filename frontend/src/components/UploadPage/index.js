@@ -22,7 +22,7 @@ function UploadPage() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('hit')
+        console.log('hit1')
         return dispatch(songsActions.deleteSong(10))
             .catch(async (res) => {
                 const data = await res.json();
@@ -32,7 +32,7 @@ function UploadPage() {
 
     const handleSubmit2 = (e) => {
         e.preventDefault();
-        console.log('hit')
+        console.log('hit2')
         return dispatch(songsActions.editingSong({
             title:'afterEdit',
             description:'afterEdit',
@@ -48,7 +48,7 @@ function UploadPage() {
 
     const handleSubmit3 = (e) => {
         e.preventDefault();
-        console.log('hit')
+        console.log('hit3')
         return dispatch(playlistActions.createPlaylist({
             userId:sessionUser.id,
             name: 'testPLaylist',
@@ -62,6 +62,7 @@ function UploadPage() {
 
     const handleSubmit4 = (e) => {
         e.preventDefault();
+        console.log('hit4')
         return dispatch(playlistActions.addSongToPlaylist(5,4))
             .catch(async (res) => {
                 const data = await res.json();
@@ -71,6 +72,7 @@ function UploadPage() {
 
     const handleSubmit5 = (e) => {
         e.preventDefault();
+        console.log('hit5')
         return dispatch(playlistActions.deletePlaylist(10))
             .catch(async (res) => {
                 const data = await res.json();
@@ -103,9 +105,7 @@ function UploadPage() {
             <div>
                 {JSON.stringify(playlist)}
             </div>
-            <div>
-                <Dropdown />
-            </div>
+
             </div>
         </div>
     );
