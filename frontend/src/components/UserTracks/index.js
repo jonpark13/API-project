@@ -6,10 +6,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import UploadFormPage from './UploadForm'
 import Dropdown from '../Dropdown'
-import './UploadPage.css'
+import './UserTracks.css'
 import MiniNav from '../MiniNav'
 
-function UploadPage() {
+function UserTracks() {
     const dispatch = useDispatch();
     const songsList = useSelector(state => state.songs)
     const sessionUser = useSelector((state) => state.session.user);
@@ -112,4 +112,4 @@ function UploadPage() {
     );
 }
 
-export default UploadPage;
+export default UserTracks;

@@ -1,0 +1,112 @@
+.miniNavBar {
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    height: 45px;
+    /* top:0%;
+    right: 0%; */
+    justify-content: center;
+    z-index: 100;
+    margin-bottom: 20px;
+}
+
+.miniNavContent {
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    width: 1200px;
+    justify-content: space-between;
+}
+
+.navListLinks {
+    display:flex;
+    align-items: center;
+    flex-direction: row;
+    list-style: none;
+    margin: 0%;
+    padding: 0%;
+}
+
+.miniNavBut {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    height:45px;
+    margin: 0px 20px;
+    text-decoration:none;
+    font-size: 13.3px;
+    font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+}
+
+.sel {
+    color:rgb(0, 158, 194);
+    border-bottom: rgb(0, 158, 194) solid 2px;
+}
+
+.unsel {
+    color:#333;
+    border-bottom: #333 solid 2px;
+}
+
+.searchForm {
+    display: flex;
+}
+
+.searchInput {
+    display: flex;
+    border-radius: 5px;
+}
+
+.createAcc {
+    background-color: rgb(0, 158, 194);
+    cursor:pointer;
+    color: white;
+    border-radius: 3px;
+}
+
+.logo {
+    width: 70px;
+    height: 45px
+}
+
+.navDemoBut {
+    background-color: rgb(0, 158, 194);
+    cursor:pointer;
+    color: white;
+    border-radius: 3px;
+    border: 0;
+    height: 30px;
+    width: 80px;
+    font-size: larger;
+    font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+    padding: 0%;
+  }
+
+  .createAccCond {
+    background-color: rgb(0, 158, 194);
+    cursor:pointer;
+    color: white;
+    border-radius: 3px;
+    border: 0;
+    height: 30px;
+    width: 120px;
+    font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+    padding: 0%;
+  }
+
+  .uploadNavBar {
+    display: flex;
+    width: 100px;
+    height: 30px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    cursor:pointer;
+    color: white;
+    background-color: rgb(51,51,51);
+    padding: 0;
+    border: none;
+    background: none;
+  }

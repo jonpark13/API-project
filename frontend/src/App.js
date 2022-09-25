@@ -43,6 +43,9 @@ function App() {
           <Route path="/upload">
             <UploadPage />
           </Route>
+          <Route path="/your/tracks">
+            <UploadPage />
+          </Route>
           <Route path="*">
             <div style={{fontSize: 400}}>* 404 *</div>
           </Route>
