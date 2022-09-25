@@ -6,8 +6,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import UploadFormPage from './UploadForm'
 import Dropdown from '../Dropdown'
-import './UploadPage.css'
 import MiniNav from '../MiniNav'
+import './UploadPage.css'
 
 function UploadPage() {
     const dispatch = useDispatch();
@@ -84,10 +84,10 @@ function UploadPage() {
         <div className='uploadPage'>
             <div className='uploadContent'>
             <MiniNav />
-            <div className='formCont'>
+
                 <UploadFormPage />
-            </div>
-            <div>
+
+            {/* <div>
                 <button onClick={handleSubmit}>delete song 6</button>
                 <button onClick={handleSubmit2}>edit song</button>
             </div>
@@ -105,7 +105,7 @@ function UploadPage() {
             </div>
             <div>
                 {JSON.stringify(playlist)}
-            </div>
+            </div> */}
 
             </div>
         </div>

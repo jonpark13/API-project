@@ -10,7 +10,7 @@ function PlaylistModal() {
     <>
       <button onClick={() => setShowModal(true)}>Add to Playlist</button>
       {showModal && (
-        <Modal onClose={() => setShowModal(false)}>
+        <Modal onClose={() => setShowModal(false)} form={'modal-content'}>
           <PlaylistOptions />
         </Modal>
       )}

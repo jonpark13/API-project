@@ -9,6 +9,7 @@ import Navigation from './components/Navigation';
 import LibraryPage from './components/LibraryPage';
 import MusicPlayer from './components/MusicPlayer';
 import UploadPage from './components/UploadPage';
+import UserTracks from './components/UserTracks';
 import * as sessionActions from './store/session';
 
 function App() {
@@ -44,7 +45,7 @@ function App() {
             <UploadPage />
           </Route>
           <Route path="/your/tracks">
-            <UploadPage />
+            <UserTracks />
           </Route>
           <Route path="*">
             <div style={{fontSize: 400}}>* 404 *</div>

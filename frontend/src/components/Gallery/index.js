@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useRef, useState} from 'react'
 import './Gallery.css'
 import playButton from '../../assets/images/playButFinal.png'
 import ellipses from '../../assets/images/ellipses.png'
@@ -6,7 +6,9 @@ import PlaylistModal from '../PlaylistModal'
 import Dropdown from '../Dropdown'
 
 const Gallery = ({songs}) => {
+    const ref = useRef()
     const [open, setOpen] = useState(null)
+
     songs = Array(3).fill(songs).flat()
     let remArrLen
     if(songs.length < 24){
@@ -24,7 +26,7 @@ const Gallery = ({songs}) => {
 
     return (
         <div className='galleryBox'>
-            {!!songs.length && songs.map((e,i) => (
+            {!songs.Songs && songs.map((e,i) => (
                 <div className="imgBox" key={i}>
                     {/* <img src={e.previewImage} alt={e.title}/> */}
                     <div className='imgCont'>

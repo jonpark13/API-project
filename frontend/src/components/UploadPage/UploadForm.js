@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as songsActions from "../../store/songs";
@@ -7,9 +7,10 @@ import './UploadPage.css'
 
 function UploadFormPage() {
     const dispatch = useDispatch();
+    const ref = useRef()
     const sessionUser = useSelector((state) => state.session.user);
     const [url, setUrl] = useState("");
-    const [image, setImage] = useState("");
+    const [imageUrl, setImageUrl] = useState("");
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [albumId, setAlbumId] = useState("");
@@ -30,57 +31,73 @@ function UploadFormPage() {
     const handleSubmit = (e) => {
         e.preventDefault();
         setErrors([]);
-        return dispatch(songsActions.createSong({ userId: sessionUser.id, url, previewImage:image, title, description }))
+        return dispatch(songsActions.createSong({ userId: sessionUser.id, url, previewImage:imageUrl, title, description }))
             .catch(async (res) => {
                 const data = await res.json();
                 if (data && data.errors) setErrors(data.errors);
             });
     };
 
-    return (
-        <form onSubmit={handleSubmit} className='songForm'>
-            <ul>
-                {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-            </ul>
-            <label>
-                Title
-                <input
-                    type="text"
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
-                    required
-                />
-            </label>
-            <label>
-                Description
-                <input
-                    type="text"
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                    required
-                />
-            </label>
-            <label>
-                Song Url
-                <input
-                    type="text"
-                    value={url}
-                    onChange={(e) => setUrl(e.target.value)}
-                    required
-                />
-            </label>
-            <label>
-                Image Url
-                <input
-                    type="text"
-                    value={image}
-                    onChange={(e) => setImage(e.target.value)}
-                    required
-                />
-            </label>
-            <button type="submit">Upload</button>
-        </form>
+    const handleReset = (e) => {
+        e.preventDefault()
+        setUrl('')
+        setImageUrl('')
+        setTitle('')
+        setDescription('')
+    }
 
+    return (
+        <>
+        <div className="introCreateText">
+        Basic Info
+        </div>
+        <div className="createFormCont">
+          <div className="editImgCont"><img className="editImg" src={imageUrl}/></div>
+        <form onSubmit={handleSubmit} className='createSongForm'>
+        <div>Title</div>
+        <input
+          className="errorModalCont"
+          type="text"
+          placeholder="Title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          required
+        />
+        <div>Description</div>
+        <textarea
+          className="errorModalCont txtArea"
+          type="text"
+          placeholder="Description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
+        <div>Track Url</div>
+        <input
+          className="errorModalCont"
+          type="text"
+          placeholder="URL"
+          value={url}
+          onChange={(e) => setUrl(e.target.value)}
+          required
+        />
+        <div>Track Image Url</div>
+        <input
+          className="errorModalCont"
+          type="text"
+          placeholder="Image URL"
+          value={imageUrl}
+          onChange={(e) => setImageUrl(e.target.value)}
+        />
+            <div>
+          {errors.map((error, idx) => <div className="errorModalText" key={idx}>{error}</div>)}
+        </div>
+        <div className="editSaveBut">
+        <button type="submit" className="saveBut">Save</button>
+        <button className="cancelBut" onClick={handleReset}>Cancel </button>
+        </div>
+        </form>
+        </div>
+        </>
     );
 }
 

@@ -9,7 +9,7 @@ function CreateAccountModal({name}) {
     <>
       <button onClick={() => setShowModal(true)} className='createAccCond'>{name}</button>
       {showModal && (
-        <Modal onClose={() => setShowModal(false)}>
+        <Modal onClose={() => setShowModal(false)} form={'modal-content'}>
           <CreateAccountForm />
         </Modal>
       )}

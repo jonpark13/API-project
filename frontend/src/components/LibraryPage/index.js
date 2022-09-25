@@ -36,7 +36,7 @@ function LibraryPage() {
                 }
             </div>
             <div>Playlists</div>
-            <div>
+            <div className='bottomEl'>
                 {
                 Object.keys(playlists).length &&
                 <MiniGallery list={playlists.Playlists} />
