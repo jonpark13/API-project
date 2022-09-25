@@ -31,66 +31,72 @@ function CreateAccountForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <ul>
-        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-      </ul>
-      <label>
-        First Name
+    <>
+    <div className="introText">
+    Create your account!
+    </div>
+      <form onSubmit={handleSubmit} className='miniFormModal'>
         <input
+          className="errorModalCont"
           type="text"
+          placeholder="Your first name"
           value={firstName}
           onChange={(e) => setFirstName(e.target.value)}
           required
         />
-      </label>
-      <label>
-        Last Name
         <input
+          className="errorModalCont"
           type="text"
+          placeholder="Your last name"
           value={lastName}
           onChange={(e) => setLastName(e.target.value)}
           required
         />
-      </label>
-      <label>
-        Email
+
         <input
+          className="errorModalCont"
           type="text"
+          placeholder="Your email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
         />
-      </label>
-      <label>
-        Username
+
         <input
+          className="errorModalCont"
           type="text"
+          placeholder="Your user name"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           required
         />
-      </label>
-      <label>
-        Password
+
+
         <input
+          className="errorModalCont"
           type="password"
+          placeholder="Your password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-      </label>
-      <label>
-        Confirm Password
+
+
         <input
+          className="errorModalCont"
           type="password"
+          placeholder="Confirm your password"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
           required
         />
-      </label>
-      <button type="submit">Sign Up</button>
-    </form>
+        <div>
+          {errors.map((error, idx) => <div className="errorModalText" key={idx}>{error}</div>)}
+        </div>
+
+        <button type="submit" className="modalBut">Sign Up</button>
+      </form>
+    </>
   );
 }
 

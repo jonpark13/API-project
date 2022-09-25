@@ -31,80 +31,12 @@ function UserTracks() {
             });
     };
 
-    const handleSubmit2 = (e) => {
-        e.preventDefault();
-        console.log('hit2')
-        return dispatch(songsActions.editingSong({
-            title:'afterEdit',
-            description:'afterEdit',
-            url:'afterEdit',
-            imageUrl:'afterEdit',
-            id: 11
-        }))
-            .catch(async (res) => {
-                const data = await res.json();
-                console.log('data', data)
-            });
-    };
-
-    const handleSubmit3 = (e) => {
-        e.preventDefault();
-        console.log('hit3')
-        return dispatch(playlistActions.createPlaylist({
-            userId:sessionUser.id,
-            name: 'testPLaylist',
-            imageUrl: 'test'
-        }))
-            .catch(async (res) => {
-                const data = await res.json();
-                console.log('data', data)
-            });
-    };
-
-    const handleSubmit4 = (e) => {
-        e.preventDefault();
-        console.log('hit4')
-        return dispatch(playlistActions.addSongToPlaylist(5,4))
-            .catch(async (res) => {
-                const data = await res.json();
-                console.log('data', data)
-            });
-    };
-
-    const handleSubmit5 = (e) => {
-        e.preventDefault();
-        console.log('hit5')
-        return dispatch(playlistActions.deletePlaylist(10))
-            .catch(async (res) => {
-                const data = await res.json();
-            });
-    };
-
     return (
         <div className='uploadPage'>
             <div className='uploadContent'>
             <MiniNav />
-            <div className='formCont'>
-                <UploadFormPage />
-            </div>
-            <div>
-                <button onClick={handleSubmit}>delete song 6</button>
-                <button onClick={handleSubmit2}>edit song</button>
-            </div>
-            <div>
-                {JSON.stringify(songsList)}
-            </div>
-            <div>
-                <button onClick={handleSubmit3}>create playlist</button>
-            </div>
-            <div>
-                <button onClick={handleSubmit4}>add song to playlist</button>
-            </div>
-            <div>
-                <button onClick={handleSubmit5}>delete playlist</button>
-            </div>
-            <div>
-                {JSON.stringify(playlist)}
+            <div className='trackContainer'>
+
             </div>
 
             </div>
