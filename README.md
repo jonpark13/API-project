@@ -20,11 +20,21 @@ Vibe Vapor is a full stack web app, cloned from one of the largest music discove
 
 ## Splash
 
-TBD
+<img src="https://imgur.com/u7pJEyD.jpg"/>
+
+Here you see the splash page, where you can interact with many of the songs within the gallery on the bottom of the page to begin listening and discovering new music.
+
+<img src='https://imgur.com/9Iue1Hb.jpg'>
+
+Currently you will have access to your tracks and playlists, with uploading, editing and deleting.
 
 ## To do
 
-TBD
+- Add in more stylish features and CSS to round off the edges and allow users to be more free in customization
+
+- Include options for songs, playlists, song information that people would like to see, along with more social aspects, like comments and likes.
+
+- Further work on the ecosystem where tracks and playlists are interactable on all pages and given full flexibility
 
 ## Contact me
 
