@@ -4,8 +4,11 @@ import playButton from '../../assets/images/playButFinal.png'
 import ellipses from '../../assets/images/ellipses.png'
 import PlaylistModal from '../PlaylistModal'
 import Dropdown from '../Dropdown'
+import * as playerActions from '../../store/musicplayer'
+import { useDispatch } from 'react-redux'
 
 const Gallery = ({songs}) => {
+    const dispatch = useDispatch()
     const ref = useRef()
     const [open, setOpen] = useState(null)
 
@@ -24,6 +27,11 @@ const Gallery = ({songs}) => {
         }
     }
 
+    const addSelectedToPlayer = (id) => {
+        console.log(id, 'selected Song')
+        return dispatch(playerActions.addToPlay(id))
+    }
+
     return (
         <div className='galleryBox'>
             {!songs.Songs && songs.map((e,i) => (
@@ -35,7 +43,7 @@ const Gallery = ({songs}) => {
                         <img className='ellipsesOverlay' src={ellipses} onClick={() => {setOpen(i)}} />
                         <div className="dropdownCont" hidden={!(open === i)}>
                             <ul>
-                                <li>Add to Next Up</li>
+                                <li onClick={() => addSelectedToPlayer(e.id)}>Add to Next Up</li>
                                 <PlaylistModal />
                             </ul>
                             </div>

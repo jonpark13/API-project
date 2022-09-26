@@ -6,6 +6,7 @@ import { Redirect } from 'react-router-dom'
 import SongSlidingGallery from '../SongSlidingGallery'
 import Gallery from '../Gallery'
 import './DiscoverPage.css'
+import ReactAudioPlayer from 'react-audio-player';
 
 // const shuffleList = (arr) => {
 //     let rem = arr.length
@@ -22,6 +23,7 @@ import './DiscoverPage.css'
 // }
 
 function DiscoverPage() {
+    const [type, setType] = useState('')
     const dispatch = useDispatch();
     const songsList = useSelector(state => state.songs)
     // const imageList = songsList.Songs
@@ -37,6 +39,9 @@ function DiscoverPage() {
         <div className='discPage'>
             <div className='discContent'>
             <div className='discTitle'>Discover Tracks and Playlists</div>
+            <ReactAudioPlayer controls={true} src={type}/>
+            <input value={type}
+          onChange={(e) => setType(e.target.value)}></input>
             <div>
                         {
                             Object.keys(songsList).length &&
