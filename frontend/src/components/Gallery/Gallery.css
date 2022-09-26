@@ -12,7 +12,6 @@
 .galleryBox {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(4, 1fr);
     box-sizing: border-box;
     width: max-content;
     align-items:flex-start;

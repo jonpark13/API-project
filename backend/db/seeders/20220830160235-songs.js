@@ -8,7 +8,7 @@ module.exports = {
                 "albumId": 1,
                 "title": "Yesterday",
                 "description": "A song about the past.",
-                "url": "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/WFMU/Broke_For_Free/Directionless_EP/Broke_For_Free_-_01_-_Night_Owl.mp3",
+                "url": 'https://files.freemusicarchive.org/storage-freemusicarchive-org/tracks/uhBpfV1T7y1Przb2A2pzEcYNmuN8dhpSZdyp4nl7.mp3',
                 "createdAt": "2021-11-19 20:39:36",
                 "updatedAt": "2021-11-19 20:39:36",
                 "previewImage": 'https://picsum.photos/seed/1/173'
@@ -18,7 +18,7 @@ module.exports = {
                 "albumId": 1,
                 "title": "Today",
                 "description": "A song about now.",
-                "url": 'https://files.freemusicarchive.org/storage-freemusicarchive-org/music/WFMU/Broke_For_Free/Directionless_EP/Broke_For_Free_-_01_-_Night_Owl.mp3',
+                "url": 'https://files.freemusicarchive.org/storage-freemusicarchive-org/music/Music_for_Video/Michael_Chapman__The_Woodpiles/NATCH_7/Michael_Chapman__The_Woodpiles_-_03_-_A_Strangers_Map_of_Texas.mp3',
                 "createdAt": "2021-11-19 20:39:36",
                 "updatedAt": "2021-11-19 20:39:36",
                 "previewImage": 'https://picsum.photos/seed/2/173'
@@ -28,7 +28,7 @@ module.exports = {
                 "albumId": 2,
                 "title": "Noday",
                 "description": "A song about nothing.",
-                "url": "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/WFMU/Broke_For_Free/Directionless_EP/Broke_For_Free_-_01_-_Night_Owl.mp3",
+                "url": 'https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Kevin_MacLeod/Best_of_2014/Kevin_MacLeod_-_Monkeys_Spinning_Monkeys.mp3',
                 "createdAt": "2021-11-19 20:39:36",
                 "updatedAt": "2021-11-19 20:39:36",
                 "previewImage": 'https://picsum.photos/seed/3/173'

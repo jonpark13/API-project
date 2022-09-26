@@ -15,11 +15,20 @@ function MusicPlayer() {
         backgroundColor: '#f1f3f4'
     }
 
+    useEffect(() => {
+        console.log('next')
+    },[dispatch])
+
+    const handlePlay = () => {
+        let audioElement = document.getElementsByClassName('react-audio-player')
+        audioElement[0].play()
+    }
+
     return (
-        <>{Object.keys(currPlay).length &&
+        <>{Object.keys(currPlay).includes('currentSong') &&
         <div className='musicFoot'>
             <div className='musicCont'>
-                <ReactAudioPlayer autoPlay controls={true} src={currPlay.currentSong.url} style={style}/>
+                <ReactAudioPlayer onEnded={() => {dispatch(playerActions.nextInLine());handlePlay()}} autoPlay controls={true} src={currPlay.currentSong.url} style={style}/>
                 <div className='playDetails'><img className='tPic' src={currPlay.currentSong.previewImage}/>
                     <div className='detailsTextCont'>
                     <div className='titleText'>{currPlay.currentSong.title}</div>

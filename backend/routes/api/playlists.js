@@ -58,6 +58,7 @@ router.get('/:playlistId', async (req, res) => {
         { include: [
             {
                 model: Song,
+                include: User,
                 through: {attributes: []}
                 
             }

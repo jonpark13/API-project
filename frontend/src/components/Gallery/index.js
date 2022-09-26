@@ -8,7 +8,7 @@ import Dropdown from '../Dropdown'
 import * as playerActions from '../../store/musicplayer'
 import { useDispatch } from 'react-redux'
 
-const Gallery = ({songs}) => {
+const Gallery = ({songs, length}) => {
     const dispatch = useDispatch()
     const ref = useRef()
     const [open, setOpen] = useState(null)
@@ -17,9 +17,14 @@ const Gallery = ({songs}) => {
 
     // songs = Array(3).fill(songs).flat()
     let remArrLen
-    if(songs.length < 24){
-        remArrLen = 24 - songs.length
+    if(songs.length < length){
+        remArrLen = length - songs.length
     }
+    else {
+        songs = songs.slice(0,17)
+    }
+
+    let style = {"gridTemplateRows": `repeat(${(length/6)}, 1fr)`}
 
     const dropdownHandler = (id) => {
         if(open === id){
@@ -32,8 +37,12 @@ const Gallery = ({songs}) => {
     // let audioElement = document.getElementsByClassName('react-audio-player')
 
     const addSelectedToPlayer = (id) => {
-        console.log(id, 'selected Song')
+        // console.log(id, 'selected Song')
         return dispatch(playerActions.addToPlay(id))
+    }
+    const addSelectedToNext = (id) => {
+        // console.log(id, 'selected Song')
+        return dispatch(playerActions.addToNext(id))
     }
     const handlePause = () => {
         let audioElement = document.getElementsByClassName('react-audio-player')
@@ -48,7 +57,7 @@ const Gallery = ({songs}) => {
     // })
 
     return (
-        <div className='galleryBox'>
+        <div className='galleryBox' style={style}>
             {!songs.Songs && songs.map((e,i) => (
                 <div className="imgBox" key={i}>
                     {/* <img src={e.previewImage} alt={e.title}/> */}
@@ -59,7 +68,7 @@ const Gallery = ({songs}) => {
                         <img className='ellipsesOverlay' src={ellipses} onClick={() => {setOpen(i)}} />
                         <div className="dropdownCont" hidden={!(open === i)}>
                             <ul>
-                                <li onClick={() => {addSelectedToPlayer(e.id);setOpen(null)}}>Add to Next Up</li>
+                                <li onClick={() => {addSelectedToNext(e.id);setOpen(null)}}>Add to Next Up</li>
                                 <PlaylistModal />
                             </ul>
                             </div>
