@@ -28,3 +28,12 @@
     font-family: Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
 
 }
+.textLine{
+    display: flex;
+    width:100%
+}
+.typeText{
+    font-size: 25px;
+    font-family: Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+    margin-left: 50px;
+}

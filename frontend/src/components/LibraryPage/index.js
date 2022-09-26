@@ -19,6 +19,7 @@ function LibraryPage() {
         // dispatch(sessionActions.refreshUser())
         dispatch(songsActions.songsGrab())
         dispatch(playlistActions.playlistsCurrGrab())
+        dispatch(songsActions.userSongsGrab())
     },[])
 
     return (
@@ -26,13 +27,17 @@ function LibraryPage() {
         <div className='libPage'>
             <div className='libContent'>
             <div className='libTitle'>Your Tracks and Playlists</div>
+            <div className='textLine'>
+            <div className='typeText'>Your tracks</div></div>
             <div>
                 {
-                Object.keys(songsList).length &&
-                <Gallery songs={songsList.Songs} />
+                !!(songsList.userTracks) &&
+                <MiniGallery list={songsList.userTracks} />
                 }
             </div>
-            <div>Playlists</div>
+            <div className='textLine'>
+            <div className='typeText'>Playlists</div>
+            </div>
             <div className='bottomEl'>
                 {
                 Object.keys(playlists).length &&

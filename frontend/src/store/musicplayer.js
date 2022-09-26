@@ -68,6 +68,14 @@ const musicPlayerReducer = (state = initialState, action) => {
                     ]
                 }
             }
+            else if(!!state.currentSong){
+                return {
+                    ...state,
+                    currentSong: {
+                        ...action.single_song
+                    }
+                }
+            }
             else{
                 console.log('here')
                 return {

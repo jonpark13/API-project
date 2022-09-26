@@ -16,6 +16,18 @@ const Gallery = ({songs, length}) => {
     const [button, setButton] = useState(null)
     const [butOverlay, setButOverlay] = useState('pauseButOverlay')
 
+    useEffect(() => {
+        if (!open) return;
+    
+        const closeMenu = () => {
+            setOpen(null);
+        };
+    
+        document.addEventListener('click', closeMenu);
+      
+        return () => document.removeEventListener("click", closeMenu);
+      }, [open]);
+    
     // songs = Array(3).fill(songs).flat()
     let remArrLen
     if(songs.length < length){

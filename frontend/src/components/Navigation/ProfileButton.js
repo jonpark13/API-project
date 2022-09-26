@@ -43,11 +43,11 @@ function ProfileButton({ user }) {
 
       </div>
       {showMenu && (
-        <ul className="profile-dropdown">
-          <li>
+        <div>
+
             <button onClick={logout}>Log Out</button>
-          </li>
-        </ul>
+
+        </div>
       )}
     </>
   );
