@@ -17,7 +17,32 @@
     align-items: center;
 }
 
-.other {
-    width: auto;
-    display: inline;
+.playDetails {
+    width: 40%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.tPic {
+    height:50px;
+    width:50px
+}
+
+.detailsTextCont {
+    display:flex;
+    flex-direction: column;
+    margin-left:10px
+}
+
+.titleText {
+    color: #333;
+    font-size: 14px;
+    font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif
+}
+
+.artistText {
+    color: #999;
+    font-size: 12px;
+    font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
 }

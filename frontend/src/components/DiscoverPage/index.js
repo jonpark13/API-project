@@ -39,9 +39,9 @@ function DiscoverPage() {
         <div className='discPage'>
             <div className='discContent'>
             <div className='discTitle'>Discover Tracks and Playlists</div>
-            <ReactAudioPlayer controls={true} src={type}/>
+            {/* <ReactAudioPlayer controls={true} src={type}/>
             <input value={type}
-          onChange={(e) => setType(e.target.value)}></input>
+          onChange={(e) => setType(e.target.value)}></input> */}
             <div>
                         {
                             Object.keys(songsList).length &&

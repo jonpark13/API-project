@@ -36,6 +36,12 @@ function ProfileButton({ user }) {
       <button onClick={openMenu}>
         <i className="fa-solid fa-user-astronaut" />
       </button>
+      <div className='navBut'>
+        {user.firstName}
+      </div>
+      <div>
+
+      </div>
       {showMenu && (
         <ul className="profile-dropdown">
           <li>
