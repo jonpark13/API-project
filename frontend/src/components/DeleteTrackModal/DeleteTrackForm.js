@@ -18,7 +18,6 @@ function DeleteTrackForm({track, showModal, setShowModal}) {
     return dispatch(songsActions.deleteSong(track.id))
         .catch(async (res) => {
             const data = await res.json();
-            console.log('data', data)
         });
 };
 

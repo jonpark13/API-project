@@ -22,7 +22,6 @@ function PlaylistOptions({song}) {
           await dispatch(playlistActions.addSongToPlaylist(res.id, song.id))
         }).catch(async (res) => {
             const data = await res.json();
-            console.log(data, 'data')
         });
     };
 

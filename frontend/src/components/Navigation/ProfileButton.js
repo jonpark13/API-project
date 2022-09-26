@@ -7,6 +7,7 @@ function ProfileButton({ user }) {
   const dispatch = useDispatch();
   const history = useHistory()
   const [showMenu, setShowMenu] = useState(false);
+  const onClick = () => setShowMenu(!showMenu);
   
   const openMenu = () => {
     if (showMenu) return;
@@ -33,22 +34,18 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <button onClick={openMenu}>
-        <i className="fa-solid fa-user-astronaut" />
+      <button onClick={onClick}>
+        <i className="fa-solid fa-user-astronaut icon" />
       </button>
-      <div className='navBut'>
+      <div className={`navBut ${showMenu ? 'drk' : ''}`}>
         {user.firstName}
       </div>
       <div>
-
       </div>
-      {showMenu && (
-        <div>
-
-            <button onClick={logout}>Log Out</button>
-
+        <div className={`menu ${showMenu ? 'active' : 'inactive'}`}>
+            <button className="log" onClick={logout}>Log Out</button>
         </div>
-      )}
+
     </>
   );
 }
