@@ -21,64 +21,64 @@ function UploadPage() {
         dispatch(playlistActions.playlistsCurrGrab())
     },[])
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log('hit1')
-        return dispatch(songsActions.deleteSong(10))
-            .catch(async (res) => {
-                const data = await res.json();
-                console.log('data', data)
-            });
-    };
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+    //     console.log('hit1')
+    //     return dispatch(songsActions.deleteSong(10))
+    //         .catch(async (res) => {
+    //             const data = await res.json();
+    //             console.log('data', data)
+    //         });
+    // };
 
-    const handleSubmit2 = (e) => {
-        e.preventDefault();
-        console.log('hit2')
-        return dispatch(songsActions.editingSong({
-            title:'afterEdit',
-            description:'afterEdit',
-            url:'afterEdit',
-            imageUrl:'afterEdit',
-            id: 11
-        }))
-            .catch(async (res) => {
-                const data = await res.json();
-                console.log('data', data)
-            });
-    };
+    // const handleSubmit2 = (e) => {
+    //     e.preventDefault();
+    //     console.log('hit2')
+    //     return dispatch(songsActions.editingSong({
+    //         title:'afterEdit',
+    //         description:'afterEdit',
+    //         url:'afterEdit',
+    //         imageUrl:'afterEdit',
+    //         id: 11
+    //     }))
+    //         .catch(async (res) => {
+    //             const data = await res.json();
+    //             console.log('data', data)
+    //         });
+    // };
 
-    const handleSubmit3 = (e) => {
-        e.preventDefault();
-        console.log('hit3')
-        return dispatch(playlistActions.createPlaylist({
-            userId:sessionUser.id,
-            name: 'testPLaylist',
-            imageUrl: 'test'
-        }))
-            .catch(async (res) => {
-                const data = await res.json();
-                console.log('data', data)
-            });
-    };
+    // const handleSubmit3 = (e) => {
+    //     e.preventDefault();
+    //     console.log('hit3')
+    //     return dispatch(playlistActions.createPlaylist({
+    //         userId:sessionUser.id,
+    //         name: 'testPLaylist',
+    //         imageUrl: 'test'
+    //     }))
+    //         .catch(async (res) => {
+    //             const data = await res.json();
+    //             console.log('data', data)
+    //         });
+    // };
 
-    const handleSubmit4 = (e) => {
-        e.preventDefault();
-        console.log('hit4')
-        return dispatch(playlistActions.addSongToPlaylist(5,4))
-            .catch(async (res) => {
-                const data = await res.json();
-                console.log('data', data)
-            });
-    };
+    // const handleSubmit4 = (e) => {
+    //     e.preventDefault();
+    //     console.log('hit4')
+    //     return dispatch(playlistActions.addSongToPlaylist(5,4))
+    //         .catch(async (res) => {
+    //             const data = await res.json();
+    //             console.log('data', data)
+    //         });
+    // };
 
-    const handleSubmit5 = (e) => {
-        e.preventDefault();
-        console.log('hit5')
-        return dispatch(playlistActions.deletePlaylist(10))
-            .catch(async (res) => {
-                const data = await res.json();
-            });
-    };
+    // const handleSubmit5 = (e) => {
+    //     e.preventDefault();
+    //     console.log('hit5')
+    //     return dispatch(playlistActions.deletePlaylist(10))
+    //         .catch(async (res) => {
+    //             const data = await res.json();
+    //         });
+    // };
 
     return (
         <div className='uploadPage'>

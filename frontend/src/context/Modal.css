@@ -16,7 +16,7 @@
   right: 0;
   left: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(214, 214, 214, 0.7);
   z-index: 997;
 }
 
@@ -30,6 +30,28 @@
   z-index: 999;
   width: 400px;
   height: 500px;
+}
+
+#delete-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  background-color: white;
+  z-index: 999;
+  width: 400px;
+  height: 200px;
+}
+
+#playlist-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  background-color: white;
+  z-index: 999;
+  width: 700px;
+  height: 400px;
 }
 
 #editTrackForm {
@@ -153,6 +175,21 @@
   margin-right: 5px;
 }
 
+.createpl {
+  background-color: rgb(0, 158, 194);
+  cursor: pointer;
+  color: white;
+  border-radius: 3px;
+  border: 0;
+  height: 30px;
+  width: 70px;
+  font-size: 15px;
+  font-family: Interstate, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Garuda, Verdana, Tahoma, sans-serif;
+  padding: 0%;
+  margin-left: 5px;
+
+}
+
 .cancelDelBut {
   background-color: rgb(255, 255, 255);
   cursor: pointer;
@@ -190,6 +227,15 @@
   width:95%
 }
 
+.deletePLFormCont {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 80%;
+  width:95%
+}
+
 .editImgCont {
   height:150px;
   width: 150px;
@@ -204,4 +250,63 @@
 .editSaveBut {
   display: flex;
   flex-direction: row-reverse;
+}
+
+.delNoteHeader{
+  font-size: 20px;
+  font-family: Interstate, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Garuda, Verdana, Tahoma, sans-serif;
+}
+
+.delNote{
+  font-size: 15px;
+  font-family: Interstate, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Garuda, Verdana, Tahoma, sans-serif;
+}
+
+.playSel {
+  box-sizing: border-box;
+  border:0;
+  margin:5px;
+  padding:5px;
+  color:rgb(0, 158, 194);
+  border-bottom:rgb(0, 158, 194) solid 4px;
+  background-color: white;
+  font-size: 28px;
+  font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif
+}
+
+.plCont {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 500px
+}
+
+.createPlaylistForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width:500px
+}
+
+.createPlaylistForm {
+  width: 500px
+}
+
+.createFormCont {
+  width: 500px
+}
+
+.playlistModal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width:100%;
+  height:100%
+}
+
+.plTitle {
+  font-size: 28px;
+  font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif
 }

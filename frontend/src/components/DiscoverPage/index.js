@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import * as sessionActions from '../../store/session'
 import * as songsActions from '../../store/songs'
+import * as playlistActions from '../../store/playlists'
 import { useDispatch, useSelector } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import SongSlidingGallery from '../SongSlidingGallery'
@@ -26,12 +27,13 @@ function DiscoverPage() {
     const [type, setType] = useState('')
     const dispatch = useDispatch();
     const songsList = useSelector(state => state.songs)
+    const playlists = useSelector(state => state.playlists)
     // const imageList = songsList.Songs
 
     
     useEffect(() => {
         dispatch(songsActions.songsGrab())
-        dispatch(songsActions.songSingleGrab(1))
+        dispatch(playlistActions.playlistsCurrGrab())
     },[])
 
     return (

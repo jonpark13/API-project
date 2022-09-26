@@ -25,10 +25,7 @@ function LibraryPage() {
         <>
         <div className='libPage'>
             <div className='libContent'>
-            <div>NEW NAV BAR GOES HERE</div>
-            <div>
-                {JSON.stringify(sessionUser)}
-            </div>
+            <div className='libTitle'>Your Tracks and Playlists</div>
             <div>
                 {
                 Object.keys(songsList).length &&

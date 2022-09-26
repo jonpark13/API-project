@@ -19,3 +19,12 @@
 .bottomEl {
     margin-bottom: 40px;
 }
+
+.libTitle {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 15px 45px;
+    font-size: 35px;
+    font-family: Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+
+}

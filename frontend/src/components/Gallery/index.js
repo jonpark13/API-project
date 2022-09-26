@@ -4,6 +4,7 @@ import playButton from '../../assets/images/playButFinal.png'
 import pauseButton from '../../assets/images/pauseButFinal.png'
 import ellipses from '../../assets/images/ellipses.png'
 import PlaylistModal from '../PlaylistModal'
+import AddPlaylistModal from '../AddPlaylistModal'
 import Dropdown from '../Dropdown'
 import * as playerActions from '../../store/musicplayer'
 import { useDispatch } from 'react-redux'
@@ -55,6 +56,14 @@ const Gallery = ({songs, length}) => {
     // useEffect(() => {
     //     let audioElement = document.getElementsById('mplayer')
     // })
+    const handleEllipse = (e) => {
+        if(e === open){
+            setOpen(null)
+        }
+        else{
+            setOpen(e)
+        }
+    }
 
     return (
         <div className='galleryBox' style={style}>
@@ -65,11 +74,12 @@ const Gallery = ({songs, length}) => {
                         <img className='imgO' src={e.previewImage} alt='test'/>
                         <img className='playButOverlay' src={playButton} onClick={() => {addSelectedToPlayer(e.id);setButton(i);handlePlay()}}/>
                         <img className={(button === i) ? 'pauseButForward' : 'pauseButOverlay'} src={pauseButton} onClick={() => {setButton(null);handlePause()}}/>
-                        <img className='ellipsesOverlay' src={ellipses} onClick={() => {setOpen(i)}} />
+                        <img className='ellipsesOverlay' src={ellipses} onClick={() => {handleEllipse(i)}} />
                         <div className="dropdownCont" hidden={!(open === i)}>
-                            <ul>
+                            <ul> 
                                 <li onClick={() => {addSelectedToNext(e.id);setOpen(null)}}>Add to Next Up</li>
-                                <PlaylistModal />
+                                <PlaylistModal song={e}/>
+                                <AddPlaylistModal song={e}/>
                             </ul>
                             </div>
                         </div>

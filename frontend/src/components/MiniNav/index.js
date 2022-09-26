@@ -15,6 +15,7 @@ function MiniNav({ isLoaded }) {
         <div className='navListLinks'>
         <NavLink exact to="/upload" className={isActive => isActive ? 'miniNavBut sel' : 'miniNavBut unsel'}>Upload</NavLink>
         <NavLink exact to="/your/tracks" className={isActive => isActive ? 'miniNavBut sel' : 'miniNavBut unsel'}>Your tracks</NavLink>
+        <NavLink exact to="/your/playlists" className={isActive => isActive ? 'miniNavBut sel' : 'miniNavBut unsel'}>Your playlists</NavLink>
         </div>
       </div>
     </div>

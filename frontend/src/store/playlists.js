@@ -115,11 +115,11 @@ const playlistsReducer = (state = initialState, action) => {
                 ...state, selectedPlaylist: action.playlist
             }
         case ADDTO_PLAYLIST:
+            console.log(action.song,'song', action.playlist, 'pl')
             let res = state.selectedPlaylist.Songs.find(e => e.id === action.song.id)
             if(!res){
-                console.log(action.song,'song', action.playlist, 'pl')
                 return {
-                    ...state, selectedPlaylist: { ...state.selectedPlaylist, Songs: [...state.selectedPlaylist.Songs, action.song]}
+                    ...state
                 }
             }
         case DELETE_PLAYLIST:

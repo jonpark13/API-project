@@ -1,28 +1,44 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import * as playlistActions from '../../store/playlists'
 
-function PlaylistOptions() {
+function PlaylistOptions({song}) {
+  const dispatch = useDispatch()
+  const [active, setActive] = useState(true)
+  const [name, setName] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
   const playlists = useSelector(state => state.playlists)
+  const sessionUser = useSelector(state => state.user)
   let lists = playlists.Playlist
 
-  return (
+  if(!playlists.Playlists) setActive(false)
+
+  const handleAddTrack = (e) => {
+        return dispatch(playlistActions.addSongToPlaylist(e, song.id))
+
+    };
+  
+  return (<>
     <div className="playlistModal">
-      {JSON.stringify(playlists)}
-    </div>
+      <div className="playNavCont">
+
+        <button autoFocus className="playSel">Add to playlist</button>
+      </div>
+      <div className="plCont">
+      {Object.keys(playlists.Playlists).map((e, i) => (
+        <div className='plLineContainer'>
+            {/* <img src={e.previewImage} alt={e.title}/> */}
+            <div className='plImgCont'>
+            <img className='plImg' src={playlists.Playlists[e].imageUrl} alt='test' />
+            </div>
+            <div className='plDetails'>
+            <div className='plTitle'>{playlists.Playlists[e].name}</div>
+            <button className="addTrackToPl" onClick={() => handleAddTrack(playlists.Playlists[e].id)}>Add to playlist</button>
+            </div>
+        </div>))}
+      </div>
+    </div></>
   );
 }
 
 export default PlaylistOptions;
-
-
-// {Object.keys(list).map((e, i) => (
-//   <div className="playlistItem" key={i}>
-//   {/* <img src={e.previewImage} alt={e.title}/> */}
-//   <div className='mimgCont'>
-//       <img className='mimgO' src={`https://picsum.photos/seed/${i}/173`} alt='test' />
-//   </div>
-//   <div className='titleText'>{list[e].name}</div>
-//   <div className='artistText'>{list[e].userId}</div>
-// <button className="saveB">Add to Playlist</button>
-// </div>
-// ))}
