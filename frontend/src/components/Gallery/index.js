@@ -12,7 +12,7 @@ const Gallery = ({songs}) => {
     const ref = useRef()
     const [open, setOpen] = useState(null)
 
-    songs = Array(3).fill(songs).flat()
+    // songs = Array(3).fill(songs).flat()
     let remArrLen
     if(songs.length < 24){
         remArrLen = 24 - songs.length
@@ -38,7 +38,7 @@ const Gallery = ({songs}) => {
                 <div className="imgBox" key={i}>
                     {/* <img src={e.previewImage} alt={e.title}/> */}
                     <div className='imgCont'>
-                        <img className='imgO' src={`https://picsum.photos/seed/${i}/173`} alt='test'/>
+                        <img className='imgO' src={e.previewImage} alt='test'/>
                         <img className='playButOverlay' src={playButton} />
                         <img className='ellipsesOverlay' src={ellipses} onClick={() => {setOpen(i)}} />
                         <div className="dropdownCont" hidden={!(open === i)}>

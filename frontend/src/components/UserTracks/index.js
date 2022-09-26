@@ -46,7 +46,7 @@ function UserTracks() {
                         <div className='trackContainer'>
                             {/* <img src={e.previewImage} alt={e.title}/> */}
                             <div className='trackImgCont'>
-                            <img className='trackImg' src={`https://picsum.photos/seed/${i}/173`} alt='test' />
+                            <img className='trackImg' src={songsList.userTracks[e].previewImage} alt='test' />
                             </div>
                             <div className='trackDetails'>
                             <div className='trackTitle'>{songsList.userTracks[e].title}</div>

@@ -6,17 +6,17 @@ module.exports = {
       {
         userId: 1,
         name: 'Favs',
-        imageUrl: 'image url'
+        imageUrl: 'https://picsum.photos/seed/64/173'
       },
       {
         userId: 2,
         name: 'workout',
-        imageUrl: 'image url'
+        imageUrl: 'https://picsum.photos/seed/65/173'
       },
       {
         userId: 3,
         name: 'test',
-        imageUrl: 'image url'
+        imageUrl: 'https://picsum.photos/seed/66/173'
       }
     ], {});
   },

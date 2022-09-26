@@ -2,36 +2,305 @@
 
 const bcrypt = require("bcryptjs");
 module.exports = {
-  async up (queryInterface, Sequelize) {
-    return queryInterface.bulkInsert('Users', [
-      {
-        email: 'demo@user.io',
-        username: 'Demo-lition',
-        hashedPassword: bcrypt.hashSync('password'),
-        firstName: 'Demo',
-        lastName: 'User'
-      },
-      {
-        email: 'user1@user.io',
-        username: 'FakeUser1',
-        hashedPassword: bcrypt.hashSync('password2'),
-        firstName: 'FakeOne',
-        lastName: 'User'
-      },
-      {
-        email: 'user2@user.io',
-        username: 'FakeUser2',
-        hashedPassword: bcrypt.hashSync('password3'),
-        firstName: 'Fake2',
-        lastName: 'User'
-      }
-    ], {});
-  },
+    async up(queryInterface, Sequelize) {
+        return queryInterface.bulkInsert('Users', [
+            {
+                email: 'demo@user.io',
+                username: 'Demo-lition',
+                hashedPassword: bcrypt.hashSync('password'),
+                firstName: 'Demo',
+                lastName: 'User'
+            },
+            {
+                email: 'user1@user.io',
+                username: 'FakeUser1',
+                hashedPassword: bcrypt.hashSync('password2'),
+                firstName: 'FakeOne',
+                lastName: 'User'
+            },
+            {
+                email: 'user2@user.io',
+                username: 'FakeUser2',
+                hashedPassword: bcrypt.hashSync('password3'),
+                firstName: 'Fake2',
+                lastName: 'User'
+            },
+            {
+                email: 'BrokeForFree@artist.io',
+                username: 'BrokeForFree',
+                hashedPassword: bcrypt.hashSync('password'),
+                firstName: 'Broke_For_Free',
+                lastName: 'User'
+            }, {
+                email: 'PodingtonBear@artist.io',
+                username: 'PodingtonBear',
+                hashedPassword: bcrypt.hashSync('password'),
+                firstName: 'Podington_Bear',
+                lastName: 'User'
+            }, {
+                email: 'MonkTurner+Fascinoma@artist.io',
+                username: 'MonkTurner+Fascinoma',
+                hashedPassword: bcrypt.hashSync('password'),
+                firstName: 'Monk_Turner_+_Fascinoma',
+                lastName: 'User'
+            }, {
+                email: 'Gillicuddy@artist.io',
+                username: 'Gillicuddy',
+                hashedPassword: bcrypt.hashSync('password'),
+                firstName: 'Gillicuddy',
+                lastName: 'User'
+            }, {
+                email: 'BlackAnt@artist.io',
+                username: 'BlackAnt',
+                hashedPassword: bcrypt.hashSync('password'),
+                firstName: 'Black_Ant',
+                lastName: 'User'
+            }, {
+                email: 'BoxCatGames@artist.io',
+                username: 'BoxCatGames',
+                hashedPassword: bcrypt.hashSync('password'),
+                firstName: 'BoxCat_Games',
+                lastName: 'User'
+            }, {
+                email: 'Tours@artist.io',
+                username: 'Tours',
+                hashedPassword: bcrypt.hashSync('password'),
+                firstName: 'Tours',
+                lastName: 'User'
+            }, {
+                email: 'Jahzzar@artist.io',
+                username: 'Jahzzar',
+                hashedPassword: bcrypt.hashSync('password'),
+                firstName: 'Jahzzar',
+                lastName: 'User'
+            }, {
+                email: 'KaiEngel@artist.io',
+                username: 'KaiEngel',
+                hashedPassword: bcrypt.hashSync('password'),
+                firstName: 'Kai_Engel',
+                lastName: 'User'
+            }, {
+                email: 'TheKyotoConnection@artist.io',
+                username: 'TheKyotoConnection',
+                hashedPassword: bcrypt.hashSync('password'),
+                firstName: 'The_Kyoto_Connection',
+                lastName: 'User'
+            }, {
+                email: 'ChadCrouch@artist.io',
+                username: 'ChadCrouch',
+                hashedPassword: bcrypt.hashSync('password'),
+                firstName: 'Chad_Crouch',
+                lastName: 'User'
+            }, {
+                email: 'DanLerch@artist.io',
+                username: 'DanLerch',
+                hashedPassword: bcrypt.hashSync('password'),
+                firstName: 'Dan_Lerch',
+                lastName: 'User'
+            }, {
+                email: 'SilenceIsSexy@artist.io',
+                username: 'SilenceIsSexy',
+                hashedPassword: bcrypt.hashSync('password'),
+                firstName: 'Silence_Is_Sexy',
+                lastName: 'User'
+            }, {
+                email: 'HoganGrip@artist.io',
+                username: 'HoganGrip',
+                hashedPassword: bcrypt.hashSync('password'),
+                firstName: 'Hogan_Grip',
+                lastName: 'User'
+            }, {
+                email: 'ManueleAtzeni@artist.io',
+                username: 'ManueleAtzeni',
+                hashedPassword: bcrypt.hashSync('password'),
+                firstName: 'Manuele_Atzeni',
+                lastName: 'User'
+            }, {
+                email: 'ScottHolmesMusic@artist.io',
+                username: 'ScottHolmesMusic',
+                hashedPassword: bcrypt.hashSync('password'),
+                firstName: 'Scott_Holmes_Music',
+                lastName: 'User'
+            }, {
+                email: 'BobBarta@artist.io',
+                username: 'BobBarta',
+                hashedPassword: bcrypt.hashSync('password'),
+                firstName: 'Bob_Barta',
+                lastName: 'User'
+            }, {
+                email: 'TheBlankTapes@artist.io',
+                username: 'TheBlankTapes',
+                hashedPassword: bcrypt.hashSync('password'),
+                firstName: 'The_Blank_Tapes',
+                lastName: 'User'
+            }, {
+                email: 'JasonShaw@artist.io',
+                username: 'JasonShaw',
+                hashedPassword: bcrypt.hashSync('password'),
+                firstName: 'Jason_Shaw',
+                lastName: 'User'
+            }, {
+                email: 'LosAmparito@artist.io',
+                username: 'LosAmparito',
+                hashedPassword: bcrypt.hashSync('password'),
+                firstName: 'Los_Amparito',
+                lastName: 'User'
+            }, {
+                email: 'Rolemusic@artist.io',
+                username: 'Rolemusic',
+                hashedPassword: bcrypt.hashSync('password'),
+                firstName: 'Rolemusic',
+                lastName: 'User'
+            }, {
+                email: 'Datapanik@artist.io',
+                username: 'Datapanik',
+                hashedPassword: bcrypt.hashSync('password'),
+                firstName: 'Datapanik',
+                lastName: 'User'
+            }, {
+                email: 'LJKruzer@artist.io',
+                username: 'LJKruzer',
+                hashedPassword: bcrypt.hashSync('password'),
+                firstName: 'LJ_Kruzer',
+                lastName: 'User'
+            }, {
+                email: 'VoodooSuite@artist.io',
+                username: 'VoodooSuite',
+                hashedPassword: bcrypt.hashSync('password'),
+                firstName: 'Voodoo_Suite',
+                lastName: 'User'
+            }, {
+                email: 'krackatoa@artist.io',
+                username: 'krackatoa',
+                hashedPassword: bcrypt.hashSync('password'),
+                firstName: 'krackatoa',
+                lastName: 'User'
+            }, {
+                email: 'deef@artist.io',
+                username: 'deef',
+                hashedPassword: bcrypt.hashSync('password'),
+                firstName: 'deef',
+                lastName: 'User'
+            }, {
+                email: 'ChanWaiFat@artist.io',
+                username: 'ChanWaiFat',
+                hashedPassword: bcrypt.hashSync('password'),
+                firstName: 'Chan_Wai_Fat',
+                lastName: 'User'
+            }, {
+                email: 'LoKaPing@artist.io',
+                username: 'LoKaPing',
+                hashedPassword: bcrypt.hashSync('password'),
+                firstName: 'Lo_Ka_Ping',
+                lastName: 'User'
+            }, {
+                email: 'ChristianBjoerklund@artist.io',
+                username: 'ChristianBjoerklund',
+                hashedPassword: bcrypt.hashSync('password'),
+                firstName: 'Christian_Bjoerklund',
+                lastName: 'User'
+            }, {
+                email: 'Juanitos@artist.io',
+                username: 'Juanitos',
+                hashedPassword: bcrypt.hashSync('password'),
+                firstName: 'Juanitos',
+                lastName: 'User'
+            }, {
+                email: 'Shlohmo@artist.io',
+                username: 'Shlohmo',
+                hashedPassword: bcrypt.hashSync('password'),
+                firstName: 'Shlohmo',
+                lastName: 'User'
+            }, {
+                email: 'KevinMacLeod@artist.io',
+                username: 'KevinMacLeod',
+                hashedPassword: bcrypt.hashSync('password'),
+                firstName: 'Kevin_MacLeod',
+                lastName: 'User'
+            }, {
+                email: 'aboombong@artist.io',
+                username: 'aboombong',
+                hashedPassword: bcrypt.hashSync('password'),
+                firstName: 'aboombong',
+                lastName: 'User'
+            }, {
+                email: 'JacksonF.Smith@artist.io',
+                username: 'JacksonF.Smith',
+                hashedPassword: bcrypt.hashSync('password'),
+                firstName: 'Jackson_F._Smith',
+                lastName: 'User'
+            }, {
+                email: 'TheFreakFandangoOrchestra@artist.io',
+                username: 'TheFreakFandangoOrchestra',
+                hashedPassword: bcrypt.hashSync('password'),
+                firstName: 'The_Freak_Fandango_Orchestra',
+                lastName: 'User'
+            }, {
+                email: 'WaylonThornton@artist.io',
+                username: 'WaylonThornton',
+                hashedPassword: bcrypt.hashSync('password'),
+                firstName: 'Waylon_Thornton',
+                lastName: 'User'
+            }, {
+                email: 'LiveActionFezz@artist.io',
+                username: 'LiveActionFezz',
+                hashedPassword: bcrypt.hashSync('password'),
+                firstName: 'Live_Action_Fezz',
+                lastName: 'User'
+            }, {
+                email: 'Plurabelle@artist.io',
+                username: 'Plurabelle',
+                hashedPassword: bcrypt.hashSync('password'),
+                firstName: 'Plurabelle',
+                lastName: 'User'
+            }, {
+                email: 'BlueDotSessions@artist.io',
+                username: 'BlueDotSessions',
+                hashedPassword: bcrypt.hashSync('password'),
+                firstName: 'Blue_Dot_Sessions',
+                lastName: 'User'
+            }, {
+                email: 'ComfortFit@artist.io',
+                username: 'ComfortFit',
+                hashedPassword: bcrypt.hashSync('password'),
+                firstName: 'Comfort_Fit',
+                lastName: 'User'
+            }, {
+                email: 'PeterRudenko@artist.io',
+                username: 'PeterRudenko',
+                hashedPassword: bcrypt.hashSync('password'),
+                firstName: 'Peter_Rudenko',
+                lastName: 'User'
+            }, {
+                email: 'LeeMaddeford@artist.io',
+                username: 'LeeMaddeford',
+                hashedPassword: bcrypt.hashSync('password'),
+                firstName: 'Lee_Maddeford',
+                lastName: 'User'
+            }, {
+                email: 'LASERS@artist.io',
+                username: 'LASERS',
+                hashedPassword: bcrypt.hashSync('password'),
+                firstName: 'LASERS',
+                lastName: 'User'
+            }, {
+                email: 'LatchéSwing@artist.io',
+                username: 'LatchéSwing',
+                hashedPassword: bcrypt.hashSync('password'),
+                firstName: 'Latché_Swing',
+                lastName: 'User'
+            }, {
+                email: 'KevinLax@artist.io',
+                username: 'KevinLax',
+                hashedPassword: bcrypt.hashSync('password'),
+                firstName: 'Kevin_Lax',
+                lastName: 'User'
+            }
+        ], {});
+    },
 
-  async down (queryInterface, Sequelize) {
-    const Op = Sequelize.Op;
-    return queryInterface.bulkDelete('Users', {
-      username: { [Op.in]: ['Demo-lition', 'FakeUser1', 'FakeUser2'] }
-    }, {});
-  }
+    async down(queryInterface, Sequelize) {
+        const Op = Sequelize.Op;
+        return queryInterface.bulkDelete('Users');
+    }
 };

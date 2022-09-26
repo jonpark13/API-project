@@ -22,8 +22,8 @@ function MusicPlayer() {
         <>
         <div className='musicFoot'>
             <div className='musicCont'>
-                <ReactAudioPlayer autoPlay controls src={currPlay.currentSong.url} style={style}/>
-                <div className='other'>{JSON.stringify(currPlay)}</div>
+                {/* <ReactAudioPlayer autoPlay controls src={currPlay.currentSong.url} style={style}/>
+                <div className='other'>{JSON.stringify(currPlay)}</div> */}
             </div>
         </div>
         </>

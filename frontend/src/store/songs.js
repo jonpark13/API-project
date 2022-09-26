@@ -54,7 +54,7 @@ const userTracks = (songs) => {
 export const songsGrab = () => async (dispatch) => {
     const response = await csrfFetch('/api/songs')
     const data = await response.json()
-    // console.log(data)
+    console.log(data)
     dispatch(getSongs(data))
     return data;
 };
