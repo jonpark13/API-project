@@ -34,7 +34,7 @@ module.exports = {
                 "previewImage": 'https://picsum.photos/seed/3/173'
             },
             {
-                'albumId': 'null',
+                'albumId': 2,
                 'userId': 3,
                 'title': 'Night Owl',
                 'description': 'A free song',
@@ -43,7 +43,7 @@ module.exports = {
                 'updatedAt': '2021-11-19 20:39:36',
                 'previewImage': 'https://picsum.photos/seed/4/173'
             }, {
-                'albumId': 'null',
+                'albumId': 2,
                 'userId': 4,
                 'title': 'Starling',
                 'description': 'A free song',
@@ -52,7 +52,7 @@ module.exports = {
                 'updatedAt': '2021-11-19 20:39:36',
                 'previewImage': 'https://picsum.photos/seed/5/173'
             }, {
-                'albumId': 'null',
+                'albumId': 2,
                 'userId': 5,
                 'title': "It's Your Birthday!",
                 'description': 'A free song',
@@ -61,7 +61,7 @@ module.exports = {
                 'updatedAt': '2021-11-19 20:39:36',
                 'previewImage': 'https://picsum.photos/seed/6/173'
             }, {
-                'albumId': 'null',
+                'albumId': 2,
                 'userId': 6,
                 'title': 'Springish',
                 'description': 'A free song',
@@ -70,7 +70,7 @@ module.exports = {
                 'updatedAt': '2021-11-19 20:39:36',
                 'previewImage': 'https://picsum.photos/seed/7/173'
             }, {
-                'albumId': 'null',
+                'albumId': 2,
                 'userId': 7,
                 'title': 'Fater Lee',
                 'description': 'A free song',
@@ -79,7 +79,7 @@ module.exports = {
                 'updatedAt': '2021-11-19 20:39:36',
                 'previewImage': 'https://picsum.photos/seed/8/173'
             }, {
-                'albumId': 'null',
+                'albumId': 2,
                 'userId': 8,
                 'title': 'Epic Song',
                 'description': 'A free song',
@@ -88,7 +88,7 @@ module.exports = {
                 'updatedAt': '2021-11-19 20:39:36',
                 'previewImage': 'https://picsum.photos/seed/9/173'
             }, {
-                'albumId': 'null',
+                'albumId': 2,
                 'userId': 9,
                 'title': 'Enthusiast',
                 'description': 'A free song',
@@ -97,7 +97,7 @@ module.exports = {
                 'updatedAt': '2021-11-19 20:39:36',
                 'previewImage': 'https://picsum.photos/seed/10/173'
             }, {
-                'albumId': 'null',
+                'albumId': 2,
                 'userId': 10,
                 'title': 'Siesta',
                 'description': 'A free song',
@@ -106,7 +106,7 @@ module.exports = {
                 'updatedAt': '2021-11-19 20:39:36',
                 'previewImage': 'https://picsum.photos/seed/11/173'
             }, {
-                'albumId': 'null',
+                'albumId': 2,
                 'userId': 11,
                 'title': 'Moonlight Reprise',
                 'description': 'A free song',
@@ -115,7 +115,7 @@ module.exports = {
                 'updatedAt': '2021-11-19 20:39:36',
                 'previewImage': 'https://picsum.photos/seed/12/173'
             }, {
-                'albumId': 'null',
+                'albumId': 2,
                 'userId': 12,
                 'title': 'Hachiko (The Faithtful Dog)',
                 'description': 'A free song',
@@ -124,7 +124,7 @@ module.exports = {
                 'updatedAt': '2021-11-19 20:39:36',
                 'previewImage': 'https://picsum.photos/seed/13/173'
             }, {
-                'albumId': 'null',
+                'albumId': 2,
                 'userId': 13,
                 'title': 'Algorithms',
                 'description': 'A free song',
@@ -133,7 +133,7 @@ module.exports = {
                 'updatedAt': '2021-11-19 20:39:36',
                 'previewImage': 'https://picsum.photos/seed/14/173'
             }, {
-                'albumId': 'null',
+                'albumId': 2,
                 'userId': 14,
                 'title': 'O Tannenbaum',
                 'description': 'A free song',
@@ -142,7 +142,7 @@ module.exports = {
                 'updatedAt': '2021-11-19 20:39:36',
                 'previewImage': 'https://picsum.photos/seed/15/173'
             }, {
-                'albumId': 'null',
+                'albumId': 2,
                 'userId': 15,
                 'title': 'Holiday (instrumental)',
                 'description': 'A free song',
@@ -151,7 +151,7 @@ module.exports = {
                 'updatedAt': '2021-11-19 20:39:36',
                 'previewImage': 'https://picsum.photos/seed/16/173'
             }, {
-                'albumId': 'null',
+                'albumId': 2,
                 'userId': 16,
                 'title': 'Stance Gives You Balance',
                 'description': 'A free song',
@@ -160,7 +160,7 @@ module.exports = {
                 'updatedAt': '2021-11-19 20:39:36',
                 'previewImage': 'https://picsum.photos/seed/17/173'
             }, {
-                'albumId': 'null',
+                'albumId': 2,
                 'userId': 17,
                 'title': 'Little Star',
                 'description': 'A free song',
@@ -169,7 +169,7 @@ module.exports = {
                 'updatedAt': '2021-11-19 20:39:36',
                 'previewImage': 'https://picsum.photos/seed/18/173'
             }, {
-                'albumId': 'null',
+                'albumId': 2,
                 'userId': 18,
                 'title': 'Epic Cinematic',
                 'description': 'A free song',
@@ -178,7 +178,7 @@ module.exports = {
                 'updatedAt': '2021-11-19 20:39:36',
                 'previewImage': 'https://picsum.photos/seed/19/173'
             }, {
-                'albumId': 'null',
+                'albumId': 2,
                 'userId': 19,
                 'title': 'An Alternative Birthday Song',
                 'description': 'A free song',
@@ -187,7 +187,7 @@ module.exports = {
                 'updatedAt': '2021-11-19 20:39:36',
                 'previewImage': 'https://picsum.photos/seed/20/173'
             }, {
-                'albumId': 'null',
+                'albumId': 2,
                 'userId': 20,
                 'title': "It's Your Birthday!",
                 'description': 'A free song',
@@ -196,7 +196,7 @@ module.exports = {
                 'updatedAt': '2021-11-19 20:39:36',
                 'previewImage': 'https://picsum.photos/seed/21/173'
             }, {
-                'albumId': 'null',
+                'albumId': 2,
                 'userId': 21,
                 'title': 'RUNNING WATERS',
                 'description': 'A free song',
@@ -205,7 +205,7 @@ module.exports = {
                 'updatedAt': '2021-11-19 20:39:36',
                 'previewImage': 'https://picsum.photos/seed/22/173'
             }, {
-                'albumId': 'null',
+                'albumId': 2,
                 'userId': 3,
                 'title': 'As Colorful As Ever',
                 'description': 'A free song',
@@ -214,7 +214,7 @@ module.exports = {
                 'updatedAt': '2021-11-19 20:39:36',
                 'previewImage': 'https://picsum.photos/seed/23/173'
             }, {
-                'albumId': 'null',
+                'albumId': 2,
                 'userId': 10,
                 'title': 'The last ones',
                 'description': 'A free song',
@@ -223,7 +223,7 @@ module.exports = {
                 'updatedAt': '2021-11-19 20:39:36',
                 'previewImage': 'https://picsum.photos/seed/24/173'
             }, {
-                'albumId': 'null',
+                'albumId': 2,
                 'userId': 22,
                 'title': 'El barzón',
                 'description': 'A free song',
@@ -232,7 +232,7 @@ module.exports = {
                 'updatedAt': '2021-11-19 20:39:36',
                 'previewImage': 'https://picsum.photos/seed/25/173'
             }, {
-                'albumId': 'null',
+                'albumId': 2,
                 'userId': 23,
                 'title': 'The Pirate And The Dancer',
                 'description': 'A free song',
@@ -241,7 +241,7 @@ module.exports = {
                 'updatedAt': '2021-11-19 20:39:36',
                 'previewImage': 'https://picsum.photos/seed/26/173'
             }, {
-                'albumId': 'null',
+                'albumId': 2,
                 'userId': 3,
                 'title': 'Something Elated',
                 'description': 'A free song',
@@ -250,7 +250,7 @@ module.exports = {
                 'updatedAt': '2021-11-19 20:39:36',
                 'previewImage': 'https://picsum.photos/seed/27/173'
             }, {
-                'albumId': 'null',
+                'albumId': 2,
                 'userId': 24,
                 'title': 'Faerie',
                 'description': 'A free song',
@@ -259,7 +259,7 @@ module.exports = {
                 'updatedAt': '2021-11-19 20:39:36',
                 'previewImage': 'https://picsum.photos/seed/28/173'
             }, {
-                'albumId': 'null',
+                'albumId': 2,
                 'userId': 25,
                 'title': 'Chantiers Navals 412',
                 'description': 'A free song',
@@ -268,7 +268,7 @@ module.exports = {
                 'updatedAt': '2021-11-19 20:39:36',
                 'previewImage': 'https://picsum.photos/seed/29/173'
             }, {
-                'albumId': 'null',
+                'albumId': 2,
                 'userId': 8,
                 'title': 'Battle (Boss)',
                 'description': 'A free song',
@@ -277,7 +277,7 @@ module.exports = {
                 'updatedAt': '2021-11-19 20:39:36',
                 'previewImage': 'https://picsum.photos/seed/30/173'
             }, {
-                'albumId': 'null',
+                'albumId': 2,
                 'userId': 26,
                 'title': 'Little Grass Shack',
                 'description': 'A free song',
@@ -286,7 +286,7 @@ module.exports = {
                 'updatedAt': '2021-11-19 20:39:36',
                 'previewImage': 'https://picsum.photos/seed/31/173'
             }, {
-                'albumId': 'null',
+                'albumId': 2,
                 'userId': 27,
                 'title': 'Noahs Stark',
                 'description': 'A free song',
@@ -295,7 +295,7 @@ module.exports = {
                 'updatedAt': '2021-11-19 20:39:36',
                 'previewImage': 'https://picsum.photos/seed/32/173'
             }, {
-                'albumId': 'null',
+                'albumId': 2,
                 'userId': 28,
                 'title': 'nostalgia of an ex-gangsta-rapper',
                 'description': 'A free song',
@@ -304,7 +304,7 @@ module.exports = {
                 'updatedAt': '2021-11-19 20:39:36',
                 'previewImage': 'https://picsum.photos/seed/33/173'
             }, {
-                'albumId': 'null',
+                'albumId': 2,
                 'userId': 29,
                 'title': 'Dream (instrumental)',
                 'description': 'A free song',
@@ -313,7 +313,7 @@ module.exports = {
                 'updatedAt': '2021-11-19 20:39:36',
                 'previewImage': 'https://picsum.photos/seed/34/173'
             }, {
-                'albumId': 'null',
+                'albumId': 2,
                 'userId': 30,
                 'title': 'Teals Descending Upon The Level Sand',
                 'description': 'A free song',
@@ -322,7 +322,7 @@ module.exports = {
                 'updatedAt': '2021-11-19 20:39:36',
                 'previewImage': 'https://picsum.photos/seed/35/173'
             }, {
-                'albumId': 'null',
+                'albumId': 2,
                 'userId': 31,
                 'title': 'Hallon',
                 'description': 'A free song',
@@ -331,7 +331,7 @@ module.exports = {
                 'updatedAt': '2021-11-19 20:39:36',
                 'previewImage': 'https://picsum.photos/seed/36/173'
             }, {
-                'albumId': 'null',
+                'albumId': 2,
                 'userId': 32,
                 'title': 'Exotica',
                 'description': 'A free song',
@@ -340,7 +340,7 @@ module.exports = {
                 'updatedAt': '2021-11-19 20:39:36',
                 'previewImage': 'https://picsum.photos/seed/37/173'
             }, {
-                'albumId': 'null',
+                'albumId': 2,
                 'userId': 33,
                 'title': 'Hot Boxing The Cockpit',
                 'description': 'A free song',
@@ -349,7 +349,7 @@ module.exports = {
                 'updatedAt': '2021-11-19 20:39:36',
                 'previewImage': 'https://picsum.photos/seed/38/173'
             }, {
-                'albumId': 'null',
+                'albumId': 2,
                 'userId': 10,
                 'title': 'Take Me Higher',
                 'description': 'A free song',
@@ -358,7 +358,7 @@ module.exports = {
                 'updatedAt': '2021-11-19 20:39:36',
                 'previewImage': 'https://picsum.photos/seed/39/173'
             }, {
-                'albumId': 'null',
+                'albumId': 2,
                 'userId': 5,
                 'title': "It's Your Birthday! (Instrumental Version)",
                 'description': 'A free song',
@@ -367,7 +367,7 @@ module.exports = {
                 'updatedAt': '2021-11-19 20:39:36',
                 'previewImage': 'https://picsum.photos/seed/40/173'
             }, {
-                'albumId': 'null',
+                'albumId': 2,
                 'userId': 34,
                 'title': 'Ghost Dance',
                 'description': 'A free song',
@@ -376,7 +376,7 @@ module.exports = {
                 'updatedAt': '2021-11-19 20:39:36',
                 'previewImage': 'https://picsum.photos/seed/41/173'
             }, {
-                'albumId': 'null',
+                'albumId': 2,
                 'userId': 35,
                 'title': 'Drag along behind',
                 'description': 'A free song',
@@ -385,7 +385,7 @@ module.exports = {
                 'updatedAt': '2021-11-19 20:39:36',
                 'previewImage': 'https://picsum.photos/seed/42/173'
             }, {
-                'albumId': 'null',
+                'albumId': 2,
                 'userId': 36,
                 'title': 'Cantina Rag',
                 'description': 'A free song',
@@ -394,7 +394,7 @@ module.exports = {
                 'updatedAt': '2021-11-19 20:39:36',
                 'previewImage': 'https://picsum.photos/seed/43/173'
             }, {
-                'albumId': 'null',
+                'albumId': 2,
                 'userId': 37,
                 'title': 'Requiem for a Fish',
                 'description': 'A free song',
@@ -403,7 +403,7 @@ module.exports = {
                 'updatedAt': '2021-11-19 20:39:36',
                 'previewImage': 'https://picsum.photos/seed/44/173'
             }, {
-                'albumId': 'null',
+                'albumId': 2,
                 'userId': 4,
                 'title': 'Sad Cyclops',
                 'description': 'A free song',
@@ -412,7 +412,7 @@ module.exports = {
                 'updatedAt': '2021-11-19 20:39:36',
                 'previewImage': 'https://picsum.photos/seed/45/173'
             }, {
-                'albumId': 'null',
+                'albumId': 2,
                 'userId': 38,
                 'title': 'Favorite Secrets',
                 'description': 'A free song',
@@ -421,7 +421,7 @@ module.exports = {
                 'updatedAt': '2021-11-19 20:39:36',
                 'previewImage': 'https://picsum.photos/seed/46/173'
             }, {
-                'albumId': 'null',
+                'albumId': 2,
                 'userId': 39,
                 'title': 'Carol of the Bells',
                 'description': 'A free song',
@@ -430,7 +430,7 @@ module.exports = {
                 'updatedAt': '2021-11-19 20:39:36',
                 'previewImage': 'https://picsum.photos/seed/47/173'
             }, {
-                'albumId': 'null',
+                'albumId': 2,
                 'userId': 34,
                 'title': 'Impact Prelude',
                 'description': 'A free song',
@@ -439,7 +439,7 @@ module.exports = {
                 'updatedAt': '2021-11-19 20:39:36',
                 'previewImage': 'https://picsum.photos/seed/48/173'
             }, {
-                'albumId': 'null',
+                'albumId': 2,
                 'userId': 6,
                 'title': 'Adventure, Darling',
                 'description': 'A free song',
@@ -448,7 +448,7 @@ module.exports = {
                 'updatedAt': '2021-11-19 20:39:36',
                 'previewImage': 'https://picsum.photos/seed/49/173'
             }, {
-                'albumId': 'null',
+                'albumId': 2,
                 'userId': 40,
                 'title': 'Lips',
                 'description': 'A free song',
@@ -457,7 +457,7 @@ module.exports = {
                 'updatedAt': '2021-11-19 20:39:36',
                 'previewImage': 'https://picsum.photos/seed/50/173'
             }, {
-                'albumId': 'null',
+                'albumId': 2,
                 'userId': 41,
                 'title': 'Speaker Joy',
                 'description': 'A free song',
@@ -466,7 +466,7 @@ module.exports = {
                 'updatedAt': '2021-11-19 20:39:36',
                 'previewImage': 'https://picsum.photos/seed/51/173'
             }, {
-                'albumId': 'null',
+                'albumId': 2,
                 'userId': 41,
                 'title': 'Night Watch',
                 'description': 'A free song',
@@ -475,7 +475,7 @@ module.exports = {
                 'updatedAt': '2021-11-19 20:39:36',
                 'previewImage': 'https://picsum.photos/seed/52/173'
             }, {
-                'albumId': 'null',
+                'albumId': 2,
                 'userId': 42,
                 'title': 'Sorry',
                 'description': 'A free song',
@@ -484,7 +484,7 @@ module.exports = {
                 'updatedAt': '2021-11-19 20:39:36',
                 'previewImage': 'https://picsum.photos/seed/53/173'
             }, {
-                'albumId': 'null',
+                'albumId': 2,
                 'userId': 43,
                 'title': 'Snowing',
                 'description': 'A free song',
@@ -493,7 +493,7 @@ module.exports = {
                 'updatedAt': '2021-11-19 20:39:36',
                 'previewImage': 'https://picsum.photos/seed/54/173'
             }, {
-                'albumId': 'null',
+                'albumId': 2,
                 'userId': 44,
                 'title': 'Le petit jardin (with Les Gauchers Orchestra)',
                 'description': 'A free song',
@@ -502,7 +502,7 @@ module.exports = {
                 'updatedAt': '2021-11-19 20:39:36',
                 'previewImage': 'https://picsum.photos/seed/55/173'
             }, {
-                'albumId': 'null',
+                'albumId': 2,
                 'userId': 41,
                 'title': 'I Recall',
                 'description': 'A free song',
@@ -511,7 +511,7 @@ module.exports = {
                 'updatedAt': '2021-11-19 20:39:36',
                 'previewImage': 'https://picsum.photos/seed/56/173'
               }, {
-                'albumId': 'null',
+                'albumId': 2,
                 'userId': 34,
                 'title': 'DD Groove',
                 'description': 'A free song',
@@ -520,7 +520,7 @@ module.exports = {
                 'updatedAt': '2021-11-19 20:39:36',
                 'previewImage': 'https://picsum.photos/seed/57/173'
               }, {
-                'albumId': 'null',
+                'albumId': 2,
                 'userId': 19,
                 'title': 'Instrumental Version',
                 'description': 'A free song',
@@ -529,7 +529,7 @@ module.exports = {
                 'updatedAt': '2021-11-19 20:39:36',
                 'previewImage': 'https://picsum.photos/seed/58/173'
             }, {
-                'albumId': 'null',
+                'albumId': 2,
                 'userId': 5,
                 'title': 'Piano Version, in B',
                 'description': 'A free song',
@@ -538,7 +538,7 @@ module.exports = {
                 'updatedAt': '2021-11-19 20:39:36',
                 'previewImage': 'https://picsum.photos/seed/59/173'
             }, {
-                'albumId': 'null',
+                'albumId': 2,
                 'userId': 16,
                 'title': 'Interlude - "Reading The Greens"',
                 'description': 'A free song',
