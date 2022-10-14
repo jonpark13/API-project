@@ -546,33 +546,6 @@ module.exports = {
                 'createdAt': '2021-11-19 20:39:36',
                 'updatedAt': '2021-11-19 20:39:36',
                 'previewImage': 'https://picsum.photos/seed/60/173'
-            }, {
-                'albumId': 2,
-                'userId': 45,
-                'title': 'Amsterdam',
-                'description': 'A free song',
-                'url': 'https://files.freemusicarchive.org/storage-freemusicarchive-org/music/ccCommunity/LASERS/LASERS_EP/LASERS_-_01_-_Amsterdam.mp3',
-                'createdAt': '2021-11-19 20:39:36',
-                'updatedAt': '2021-11-19 20:39:36',
-                'previewImage': 'https://picsum.photos/seed/61/173'
-            }, {
-                'albumId': 2,
-                'userId': 46,
-                'title': 'Hungaria',
-                'description': 'A free song',
-                'url': 'https://files.freemusicarchive.org/storage-freemusicarchive-org/music/WFMU/Latch_Swing/demo_2008/Latch_Swing_-_01_-_Hungaria.mp3',
-                'createdAt': '2021-11-19 20:39:36',
-                'updatedAt': '2021-11-19 20:39:36',
-                'previewImage': 'https://picsum.photos/seed/62/173'
-            }, {
-                'albumId': 2,
-                'userId': 47,
-                'title': 'Happy Birthday',
-                'description': 'A free song',
-                'url': 'https://files.freemusicarchive.org/storage-freemusicarchive-org/music/WFMU/Kevin_Lax/The_New_Birthday_Song_Contest/Kevin_Lax_-_Happy_Birthday.mp3',
-                'createdAt': '2021-11-19 20:39:36',
-                'updatedAt': '2021-11-19 20:39:36',
-                'previewImage': 'https://picsum.photos/seed/63/173'
             }
         ]);
     },
