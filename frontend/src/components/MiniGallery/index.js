@@ -39,15 +39,15 @@ const MiniGallery = ({ list }) => {
 
     return (
         <div className='miniGalleryBox'>
-            {Object.keys(list).map((e, i) => (
+            {Object.values(list).map((e, i) => (
                 <div className="mimgBox" key={i} >
                     {/* <img src={e.previewImage} alt={e.title}/> */}
                     <div className='mimgCont'>
-                        <img className='mimgO' src={list[e].imageUrl} alt='test' />
-                        <img className='playButOverlay' src={playButton} onClick={() => {addPlaylistToPlayer(list[e].id);setButton(i);handlePlay()}}/>
+                        <img className='mimgO' src={e.previewImage || e.imageUrl} alt='test' />
+                        <img className='playButOverlay' src={playButton} onClick={() => {addPlaylistToPlayer(e.id);setButton(i);handlePlay()}}/>
                         <img className={(button === i) ? 'pauseButForward' : 'pauseButOverlay'} src={pauseButton} onClick={() => {setButton(null);handlePause()}}/>
                     </div>
-                    <div className='titleText'>{list[e].name}</div>
+                    <div className='titleText'>{e.name}</div>
                     {/* <div className='artistText'>{list[e].userId}</div> */}
                 </div>
             ))}

@@ -35,6 +35,11 @@ function LibraryPage() {
                 <MiniGallery list={songsList.userTracks} />
                 }
             </div>
+            <div>
+                {
+                    JSON.stringify(songsList.userTracks)
+                }
+            </div>
             <div className='textLine'>
             <div className='typeText'>Playlists</div>
             </div>
@@ -42,6 +47,11 @@ function LibraryPage() {
                 {
                 Object.keys(playlists).length &&
                 <MiniGallery list={playlists.Playlists} />
+                }
+            </div>
+            <div>
+                {
+                    JSON.stringify(playlists.Playlists)
                 }
             </div>
             </div>
