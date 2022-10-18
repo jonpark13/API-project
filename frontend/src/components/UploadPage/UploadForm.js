@@ -52,7 +52,14 @@ function UploadFormPage() {
         Basic Info
         </div>
         <div className="createFormCont">
-          <div className="editImgCont"><img className="editImg" src={imageUrl}/></div>
+          <div className="editImgCont">
+            <img className="editImg" src={imageUrl} onError={(e) => {
+                            e.target.onerror = "";
+                            e.target.src = "";
+                            e.target.style.background = "linear-gradient(90deg, rgba(255, 247, 255, 1) 0%, rgba(118, 194, 210, 1) 100%)"
+                            return true;
+                        }}/>
+          </div>
         <form onSubmit={handleSubmit} className='createSongForm'>
         <div>Title</div>
         <input

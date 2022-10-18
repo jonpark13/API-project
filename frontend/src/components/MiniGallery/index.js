@@ -43,11 +43,17 @@ const MiniGallery = ({ list }) => {
                 <div className="mimgBox" key={i} >
                     {/* <img src={e.previewImage} alt={e.title}/> */}
                     <div className='mimgCont'>
-                        <img className='mimgO' src={e.previewImage || e.imageUrl} alt='test' />
+                        <img className='mimgO' src={e.imageUrl || e.previewImage} alt="" onError={(e) => {
+                            e.target.onerror = "";
+                            e.target.src = "";
+                            e.target.style.display = 'none'
+                            e.target.style.background = "linear-gradient(90deg, rgba(255, 247, 255, 1) 0%, rgba(118, 194, 210, 1) 100%)"
+                            return true;
+                        }}/>
                         <img className='playButOverlay' src={playButton} onClick={() => {addPlaylistToPlayer(e.id);setButton(i);handlePlay()}}/>
                         <img className={(button === i) ? 'pauseButForward' : 'pauseButOverlay'} src={pauseButton} onClick={() => {setButton(null);handlePause()}}/>
                     </div>
-                    <div className='titleText'>{e.name}</div>
+                    <div className='titleText'>{e.name || e.title}</div>
                     {/* <div className='artistText'>{list[e].userId}</div> */}
                 </div>
             ))}
