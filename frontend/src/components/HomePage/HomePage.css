@@ -155,6 +155,20 @@
     cursor: pointer;
 }
 
+.createAccCondLarge {
+    background-color: rgb(0, 158, 194);
+    cursor:pointer;
+    color: white;
+    border-radius: 3px;
+    border: 0;
+    height: 45px;
+    width: 250px;
+    padding: 0px 10px;
+    margin: 20px;
+    font-size: larger;
+    font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+}
+
 .newsText {
     color: #333;
     font-size: 24px;
