@@ -1,7 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
+import ReactAudioPlayer from "react-audio-player";
 import * as songsActions from "../../store/songs";
+import logo from '../../assets/images/VVlogo.png'
 
 function EditTrackForm({track, showModal, setShowModal}) {
   const dispatch = useDispatch();
@@ -11,9 +13,24 @@ function EditTrackForm({track, showModal, setShowModal}) {
   const [description, setDescription] = useState(`${track.description}`);
   const [url, setUrl] = useState(`${track.url}`);
   const [imageUrl, setImageUrl] = useState(`${track.previewImage}`);
-  
+  const [errors, setErrors] = useState({});
 
-  const [errors, setErrors] = useState([]);
+  useEffect(() => {
+    handleCheck()
+  }, [url])
+
+  const handleCheck = () => {
+    let audioElement = document.getElementById('mp3check')
+    if(audioElement){
+        audioElement.play()
+      }
+  }
+
+  const songVal = () => {
+    let newErr = errors
+    delete newErr['Valid MP3']
+    setErrors(newErr)
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,10 +41,10 @@ function EditTrackForm({track, showModal, setShowModal}) {
         imageUrl,
         id: track.id
     })).then((res) => setShowModal(false))
-        // .catch(async (res) => {
-        //     const data = await res.json();
-        //     if (data && data.errors) setErrors(data.errors)
-        // });
+        .catch(async (res) => {
+            const data = await res.json();
+            if (data && data.errors) setErrors(data.errors)
+        });
 };
 
   return (
@@ -36,7 +53,11 @@ function EditTrackForm({track, showModal, setShowModal}) {
     Basic Info
     </div>
     <div className="editFormCont">
-      <div className="editImgCont"><img ref={ref} className="editImg" src={imageUrl}/></div>
+      <div className="editImgCont"><img ref={ref} className="editImg" src={imageUrl || logo} onError={(e) => {
+                            e.target.onError = "";
+                            e.target.src = logo;
+                            return true;
+                        }}/></div>
     <form onSubmit={handleSubmit} className='editFormModal'>
         <div>Title</div>
         <input
@@ -45,7 +66,6 @@ function EditTrackForm({track, showModal, setShowModal}) {
           placeholder="Title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          required
         />
         <div>Description</div>
         <textarea
@@ -62,7 +82,6 @@ function EditTrackForm({track, showModal, setShowModal}) {
           placeholder="URL"
           value={url}
           onChange={(e) => setUrl(e.target.value)}
-          required
         />
         <div>Track Image Url</div>
         <input
@@ -73,12 +92,13 @@ function EditTrackForm({track, showModal, setShowModal}) {
           onChange={(e) => setImageUrl(e.target.value)}
         />
         <div>
-          {errors.map((error, idx) => <div className="errorModalText" key={idx}>{error}</div>)}
+          {Object.values(errors).map((error, idx) => <div className="errorModalText" key={idx}>{error}</div>)}
         </div>
 
         <div className="editSaveBut">
-        <button type="submit" className="saveBut" >Save</button>
-        <button className="cancelBut" onClick={() => setShowModal(false)}>Cancel </button>
+        <ReactAudioPlayer id='mp3check' muted={true} autoPlay src={url} onCanPlay={() => songVal()} onError={() => setErrors({...errors, 'Valid MP3':'Please enter a valid MP3 url'})}/>
+        <button type="submit" className="saveBut" disabled={Object.keys(errors).includes('Valid MP3')}>Save</button>
+        <button className="cancelBut" onClick={() => setShowModal(false)}>Cancel</button>
         </div>
       </form>
     </div>

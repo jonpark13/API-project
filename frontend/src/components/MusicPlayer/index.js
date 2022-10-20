@@ -3,6 +3,7 @@ import ReactAudioPlayer from 'react-audio-player';
 import { useDispatch, useSelector } from 'react-redux';
 import * as playerActions from '../../store/musicplayer'
 import * as songsActions from '../../store/songs'
+import logo from '../../assets/images/VVlogo.png'
 import './MusicPlayer.css'
 
 function MusicPlayer() {
@@ -29,7 +30,13 @@ function MusicPlayer() {
         <div className='musicFoot'>
             <div className='musicCont'>
                 <ReactAudioPlayer onEnded={() => {dispatch(playerActions.nextInLine());handlePlay()}} autoPlay controls={true} src={currPlay.url} style={style}/>
-                <div className='playDetails'><img className='tPic' src={currPlay.previewImage}/>
+                <div className='playDetails'>
+                    <img className='tPic' src={currPlay.previewImage || logo} onError={(e) => {
+                                e.target.onError = "";
+                                e.target.src = logo;
+                                e.target.style.background = "linear-gradient(90deg, rgba(255, 247, 255, 1) 0%, rgba(118, 194, 210, 1) 100%)"
+                                return true;
+                            }}/>
                     <div className='detailsTextCont'>
                     <div className='titleText'>{currPlay.title}</div>
                     <div className='artistText'>{currPlay.User.username}</div>

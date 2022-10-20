@@ -4,6 +4,7 @@ import * as songsActions from '../../store/songs'
 import * as playlistActions from '../../store/playlists'
 import { useDispatch, useSelector } from 'react-redux'
 import { Redirect } from 'react-router-dom'
+import logo from '../../assets/images/VVlogo.png'
 import MiniNav from '../MiniNav'
 import EditTrackModal from '../EditTrackModal'
 import DeleteTrackModal from '../DeleteTrackModal'
@@ -46,7 +47,12 @@ function UserTracks() {
                         <div className='trackContainer'>
                             {/* <img src={e.previewImage} alt={e.title}/> */}
                             <div className='trackImgCont'>
-                            <img className='trackImg' src={songsList.userTracks[e].previewImage} alt='test' />
+                            <img className='trackImg' src={songsList.userTracks[e].previewImage || logo} onError={(e) => {
+                                e.target.onError = "";
+                                e.target.src = logo;
+                                e.target.style.background = "linear-gradient(90deg, rgba(255, 247, 255, 1) 0%, rgba(118, 194, 210, 1) 100%)"
+                                return true;
+                            }}/>
                             </div>
                             <div className='trackDetails'>
                             <div className='trackTitle'>{songsList.userTracks[e].title}</div>

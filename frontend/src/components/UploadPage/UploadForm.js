@@ -3,8 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as songsActions from "../../store/songs";
 import * as sessionActions from "../../store/session"
-import './UploadPage.css'
 import ReactAudioPlayer from "react-audio-player";
+import logo from '../../assets/images/VVlogo.png'
+import './UploadPage.css'
 
 function UploadFormPage() {
     const dispatch = useDispatch();
@@ -15,6 +16,7 @@ function UploadFormPage() {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [albumId, setAlbumId] = useState("");
+    const [errors, setErrors] = useState({});
 
     //   userId: user.id,
     //   albumId,
@@ -23,15 +25,15 @@ function UploadFormPage() {
     //   url,
     //   previewImage: imageUrl
 
-    // useEffect(() => {
-    //     dispatch(sessionActions.refreshUser())
-    // }, [errors])
-
-    const [errors, setErrors] = useState([]);
+    const songVal = () => {
+      let newErr = errors
+      delete newErr['Valid MP3']
+      setErrors(newErr)
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setErrors([]);
+        setErrors({});
         return dispatch(songsActions.createSong({ userId: sessionUser.id, url, previewImage:imageUrl, title, description }))
             .catch(async (res) => {
                 const data = await res.json();
@@ -58,7 +60,7 @@ function UploadFormPage() {
           <div className="editImgCont">
             <img className="editImg" src={imageUrl} onError={(e) => {
                             e.target.onerror = "";
-                            e.target.src = "";
+                            e.target.src = logo;
                             e.target.style.background = "linear-gradient(90deg, rgba(255, 247, 255, 1) 0%, rgba(118, 194, 210, 1) 100%)"
                             return true;
                         }}/>
@@ -100,14 +102,9 @@ function UploadFormPage() {
           {Object.values(errors).map((error, idx) => <div className="errorModalText" key={idx}>{error}</div>)}
         </div>
         <div className="editSaveBut">
-        
-        <ReactAudioPlayer muted={true} autoPlay controls src={url} onCanPlay={() => setErrors([])} onError={() => setErrors({'Valid MP3':'Please enter a valid MP3 url'})}/>
-        <button type="submit" className="uploadSaveBut" disabled={errors.length}>Save</button>
-        <button className="cancelBut" onClick={handleReset}>Cancel </button>
-        <div>{JSON.stringify(errors)}</div>
-        </div>
-        <div>
-          {url}
+        <ReactAudioPlayer muted={true} autoPlay src={url} onCanPlay={() => setErrors(delete errors['Valid MP3'])} onError={() => setErrors({...errors, 'Valid MP3':'Please enter a valid MP3 url'})}/>
+        <button type="submit" className="uploadSaveBut" disabled={Object.keys(errors).includes('Valid MP3')}>Save</button>
+        <button className="cancelBut" onClick={handleReset}>Cancel</button>
         </div>
         </form>
         </div>

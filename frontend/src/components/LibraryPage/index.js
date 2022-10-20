@@ -4,6 +4,7 @@ import * as songsActions from '../../store/songs'
 import * as playlistActions from '../../store/playlists'
 import { useDispatch, useSelector } from 'react-redux'
 import { Redirect } from 'react-router-dom'
+import logo from '../../assets/images/VVlogo.png'
 import LoginFormModal from '../LoginFormModal';
 import Gallery from '../Gallery'
 import MiniGallery from '../MiniGallery'
@@ -35,11 +36,6 @@ function LibraryPage() {
                 <MiniGallery list={songsList.userTracks} feat={'songs'}/>
                 }
             </div>
-            <div>
-                {
-                    JSON.stringify(songsList.userTracks)
-                }
-            </div>
             <div className='textLine'>
             <div className='typeText'>Playlists</div>
             </div>
@@ -47,11 +43,6 @@ function LibraryPage() {
                 {
                 Object.keys(playlists).length &&
                 <MiniGallery list={playlists.Playlists} feat={'playlists'}/>
-                }
-            </div>
-            <div>
-                {
-                    JSON.stringify(playlists.Playlists)
                 }
             </div>
             </div>

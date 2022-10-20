@@ -4,6 +4,7 @@ import * as playlistActions from '../../store/playlists'
 import * as playerActions from '../../store/musicplayer'
 import playButton from '../../assets/images/playButFinal.png'
 import pauseButton from '../../assets/images/pauseButFinal.png'
+import logo from '../../assets/images/VVlogo.png'
 import './MiniGallery.css'
 
 const MiniGallery = ({ list,feat }) => {
@@ -35,11 +36,15 @@ const MiniGallery = ({ list,feat }) => {
     };
     const handlePause = () => {
         let audioElement = document.getElementsByClassName('react-audio-player')
-        audioElement[0].pause()
+        if(audioElement){
+            audioElement[0].pause()
+        }
     }
     const handlePlay = () => {
         let audioElement = document.getElementsByClassName('react-audio-player')
-        audioElement[0].play()
+        if(audioElement){
+            audioElement[0].play()
+        }
     }
 
     return (
@@ -48,11 +53,9 @@ const MiniGallery = ({ list,feat }) => {
                 <div className="mimgBox" key={i} >
                     {/* <img src={e.previewImage} alt={e.title}/> */}
                     <div className='mimgCont'>
-                        <img className='mimgO' src={e.imageUrl || e.previewImage} alt="" onError={(e) => {
-                            e.target.onerror = "";
-                            e.target.src = "";
-                            e.target.style.display = 'none'
-                            e.target.style.background = "linear-gradient(90deg, rgba(255, 247, 255, 1) 0%, rgba(118, 194, 210, 1) 100%)"
+                        <img className='mimgO' src={e.imageUrl || e.previewImage || logo} alt="" onError={(e) => {
+                            e.target.onError = "";
+                            e.target.src = logo;
                             return true;
                         }}/>
                         <img className='playButOverlay' src={playButton} onClick={() => {addToPlayer(e.id);setButton(i);handlePlay()}}/>
