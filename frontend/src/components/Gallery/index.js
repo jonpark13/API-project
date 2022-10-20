@@ -83,7 +83,7 @@ const Gallery = ({songs, length}) => {
                 <div className="imgBox" key={i}>
                     {/* <img src={e.previewImage} alt={e.title}/> */}
                     <div className='imgCont'>
-                        <img className='imgO' src={e.previewImage} alt='test'/>
+                        <img className='imgO' src={e.previewImage} alt='preview image'/>
                         <img className='playButOverlay' src={playButton} onClick={() => {addSelectedToPlayer(e.id);setButton(i);handlePlay()}}/>
                         <img className={(button === i) ? 'pauseButForward' : 'pauseButOverlay'} src={pauseButton} onClick={() => {setButton(null);handlePause()}}/>
                         <img className='ellipsesOverlay' src={ellipses} onClick={() => {handleEllipse(i)}} />

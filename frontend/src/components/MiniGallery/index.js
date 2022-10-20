@@ -6,7 +6,7 @@ import playButton from '../../assets/images/playButFinal.png'
 import pauseButton from '../../assets/images/pauseButFinal.png'
 import './MiniGallery.css'
 
-const MiniGallery = ({ list }) => {
+const MiniGallery = ({ list,feat }) => {
     const dispatch = useDispatch()
     const [button, setButton] = useState(null)
 
@@ -16,9 +16,14 @@ const MiniGallery = ({ list }) => {
         remArrLen = 6 - listLength
     }
 
-    const addPlaylistToPlayer = (id) => {
-        // console.log(id, 'selected Song')
-        return dispatch(playerActions.addPlaylist(id))
+    const addToPlayer = (id) => {
+        if(feat === 'playlists'){
+            // console.log(id, 'selected Song')
+            return dispatch(playerActions.addPlaylist(id))
+        }
+        if(feat === 'songs') {
+            return dispatch(playerActions.addToPlay(id))
+        }
     }
 
     const handler = (id) => {
@@ -50,7 +55,7 @@ const MiniGallery = ({ list }) => {
                             e.target.style.background = "linear-gradient(90deg, rgba(255, 247, 255, 1) 0%, rgba(118, 194, 210, 1) 100%)"
                             return true;
                         }}/>
-                        <img className='playButOverlay' src={playButton} onClick={() => {addPlaylistToPlayer(e.id);setButton(i);handlePlay()}}/>
+                        <img className='playButOverlay' src={playButton} onClick={() => {addToPlayer(e.id);setButton(i);handlePlay()}}/>
                         <img className={(button === i) ? 'pauseButForward' : 'pauseButOverlay'} src={pauseButton} onClick={() => {setButton(null);handlePause()}}/>
                     </div>
                     <div className='titleText'>{e.name || e.title}</div>

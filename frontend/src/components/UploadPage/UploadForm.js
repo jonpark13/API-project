@@ -4,6 +4,7 @@ import { Redirect } from "react-router-dom";
 import * as songsActions from "../../store/songs";
 import * as sessionActions from "../../store/session"
 import './UploadPage.css'
+import ReactAudioPlayer from "react-audio-player";
 
 function UploadFormPage() {
     const dispatch = useDispatch();
@@ -24,7 +25,7 @@ function UploadFormPage() {
 
     // useEffect(() => {
     //     dispatch(sessionActions.refreshUser())
-    // }, [])
+    // }, [errors])
 
     const [errors, setErrors] = useState([]);
 
@@ -34,12 +35,14 @@ function UploadFormPage() {
         return dispatch(songsActions.createSong({ userId: sessionUser.id, url, previewImage:imageUrl, title, description }))
             .catch(async (res) => {
                 const data = await res.json();
+                console.log(data)
                 if (data && data.errors) setErrors(data.errors);
             });
     };
 
     const handleReset = (e) => {
         e.preventDefault()
+        setErrors([])
         setUrl('')
         setImageUrl('')
         setTitle('')
@@ -68,7 +71,6 @@ function UploadFormPage() {
           placeholder="Title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          required
         />
         <div>Description</div>
         <textarea
@@ -85,7 +87,6 @@ function UploadFormPage() {
           placeholder="URL"
           value={url}
           onChange={(e) => setUrl(e.target.value)}
-          required
         />
         <div>Track Image Url</div>
         <input
@@ -96,11 +97,17 @@ function UploadFormPage() {
           onChange={(e) => setImageUrl(e.target.value)}
         />
             <div>
-          {errors.map((error, idx) => <div className="errorModalText" key={idx}>{error}</div>)}
+          {Object.values(errors).map((error, idx) => <div className="errorModalText" key={idx}>{error}</div>)}
         </div>
         <div className="editSaveBut">
-        <button type="submit" className="saveBut">Save</button>
+        
+        <ReactAudioPlayer muted={true} autoPlay controls src={url} onCanPlay={() => setErrors([])} onError={() => setErrors({'Valid MP3':'Please enter a valid MP3 url'})}/>
+        <button type="submit" className="uploadSaveBut" disabled={errors.length}>Save</button>
         <button className="cancelBut" onClick={handleReset}>Cancel </button>
+        <div>{JSON.stringify(errors)}</div>
+        </div>
+        <div>
+          {url}
         </div>
         </form>
         </div>

@@ -32,7 +32,7 @@ function LibraryPage() {
             <div>
                 {
                 !!(songsList.userTracks) &&
-                <MiniGallery list={songsList.userTracks} />
+                <MiniGallery list={songsList.userTracks} feat={'songs'}/>
                 }
             </div>
             <div>
@@ -46,7 +46,7 @@ function LibraryPage() {
             <div className='bottomEl'>
                 {
                 Object.keys(playlists).length &&
-                <MiniGallery list={playlists.Playlists} />
+                <MiniGallery list={playlists.Playlists} feat={'playlists'}/>
                 }
             </div>
             <div>

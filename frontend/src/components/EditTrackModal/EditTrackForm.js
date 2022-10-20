@@ -8,9 +8,9 @@ function EditTrackForm({track, showModal, setShowModal}) {
   const ref = useRef()
   const onImageError = () => ref.current.src=track.previewImage;
   const [title, setTitle] = useState(`${track.title}`);
-  const [description, setDescription] = useState("");
-  const [url, setUrl] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
+  const [description, setDescription] = useState(`${track.description}`);
+  const [url, setUrl] = useState(`${track.url}`);
+  const [imageUrl, setImageUrl] = useState(`${track.previewImage}`);
   
 
   const [errors, setErrors] = useState([]);
@@ -23,12 +23,11 @@ function EditTrackForm({track, showModal, setShowModal}) {
         url,
         imageUrl,
         id: track.id
-    })).then(async (res) => await console.log(res, "res"))
+    })).then((res) => setShowModal(false))
         // .catch(async (res) => {
         //     const data = await res.json();
         //     if (data && data.errors) setErrors(data.errors)
         // });
-    console.log(check, 'check')
 };
 
   return (
@@ -78,8 +77,8 @@ function EditTrackForm({track, showModal, setShowModal}) {
         </div>
 
         <div className="editSaveBut">
-        <button type="submit" className="saveBut">Save</button>
-        <button className="cancelBut" onClick={(e) => setShowModal(false)}>Cancel </button>
+        <button type="submit" className="saveBut" >Save</button>
+        <button className="cancelBut" onClick={() => setShowModal(false)}>Cancel </button>
         </div>
       </form>
     </div>

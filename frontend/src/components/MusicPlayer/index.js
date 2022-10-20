@@ -8,7 +8,7 @@ import './MusicPlayer.css'
 function MusicPlayer() {
     const ref = useRef()
     const dispatch = useDispatch()
-    const currPlay = useSelector(state => state.musicplayer);
+    const currPlay = useSelector(state => state.musicplayer.currentSong);
 
     let style = {
         width: "70%",
@@ -25,14 +25,14 @@ function MusicPlayer() {
     }
 
     return (
-        <>{Object.keys(currPlay).includes('currentSong') &&
+        <>{Object.keys(currPlay).length&&
         <div className='musicFoot'>
             <div className='musicCont'>
-                <ReactAudioPlayer onEnded={() => {dispatch(playerActions.nextInLine());handlePlay()}} autoPlay controls={true} src={currPlay.currentSong.url} style={style}/>
-                <div className='playDetails'><img className='tPic' src={currPlay.currentSong.previewImage}/>
+                <ReactAudioPlayer onEnded={() => {dispatch(playerActions.nextInLine());handlePlay()}} autoPlay controls={true} src={currPlay.url} style={style}/>
+                <div className='playDetails'><img className='tPic' src={currPlay.previewImage}/>
                     <div className='detailsTextCont'>
-                    <div className='titleText'>{currPlay.currentSong.title}</div>
-                    <div className='artistText'>{currPlay.currentSong.User.username}</div>
+                    <div className='titleText'>{currPlay.title}</div>
+                    <div className='artistText'>{currPlay.User.username}</div>
                     </div>
                 </div>
             </div>

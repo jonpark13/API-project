@@ -6,6 +6,7 @@ const GET_PLAYLIST = 'playlist/getPlaylist'
 const ADD_PLAYLIST = 'playlist/addPlaylist'
 const ADDTO_PLAYLIST = 'playlist/addToPlaylist'
 const DELETE_PLAYLIST = 'playlist/deletePlaylist'
+const EDIT_PLAYLIST = 'playlist/editPlaylist'
 
 const getPlaylists = (playlists) => {
     return {
@@ -39,6 +40,13 @@ const addToPlaylist = (playlist, song) => {
 const delPlaylist = (playlist) => {
     return {
         type: DELETE_PLAYLIST,
+        playlist
+    }
+}
+
+const editPlaylist = (playlist) => {
+    return {
+        type: EDIT_PLAYLIST,
         playlist
     }
 }
@@ -96,6 +104,21 @@ export const deletePlaylist = (playlist) => async (dispatch) => {
     return data;
 };
 
+export const editingPlaylist = (playlist) => async (dispatch) => {
+    const { userId, name, imageUrl } = playlist
+    const response = await csrfFetch(`/api/playlists/${playlist.id}`, {
+        method: 'PUT',
+        body: JSON.stringify({
+            userId,
+            name,
+            imageUrl
+        })
+    })
+    const data = await response.json()
+    dispatch(editPlaylist(playlist))
+    return data;
+};
+
 const initialState = {}
 
 const playlistsReducer = (state = initialState, action) => {
@@ -123,6 +146,10 @@ const playlistsReducer = (state = initialState, action) => {
             console.log(state.Playlists, 'state', currState, 'curr', action.playlist, 'id')
             delete currState.Playlists[action.playlist.playlist]
             return currState
+        case EDIT_PLAYLIST:
+            console.log(state.Playlists, action.playlist, 'id')
+
+            return {...state, Playlists: {...state.Playlists, [action.playlist.id]:action.playlist}}
         default:
             return state
     }

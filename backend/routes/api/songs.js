@@ -87,14 +87,14 @@ router.post('/', restoreUser, async (req, res) => {
     const { user } = req
     const { title, description, url, imageUrl, albumId } = req.body
     if(!title || !url){
+        const errors = {}
+        if(!title) errors.title = "Song title is required"
+        if(!url) errors.url = "Audio is required"
         res.status(400)
         return res.json({
             "message": "Validation Error",
             "statusCode": 400,
-            "errors": {
-                "title": "Song title is required",
-                "url": "Audio is required"
-            }
+            errors
         })
     }
     

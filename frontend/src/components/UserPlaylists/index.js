@@ -57,6 +57,7 @@ function UserPlaylists() {
                         </div>
                     ))}
                 </div>
+                <div>{JSON.stringify(playlist)}</div>
             </div>
         </div>
     );
