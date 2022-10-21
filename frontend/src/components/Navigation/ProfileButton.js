@@ -26,10 +26,11 @@ function ProfileButton({ user }) {
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
 
-  const logout = async (e) => {
+  const logout = (e) => {
+    console.log('Logout pressed')
     e.preventDefault();
-    await dispatch(sessionActions.logoutUser());
-    history.replace('/')
+    dispatch(sessionActions.logoutUser())
+    .then(() => history.replace('/'))
   };
 
   return (
@@ -37,15 +38,12 @@ function ProfileButton({ user }) {
       <button onClick={onClick}>
         <i className="fa-solid fa-user-astronaut icon" />
       </button>
-      <div className={`navBut ${showMenu ? 'drk' : ''}`}>
+      <div className={`navBut${showMenu ? ' drk' : ''}`}>
         {user.firstName}
       </div>
-      <div>
+      <div className={`menu ${showMenu ? 'active' : 'inactive'}`}>
+          <button className="log" onClick={logout}>Log Out</button>
       </div>
-        <div className={`menu ${showMenu ? 'active' : 'inactive'}`}>
-            <button className="log" onClick={logout}>Log Out</button>
-        </div>
-
     </>
   );
 }

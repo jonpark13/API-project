@@ -128,7 +128,7 @@ export const createSong = (song) => async (dispatch) => {
         title,
         description,
         url,
-        previewImage } = song
+        imageUrl } = song
     const response = await csrfFetch('/api/songs', {
         method: 'POST',
         body: JSON.stringify({
@@ -137,12 +137,12 @@ export const createSong = (song) => async (dispatch) => {
             title,
             description,
             url,
-            previewImage
+            imageUrl
         })
     })
     const data = await response.json()
     dispatch(addSong(data))
-    return data;
+    return Promise.resolve();
 };
 
 const initialState = {}

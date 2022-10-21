@@ -66,6 +66,18 @@
   height: 800px;
 }
 
+#editPlaylistForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  background-color: white;
+  z-index: 999;
+  width: 800px;
+  height: 400px;
+}
+
 .formModal {
   display: flex;
   align-items: center;

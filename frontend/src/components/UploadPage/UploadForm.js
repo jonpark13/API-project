@@ -34,12 +34,18 @@ function UploadFormPage() {
     const handleSubmit = (e) => {
         e.preventDefault();
         setErrors({});
-        return dispatch(songsActions.createSong({ userId: sessionUser.id, url, previewImage:imageUrl, title, description }))
-            .catch(async (res) => {
+        return dispatch(songsActions.createSong({ userId: sessionUser.id, url, imageUrl, title, description }))
+        .then(() => {e.preventDefault()
+        setErrors([])
+        setUrl('')
+        setImageUrl('')
+        setTitle('')
+        setDescription('')})
+        .catch(async (res) => {
                 const data = await res.json();
-                console.log(data)
+                console.log(res)
                 if (data && data.errors) setErrors(data.errors);
-            });
+            })
     };
 
     const handleReset = (e) => {

@@ -118,7 +118,7 @@ router.post('/', restoreUser, async (req, res) => {
         previewImage: imageUrl // adding in preview Images
     })
     await newSong.save() //?
-    res.json(newSong)
+    return res.json(newSong)
 })
 
 // Get all songs by current user
@@ -126,6 +126,10 @@ router.get('/current', restoreUser, async (req, res) => {
     const { user } = req
     // console.log(user.toSafeObject())
     const getSongs = await Song.findAll({
+        include:
+            [{
+                model: User
+            }],
         where: {
             userId: user.id
         }

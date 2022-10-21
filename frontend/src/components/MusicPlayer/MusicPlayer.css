@@ -7,6 +7,7 @@
     bottom: 0%;
     width: 100%;
     background-color: #f1f3f4;
+    border: #999 1px solid;
 }
 
 
@@ -18,10 +19,18 @@
 }
 
 .playDetails {
-    width: 40%;
+    width: 30%;
     height: 50px;
     display: flex;
     align-items: center;
+}
+
+.playDetailsList {
+    width: 90%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
 }
 
 .tPic {
@@ -36,13 +45,49 @@
 }
 
 .titleText {
+    width:100%;
     color: #333;
     font-size: 14px;
     font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif
 }
 
 .artistText {
+    width:100%;
     color: #999;
     font-size: 12px;
     font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+}
+
+.playMod {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    background-color: rgb(255, 255, 255);
+    border:#e5e5e5 1px solid;
+    position:fixed;
+    left: 65%;
+    bottom:60px;
+    height: 545px;
+    width: 400px;
+    padding: 20px;
+    z-index: 200;
+}
+
+.playMod.inactive {
+    opacity: 0;
+    visibility: hidden;
+}
+.playMod.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .log {
+    background: rgb(51,51,51);
+    color: white;
+    border:none
+  }
+
+.playActive {
+    color:rgb(0, 158, 194)
 }

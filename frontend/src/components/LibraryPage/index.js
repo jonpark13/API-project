@@ -21,7 +21,7 @@ function LibraryPage() {
         dispatch(songsActions.songsGrab())
         dispatch(playlistActions.playlistsCurrGrab())
         dispatch(songsActions.userSongsGrab())
-    },[])
+    },[dispatch])
 
     return (
         <>
@@ -32,8 +32,8 @@ function LibraryPage() {
             <div className='typeText'>Your tracks</div></div>
             <div>
                 {
-                !!(songsList.userTracks) &&
-                <MiniGallery list={songsList.userTracks} feat={'songs'}/>
+                    !!Object.keys(songsList.userTracks).length &&
+                <Gallery songs={Object.values(songsList.userTracks)} length={24}/>
                 }
             </div>
             <div className='textLine'>
