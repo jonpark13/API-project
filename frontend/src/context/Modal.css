@@ -43,6 +43,18 @@
   height: 200px;
 }
 
+#delete-s-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  background-color: white;
+  z-index: 999;
+  width: 400px;
+  height: 300px;
+}
+
 #playlist-content {
   display: flex;
   flex-direction: column;
@@ -74,8 +86,19 @@
   position: absolute;
   background-color: white;
   z-index: 999;
-  width: 800px;
+  width: 600px;
   height: 400px;
+}
+
+#addToPlaylistForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  background-color: white;
+  z-index: 999;
+  width: 500px;
 }
 
 .formModal {
@@ -248,6 +271,7 @@
 
 .deleteFormCont {
   display: flex;
+  align-items: center;
   flex-direction: row;
   height: 80%;
   width:95%
@@ -310,9 +334,9 @@
 .createPlaylistForm {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: left;
   justify-content: center;
-  width:500px
+  width:100%
 }
 
 .createPlaylistForm {
@@ -335,4 +359,9 @@
 .plTitle {
   font-size: 28px;
   font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif
+}
+
+.saveAlign {
+  display: flex;
+  justify-content: right;
 }

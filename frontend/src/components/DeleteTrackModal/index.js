@@ -9,7 +9,7 @@ function DeleteTrackModal({track}) {
     <>
       <button onClick={() => {setShowModal(true);console.log(showModal)}} className='trackDelete'><i className="fa-solid fa-trash" />Delete</button>
       {showModal && (
-        <Modal onClose={() => setShowModal(false)} form={'modal-content'}>
+        <Modal onClose={() => setShowModal(false)} form={'delete-s-content'}>
           <DeleteTrackForm track={track} showModal={showModal} setShowModal={setShowModal}/>
         </Modal>
       )}

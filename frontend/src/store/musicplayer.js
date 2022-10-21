@@ -58,7 +58,16 @@ const musicPlayerReducer = (state = initialState, action) => {
                 }
             }
         case NEXT:
-            if (!!state.nextSongs) {
+            console.log(Object.keys(state.currentSong) == 0)
+            if(Object.keys(state.currentSong) == 0){
+                return {
+                    ...state,
+                    currentSong: {
+                        ...action.single_song
+                    }
+                }
+            }
+            else if (!!state.nextSongs) {
                 return {
                     ...state,
                     nextSongs: [
@@ -66,14 +75,6 @@ const musicPlayerReducer = (state = initialState, action) => {
                             ...action.single_song
                         }
                     ]
-                }
-            }
-            else if(!!state.currentSong){
-                return {
-                    ...state,
-                    currentSong: {
-                        ...action.single_song
-                    }
                 }
             }
             else{

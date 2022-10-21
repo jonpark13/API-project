@@ -16,7 +16,9 @@ function DeletePlaylistForm({playlist, showModal, setShowModal}) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        return dispatch(playlistActions.deletePlaylist(playlist.id)).catch(async (res) => {
+        return dispatch(playlistActions.deletePlaylist(playlist.id))
+            .then(() => setShowModal(false))
+            .catch(async (res) => {
             const data = await res.json();
         });
     };
@@ -42,7 +44,7 @@ function DeletePlaylistForm({playlist, showModal, setShowModal}) {
                     <button className="cancelDelBut"
                         onClick={(e) => setShowModal(false)}>Cancel
                     </button>
-                </div>s
+                </div>
             </form>
         </div>
 
