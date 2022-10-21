@@ -7,6 +7,7 @@ import PlaylistModal from '../PlaylistModal'
 import AddPlaylistModal from '../AddPlaylistModal'
 import Dropdown from '../Dropdown'
 import * as playerActions from '../../store/musicplayer'
+import logo from '../../assets/images/VVlogo.png'
 import { useDispatch } from 'react-redux'
 
 const Gallery = ({songs, length}) => {
@@ -83,7 +84,11 @@ const Gallery = ({songs, length}) => {
                 <div className="imgBox" key={i}>
                     {/* <img src={e.previewImage} alt={e.title}/> */}
                     <div className='imgCont'>
-                        <img className='imgO' src={e.previewImage} alt='test'/>
+                        <img className='imgO' src={e.previewImage || logo} alt='preview image' onError={(e) => {
+                            e.target.onError = "";
+                            e.target.src = logo;
+                            return true;
+                        }}/>
                         <img className='playButOverlay' src={playButton} onClick={() => {addSelectedToPlayer(e.id);setButton(i);handlePlay()}}/>
                         <img className={(button === i) ? 'pauseButForward' : 'pauseButOverlay'} src={pauseButton} onClick={() => {setButton(null);handlePause()}}/>
                         <img className='ellipsesOverlay' src={ellipses} onClick={() => {handleEllipse(i)}} />

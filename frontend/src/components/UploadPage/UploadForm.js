@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as songsActions from "../../store/songs";
 import * as sessionActions from "../../store/session"
+import ReactAudioPlayer from "react-audio-player";
+import logo from '../../assets/images/VVlogo.png'
 import './UploadPage.css'
 
 function UploadFormPage() {
@@ -14,6 +16,7 @@ function UploadFormPage() {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [albumId, setAlbumId] = useState("");
+    const [errors, setErrors] = useState({});
 
     //   userId: user.id,
     //   albumId,
@@ -22,24 +25,32 @@ function UploadFormPage() {
     //   url,
     //   previewImage: imageUrl
 
-    // useEffect(() => {
-    //     dispatch(sessionActions.refreshUser())
-    // }, [])
-
-    const [errors, setErrors] = useState([]);
+    const songVal = () => {
+      let newErr = errors
+      delete newErr['Valid MP3']
+      setErrors(newErr)
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setErrors([]);
-        return dispatch(songsActions.createSong({ userId: sessionUser.id, url, previewImage:imageUrl, title, description }))
-            .catch(async (res) => {
+        setErrors({});
+        return dispatch(songsActions.createSong({ userId: sessionUser.id, url, imageUrl, title, description }))
+        .then(() => {e.preventDefault()
+        setErrors([])
+        setUrl('')
+        setImageUrl('')
+        setTitle('')
+        setDescription('')})
+        .catch(async (res) => {
                 const data = await res.json();
+                console.log(res)
                 if (data && data.errors) setErrors(data.errors);
-            });
+            })
     };
 
     const handleReset = (e) => {
         e.preventDefault()
+        setErrors([])
         setUrl('')
         setImageUrl('')
         setTitle('')
@@ -52,7 +63,14 @@ function UploadFormPage() {
         Basic Info
         </div>
         <div className="createFormCont">
-          <div className="editImgCont"><img className="editImg" src={imageUrl}/></div>
+          <div className="editImgCont">
+            <img className="editImg" src={imageUrl} onError={(e) => {
+                            e.target.onerror = "";
+                            e.target.src = logo;
+                            e.target.style.background = "linear-gradient(90deg, rgba(255, 247, 255, 1) 0%, rgba(118, 194, 210, 1) 100%)"
+                            return true;
+                        }}/>
+          </div>
         <form onSubmit={handleSubmit} className='createSongForm'>
         <div>Title</div>
         <input
@@ -61,7 +79,6 @@ function UploadFormPage() {
           placeholder="Title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          required
         />
         <div>Description</div>
         <textarea
@@ -78,7 +95,6 @@ function UploadFormPage() {
           placeholder="URL"
           value={url}
           onChange={(e) => setUrl(e.target.value)}
-          required
         />
         <div>Track Image Url</div>
         <input
@@ -89,11 +105,12 @@ function UploadFormPage() {
           onChange={(e) => setImageUrl(e.target.value)}
         />
             <div>
-          {errors.map((error, idx) => <div className="errorModalText" key={idx}>{error}</div>)}
+          {Object.values(errors).map((error, idx) => <div className="errorModalText" key={idx}>{error}</div>)}
         </div>
         <div className="editSaveBut">
-        <button type="submit" className="saveBut">Save</button>
-        <button className="cancelBut" onClick={handleReset}>Cancel </button>
+        <ReactAudioPlayer muted={true} autoPlay src={url} onCanPlay={() => setErrors(delete errors['Valid MP3'])} onError={() => setErrors({...errors, 'Valid MP3':'Please enter a valid MP3 url'})}/>
+        <button type="submit" className="uploadSaveBut" disabled={Object.keys(errors).includes('Valid MP3')}>Save</button>
+        <button className="cancelBut" onClick={handleReset}>Cancel</button>
         </div>
         </form>
         </div>

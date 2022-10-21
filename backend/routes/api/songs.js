@@ -87,14 +87,14 @@ router.post('/', restoreUser, async (req, res) => {
     const { user } = req
     const { title, description, url, imageUrl, albumId } = req.body
     if(!title || !url){
+        const errors = {}
+        if(!title) errors.title = "Song title is required"
+        if(!url) errors.url = "Audio is required"
         res.status(400)
         return res.json({
             "message": "Validation Error",
             "statusCode": 400,
-            "errors": {
-                "title": "Song title is required",
-                "url": "Audio is required"
-            }
+            errors
         })
     }
     
@@ -118,7 +118,7 @@ router.post('/', restoreUser, async (req, res) => {
         previewImage: imageUrl // adding in preview Images
     })
     await newSong.save() //?
-    res.json(newSong)
+    return res.json(newSong)
 })
 
 // Get all songs by current user
@@ -126,6 +126,10 @@ router.get('/current', restoreUser, async (req, res) => {
     const { user } = req
     // console.log(user.toSafeObject())
     const getSongs = await Song.findAll({
+        include:
+            [{
+                model: User
+            }],
         where: {
             userId: user.id
         }
@@ -167,14 +171,14 @@ router.put('/:id', async (req, res) => {
     const { title, description, url, imageUrl, albumId } = req.body
 
     if(!title || !url){
+        const errors = {}
+        if(!title) errors.title = "Song title is required"
+        if(!url) errors.url = "Audio is required"
         res.status(400)
         return res.json({
             "message": "Validation Error",
             "statusCode": 400,
-            "errors": {
-                "title": "Song title is required",
-                "url": "Audio is required"
-            }
+            errors
         })
     }
 

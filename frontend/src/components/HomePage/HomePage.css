@@ -71,14 +71,44 @@
     font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
 }
 
+.topSplashCont {
+    display:flex;
+    justify-content: center;
+    position: relative;
+    flex-wrap: wrap;
+    top:25%;
+    right:15%;
+    background-size: cover;
+    background-position:bottom;
+    height:40%
+}
+
+.topSplashTextMain {
+    font-size: 30px;
+    text-shadow: 0px 0px 1px black;
+    color: white;
+    margin: 5px 40px;
+    font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+}
+
+.topSplashText {
+    text-align: center;
+    font-size: 20px;
+    text-shadow: 0px 0px 1px black;
+    color: white;
+    margin: 5px 40px;
+    font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+}
+
+
 .actionBut {
     display: flex;
     align-items: center;
     justify-content: space-between;
     position: relative;
     top:0%;
-    left:60%;
-    width: 220px;
+    left:62%;
+    width: 48%;
     height:100px;
 }
 
@@ -123,6 +153,20 @@
 
 .createAccCond:hover {
     cursor: pointer;
+}
+
+.createAccCondLarge {
+    background-color: rgb(0, 158, 194);
+    cursor:pointer;
+    color: white;
+    border-radius: 3px;
+    border: 0;
+    height: 45px;
+    width: 250px;
+    padding: 0px 10px;
+    margin: 20px;
+    font-size: larger;
+    font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
 }
 
 .newsText {

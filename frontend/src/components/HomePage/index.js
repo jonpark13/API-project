@@ -73,9 +73,18 @@ function HomePage() {
                         </div>
                         <div className='actionBut'>
                             <LoginFormModal name={'Sign In'} css={'signInCond'}/>
-                            <CreateAccountModal name={'Create Account'} />
-
+                            <CreateAccountModal name={'Create Account'} css={'createAccCond'}/>
                         </div>
+                        <div className='topSplashCont'>
+                            <div className='topSplashTextMain'>
+                                What's next in music is first on WaveVapor
+                            </div>
+                            <div className='topSplashText'>
+                            Upload your first track and begin your journey. WaveVapor gives you space to create, find your fans, and connect with other artists.
+                            </div>
+                            <CreateAccountModal name={'Start uploading today'} css={'createAccCondLarge'}/>
+                        </div>
+
                     </div>
 
                     <div className='newsText'>
@@ -96,7 +105,7 @@ function HomePage() {
                                 Calling all creators
                             </div>
                             <div className='botSplashText'>
-                                Get on SoundCloud to connect with fans, share your sounds, and grow your audience. What are you waiting for?
+                                Get on WaveVapor to connect with fans, share your sounds, and grow your audience. What are you waiting for?
                             </div>
                         </div>
                         <div className='botSplashRight' style={{ backgroundImage: `url(https://source.unsplash.com/450x450?music%20festival)` }}>
@@ -110,7 +119,7 @@ function HomePage() {
                         Save tracks, follow artists and build playlists. All for free.
                     </div>
                     <div className='botCreateBut'>
-                        <CreateAccountModal name={'Create Account'} />
+                        <CreateAccountModal name={'Create Account'} css={'createAccCond'}/>
                     </div>
                     <div className='botSignBut'>
                         <div className='text'>Already have an account? </div>

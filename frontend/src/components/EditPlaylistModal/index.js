@@ -9,7 +9,7 @@ function EditPlaylistModal({playlist}) {
     <>
       <button onClick={() => {setShowModal(true);console.log(showModal)}} className='trackEdit'><i className="fa-solid fa-pen-to-square space" />Edit</button>
       {showModal && (
-        <Modal onClose={() => setShowModal(false)} form={'editTrackForm'}>
+        <Modal onClose={() => setShowModal(false)} form={'editPlaylistForm'}>
           <EditPlaylistForm playlist={playlist} showModal={showModal} setShowModal={setShowModal}/>
         </Modal>
       )}

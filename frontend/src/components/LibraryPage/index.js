@@ -4,6 +4,7 @@ import * as songsActions from '../../store/songs'
 import * as playlistActions from '../../store/playlists'
 import { useDispatch, useSelector } from 'react-redux'
 import { Redirect } from 'react-router-dom'
+import logo from '../../assets/images/VVlogo.png'
 import LoginFormModal from '../LoginFormModal';
 import Gallery from '../Gallery'
 import MiniGallery from '../MiniGallery'
@@ -20,7 +21,7 @@ function LibraryPage() {
         dispatch(songsActions.songsGrab())
         dispatch(playlistActions.playlistsCurrGrab())
         dispatch(songsActions.userSongsGrab())
-    },[])
+    },[dispatch])
 
     return (
         <>
@@ -31,8 +32,8 @@ function LibraryPage() {
             <div className='typeText'>Your tracks</div></div>
             <div>
                 {
-                !!(songsList.userTracks) &&
-                <MiniGallery list={songsList.userTracks} />
+                    !!songsList.userTracks &&
+                <Gallery songs={Object.values(songsList.userTracks)} length={24}/>
                 }
             </div>
             <div className='textLine'>
@@ -40,8 +41,8 @@ function LibraryPage() {
             </div>
             <div className='bottomEl'>
                 {
-                Object.keys(playlists).length &&
-                <MiniGallery list={playlists.Playlists} />
+                !!Object.keys(playlists).length &&
+                <MiniGallery list={playlists.Playlists} feat={'playlists'}/>
                 }
             </div>
             </div>

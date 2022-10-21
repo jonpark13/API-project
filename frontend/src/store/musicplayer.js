@@ -47,7 +47,7 @@ export const nextInLine = () => async (dispatch) => {
     dispatch(playNext())
 };
 
-const initialState = {}
+const initialState = {currentSong:{}, nextSongs:[]}
 
 const musicPlayerReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -89,10 +89,8 @@ const musicPlayerReducer = (state = initialState, action) => {
             }
         case CONT:
             console.log('here2')
-            if (!state.nextSongs) {
-                return {
-                    ...state
-                }
+            if (!state.nextSongs.length) {
+                return {...state}
             }
             else{
                 console.log('here1')

@@ -4,9 +4,10 @@ import * as playlistActions from '../../store/playlists'
 import * as playerActions from '../../store/musicplayer'
 import playButton from '../../assets/images/playButFinal.png'
 import pauseButton from '../../assets/images/pauseButFinal.png'
+import logo from '../../assets/images/VVlogo.png'
 import './MiniGallery.css'
 
-const MiniGallery = ({ list }) => {
+const MiniGallery = ({ list,feat }) => {
     const dispatch = useDispatch()
     const [button, setButton] = useState(null)
 
@@ -16,9 +17,14 @@ const MiniGallery = ({ list }) => {
         remArrLen = 6 - listLength
     }
 
-    const addPlaylistToPlayer = (id) => {
-        // console.log(id, 'selected Song')
-        return dispatch(playerActions.addPlaylist(id))
+    const addToPlayer = (id) => {
+        if(feat === 'playlists'){
+            // console.log(id, 'selected Song')
+            return dispatch(playerActions.addPlaylist(id))
+        }
+        if(feat === 'songs') {
+            return dispatch(playerActions.addToPlay(id))
+        }
     }
 
     const handler = (id) => {
@@ -30,24 +36,32 @@ const MiniGallery = ({ list }) => {
     };
     const handlePause = () => {
         let audioElement = document.getElementsByClassName('react-audio-player')
-        audioElement[0].pause()
+        if(audioElement){
+            audioElement[0].pause()
+        }
     }
     const handlePlay = () => {
         let audioElement = document.getElementsByClassName('react-audio-player')
-        audioElement[0].play()
+        if(audioElement){
+            audioElement[0].play()
+        }
     }
 
     return (
         <div className='miniGalleryBox'>
-            {Object.keys(list).map((e, i) => (
+            {Object.values(list).map((e, i) => (
                 <div className="mimgBox" key={i} >
                     {/* <img src={e.previewImage} alt={e.title}/> */}
                     <div className='mimgCont'>
-                        <img className='mimgO' src={list[e].imageUrl} alt='test' />
-                        <img className='playButOverlay' src={playButton} onClick={() => {addPlaylistToPlayer(list[e].id);setButton(i);handlePlay()}}/>
+                        <img className='mimgO' src={e.imageUrl || e.previewImage || logo} alt="" onError={(e) => {
+                            e.target.onError = "";
+                            e.target.src = logo;
+                            return true;
+                        }}/>
+                        <img className='playButOverlay' src={playButton} onClick={() => {addToPlayer(e.id);setButton(i);handlePlay()}}/>
                         <img className={(button === i) ? 'pauseButForward' : 'pauseButOverlay'} src={pauseButton} onClick={() => {setButton(null);handlePause()}}/>
                     </div>
-                    <div className='titleText'>{list[e].name}</div>
+                    <div className='titleText'>{e.name || e.title}</div>
                     {/* <div className='artistText'>{list[e].userId}</div> */}
                 </div>
             ))}

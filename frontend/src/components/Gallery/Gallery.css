@@ -73,6 +73,8 @@
     background-color: #333;
     border: 1px rgba(111, 111, 111, 0.459) solid;
     mix-blend-mode: normal;
+    height:173px;
+    width:173px;
     transition: mix-blend-mode 0.2s linear
 }
 

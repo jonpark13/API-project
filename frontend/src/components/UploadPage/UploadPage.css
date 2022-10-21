@@ -53,3 +53,31 @@
 .createSongForm {
     width:80%
 }
+
+.uploadSaveBut {
+  background-color: rgb(0, 158, 194);
+  cursor: pointer;
+  color: white;
+  border-radius: 3px;
+  border: 0;
+  height: 30px;
+  width: 20%;
+  font-size: 15px;
+  font-family: Interstate, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Garuda, Verdana, Tahoma, sans-serif;
+  padding: 0%;
+  margin-left: 5px;
+}
+
+.uploadSaveBut:disabled {
+  background-color: rgb(126, 126, 126);
+  cursor: pointer;
+  color: white;
+  border-radius: 3px;
+  border: 0;
+  height: 30px;
+  width: 20%;
+  font-size: 15px;
+  font-family: Interstate, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Garuda, Verdana, Tahoma, sans-serif;
+  padding: 0%;
+  margin-left: 5px;
+}

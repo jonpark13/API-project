@@ -8,14 +8,14 @@ function DeleteTrackForm({track, showModal, setShowModal}) {
   const ref = useRef()
   const onImageError = () => ref.current.src=track.previewImage;
   const sessionUser = useSelector((state) => state.session.user);
-  const [imageUrl, setImageUrl] = useState("");
-  
 
+  
   const [errors, setErrors] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     return dispatch(songsActions.deleteSong(track.id))
+    .then(() =>  setShowModal(false))
         .catch(async (res) => {
             const data = await res.json();
         });
@@ -41,7 +41,7 @@ function DeleteTrackForm({track, showModal, setShowModal}) {
 
         <div className="editSaveBut">
         <button type="submit" className="delBut">Delete</button>
-        <button className="cancelDelBut" onClick={(e) => setShowModal(false)}>Cancel </button>
+        <button className="cancelDelBut" onClick={() => setShowModal(false)}>Cancel </button>
         </div>
       </form>
     </div>
