@@ -3,7 +3,7 @@ import { Modal } from '../../context/Modal';
 import PlaylistOptions from './PlaylistOptions';
 import './PlaylistOptions.css'
 
-function PlaylistModal({song}) {
+function PlaylistModal({song, }) {
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -11,7 +11,7 @@ function PlaylistModal({song}) {
       <button onClick={() => setShowModal(true)} className='dropListText'>Add to Playlist</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)} form={'addToPlaylistForm'}>
-          <PlaylistOptions song={song}/>
+          <PlaylistOptions song={song} showModal={showModal} setShowModal={setShowModal}/>
         </Modal>
       )}
     </>

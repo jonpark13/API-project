@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import * as playlistActions from '../../store/playlists'
 import logo from '../../assets/images/VVlogo.png'
 
-function PlaylistOptions({song}) {
+function PlaylistOptions({song, showModal, setShowModal}) {
   const dispatch = useDispatch()
   const [active, setActive] = useState(true)
   const [name, setName] = useState("");
@@ -16,7 +16,9 @@ function PlaylistOptions({song}) {
 
   const handleAddTrack = (e) => {
         return dispatch(playlistActions.addSongToPlaylist(e, song.id))
-
+          .then(() => {
+            setShowModal(false)
+          })
     };
   
   return (<>
