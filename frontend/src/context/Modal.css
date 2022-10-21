@@ -239,6 +239,20 @@
 
 }
 
+.cancelpl {
+  background-color: rgb(255, 255, 255);
+  cursor: pointer;
+  border-radius: 3px;
+  border: #333 1px solid;
+  height: 30px;
+  width: 70px;
+  font-size: 15px;
+  font-family: Interstate, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Garuda, Verdana, Tahoma, sans-serif;
+  padding: 0%;
+  margin-left: 5px;
+
+}
+
 .cancelDelBut {
   background-color: rgb(255, 255, 255);
   cursor: pointer;
@@ -363,5 +377,5 @@
 
 .saveAlign {
   display: flex;
-  justify-content: right;
+  width:100%
 }

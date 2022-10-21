@@ -3,26 +3,32 @@ import {useDispatch, useSelector} from "react-redux";
 import logo from '../../assets/images/VVlogo.png'
 import * as playlistActions from '../../store/playlists'
 
-function PlaylistOptions({song}) {
+function PlaylistOptions({song, showModal, setShowModal}) {
     const dispatch = useDispatch()
     const [name, setName] = useState("");
     const [imageUrl, setImageUrl] = useState("");
+    const [errors, setErrors] = useState({});
     const playlists = useSelector(state => state.playlists)
     const sessionUser = useSelector(state => state.user)
     let lists = playlists.Playlist
 
-    const handleAddTrack = () => {
-        return dispatch(playlistActions.addSongToPlaylist(playlists.Playlists, song.id)).catch(async (res) => {
-            const data = await res.json();
-        });
-    };
+    // const handleAddTrack = () => {
+    //     console.log('hit')
+    //     return dispatch(playlistActions.addSongToPlaylist(playlists.Playlists, song.id)).catch(async (res) => {
+    //         const data = await res.json();
+    //     });
+    // };
 
     const handleCreatePlaylist = (e) => {
-        e.preventDefault();
-        return dispatch(playlistActions.createPlaylist({userId: sessionUser, name, imageUrl})).then( async res => {
-          await dispatch(playlistActions.addSongToPlaylist(res.id, song.id))
-        }).catch(async (res) => {
+
+        e.preventDefault()
+        dispatch(playlistActions.createPlaylist({userId: sessionUser, name, imageUrl})).then((res) => {
+            dispatch(playlistActions.addSongToPlaylist(res.id, song.id))
+        })
+        .then(() => setShowModal(false))
+        .catch(async (res) => {
             const data = await res.json();
+            if (data && data.errors) setErrors(data.errors)
         });
     };
 
@@ -44,8 +50,8 @@ function PlaylistOptions({song}) {
                             value={name}
                             onChange={
                                 (e) => setName(e.target.value)
-                            }
-                            required/>
+                        }/>
+                        <div className="errorModalText">{Object.keys(errors).includes('name') && errors['name']}</div>
                         <div>Playlist url</div>
                         <input className="errorModalCont" type="text" placeholder="Image Url"
                             value={imageUrl}
@@ -54,6 +60,7 @@ function PlaylistOptions({song}) {
                             }/>
                         <div className="saveAlign">
                             <button className="createpl" type='submit'>Save</button>    
+                            <button className="cancelpl" onClick={(e) => setShowModal(false)}>Cancel </button>
                         </div>
                     </form>
 

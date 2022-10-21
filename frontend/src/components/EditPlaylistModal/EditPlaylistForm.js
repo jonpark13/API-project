@@ -22,7 +22,6 @@ function EditPlaylistForm({playlist, showModal, setShowModal}) {
     }).catch(async (res) => {
             const data = await res.json();
             if (data && data.errors) setErrors(data.errors)
-            console.log(data.errors)
         });
 };
 
