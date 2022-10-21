@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
+import logo from '../../assets/images/VVlogo.png'
 import * as playlistActions from '../../store/playlists'
 
 function PlaylistOptions({song}) {
@@ -35,23 +36,25 @@ function PlaylistOptions({song}) {
             <div className="plCont">
                 <div className="createFormCont">
                     <div className="editImgCont"><img className="editImg"
-                            src={imageUrl}/></div>
+                            src={imageUrl || logo}/></div>
                     <form onSubmit={handleCreatePlaylist}
                         className='createPlaylistForm'>
-                        <div>Title</div>
+                        <div>Playlist title</div>
                         <input className="errorModalCont" type="text" placeholder="Name"
                             value={name}
                             onChange={
                                 (e) => setName(e.target.value)
                             }
                             required/>
-                        <div>Image Url</div>
+                        <div>Playlist url</div>
                         <input className="errorModalCont" type="text" placeholder="Image Url"
                             value={imageUrl}
                             onChange={
                                 (e) => setImageUrl(e.target.value)
                             }/>
-                        <button className="createpl" type='submit'>Save</button>
+                        <div className="saveAlign">
+                            <button className="createpl" type='submit'>Save</button>    
+                        </div>
                     </form>
 
                 </div>

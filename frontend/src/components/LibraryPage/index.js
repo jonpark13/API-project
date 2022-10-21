@@ -33,7 +33,7 @@ function LibraryPage() {
             <div>
                 {
                     !!songsList.userTracks &&
-                <Gallery songs={Object.values(songsList.userTracks)} length={24}/>
+                <Gallery songs={Object.values(songsList.userTracks)} length={18}/>
                 }
             </div>
             <div className='textLine'>

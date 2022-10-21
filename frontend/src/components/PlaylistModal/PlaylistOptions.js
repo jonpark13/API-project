@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as playlistActions from '../../store/playlists'
+import logo from '../../assets/images/VVlogo.png'
 
 function PlaylistOptions({song}) {
   const dispatch = useDispatch()
@@ -29,7 +30,7 @@ function PlaylistOptions({song}) {
         <div className='plLineContainer'>
             {/* <img src={e.previewImage} alt={e.title}/> */}
             <div className='plImgCont'>
-            <img className='plImg' src={playlists.Playlists[e].imageUrl} alt='test' />
+            <img className='plImg' src={playlists.Playlists[e].imageUrl || logo} alt='test' />
             </div>
             <div className='plDetails'>
             <div className='plTitle'>{playlists.Playlists[e].name}</div>

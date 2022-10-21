@@ -9,7 +9,7 @@ function AddPlaylistModal({song}) {
     <>
       <button onClick={() => setShowModal(true)} className='dropListText'><i className="fa-regular fa-square-plus listIcon"></i>Create Playlist</button>
       {showModal && (
-        <Modal onClose={() => setShowModal(false)} form={'playlist-content'}>
+        <Modal onClose={() => setShowModal(false)} form={'addToPlaylistForm'}>
           <AddPlaylistOptions song={song}/>
         </Modal>
       )}

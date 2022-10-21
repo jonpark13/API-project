@@ -10,7 +10,7 @@ function PlaylistModal({song}) {
     <>
       <button onClick={() => setShowModal(true)} className='dropListText'>Add to Playlist</button>
       {showModal && (
-        <Modal onClose={() => setShowModal(false)} form={'editTrackForm'}>
+        <Modal onClose={() => setShowModal(false)} form={'addToPlaylistForm'}>
           <PlaylistOptions song={song}/>
         </Modal>
       )}

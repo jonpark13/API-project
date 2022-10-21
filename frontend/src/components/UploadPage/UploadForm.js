@@ -80,6 +80,7 @@ function UploadFormPage() {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
+        <div className="errorModalText">{Object.keys(errors).includes('title') && errors['title']}</div>
         <div>Description</div>
         <textarea
           className="errorModalCont txtArea"
@@ -96,6 +97,7 @@ function UploadFormPage() {
           value={url}
           onChange={(e) => setUrl(e.target.value)}
         />
+        <div className="errorModalText">{Object.keys(errors).includes('Valid MP3') && errors['Valid MP3']}</div>
         <div>Track Image Url</div>
         <input
           className="errorModalCont"
@@ -104,9 +106,9 @@ function UploadFormPage() {
           value={imageUrl}
           onChange={(e) => setImageUrl(e.target.value)}
         />
-            <div>
+            {/* <div>
           {Object.values(errors).map((error, idx) => <div className="errorModalText" key={idx}>{error}</div>)}
-        </div>
+        </div> */}
         <div className="editSaveBut">
         <ReactAudioPlayer muted={true} autoPlay src={url} onCanPlay={() => setErrors(delete errors['Valid MP3'])} onError={() => setErrors({...errors, 'Valid MP3':'Please enter a valid MP3 url'})}/>
         <button type="submit" className="uploadSaveBut" disabled={Object.keys(errors).includes('Valid MP3')}>Save</button>
