@@ -32,7 +32,7 @@ function LibraryPage() {
             <div className='typeText'>Your tracks</div></div>
             <div>
                 {
-                    !!Object.keys(songsList.userTracks).length &&
+                    !!songsList.userTracks &&
                 <Gallery songs={Object.values(songsList.userTracks)} length={24}/>
                 }
             </div>
@@ -41,7 +41,7 @@ function LibraryPage() {
             </div>
             <div className='bottomEl'>
                 {
-                Object.keys(playlists).length &&
+                !!Object.keys(playlists).length &&
                 <MiniGallery list={playlists.Playlists} feat={'playlists'}/>
                 }
             </div>
