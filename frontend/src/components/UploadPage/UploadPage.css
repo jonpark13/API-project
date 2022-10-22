@@ -46,7 +46,7 @@
   .createFormCont {
     display: flex;
     flex-direction: row;
-    height: 80%;
+    height: 60%;
     width: 60%
   }
 
@@ -80,4 +80,58 @@
   font-family: Interstate, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Garuda, Verdana, Tahoma, sans-serif;
   padding: 0%;
   margin-left: 5px;
+}
+
+.createdSong {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width:60%
+}
+
+.createdDetailsList {
+  display: flex;
+  height: 150px;
+  width: 100%;
+}
+
+.createdPic {
+  height: 150px;
+  width: 150px
+}
+
+.createdTextCont {
+  display: flex;
+  flex-direction: column;
+  height: 150px;
+  margin-left: 10px;
+  width: 100%;
+}
+
+.createdTitleText {
+  width: 100%;
+  color: #333;
+  font-size: 20px;
+}
+
+.createdArtistText {
+  width: 100%;
+  color: #999;
+  font-size: 18px;
+}
+
+.createdDescText {
+  word-wrap: break-word;
+  word-break: normal;
+  overflow-wrap:break-word;
+  width:100%;
+  color: #333;
+  font-size: 20px;
+}
+
+.createdUplText {
+  width: 100%;
+  color: #999;
+  font-size: 18px;
 }

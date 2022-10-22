@@ -15,6 +15,7 @@ function LibraryPage() {
     const sessionUser = useSelector((state) => state.session.user);
     const songsList = useSelector(state => state.songs)
     const playlists = useSelector(state => state.playlists)
+    const [galLength, setGalLength] = useState(12)
 
     useEffect(() => {
         // dispatch(sessionActions.refreshUser())
@@ -22,6 +23,12 @@ function LibraryPage() {
         dispatch(playlistActions.playlistsCurrGrab())
         dispatch(songsActions.userSongsGrab())
     },[dispatch])
+
+    useEffect(() => {
+        if(!!songsList.userTracks){
+        let mult = Object.values(songsList.userTracks).length/6
+        setGalLength(Math.ceil(mult) * 6)}
+    },[galLength])
 
     return (
         <>
@@ -33,7 +40,7 @@ function LibraryPage() {
             <div>
                 {
                     !!songsList.userTracks &&
-                <Gallery songs={Object.values(songsList.userTracks)} length={18}/>
+                <Gallery songs={Object.values(songsList.userTracks)} length={galLength}/>
                 }
             </div>
             <div className='textLine'>

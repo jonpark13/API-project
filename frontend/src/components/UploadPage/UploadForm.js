@@ -5,9 +5,10 @@ import * as songsActions from "../../store/songs";
 import * as sessionActions from "../../store/session"
 import ReactAudioPlayer from "react-audio-player";
 import logo from '../../assets/images/VVlogo.png'
+import Playing from "../MusicPlayer/Playing";
 import './UploadPage.css'
 
-function UploadFormPage() {
+function UploadFormPage({setRecCreated}) {
     const dispatch = useDispatch();
     const ref = useRef()
     const sessionUser = useSelector((state) => state.session.user);
@@ -16,6 +17,7 @@ function UploadFormPage() {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [albumId, setAlbumId] = useState("");
+
     const [errors, setErrors] = useState({});
 
     //   userId: user.id,
@@ -32,10 +34,13 @@ function UploadFormPage() {
     }
 
     const handleSubmit = (e) => {
-        e.preventDefault();
-        setErrors({});
+        e.preventDefault()
+        setErrors({})
         return dispatch(songsActions.createSong({ userId: sessionUser.id, url, imageUrl, title, description }))
-        .then(() => {e.preventDefault()
+        .then(() => {
+          dispatch(songsActions.userSongsGrab())
+          setRecCreated({User:{...sessionUser}, userId: sessionUser.id, url, previewImage: imageUrl, title, description })
+          e.preventDefault()
         setErrors([])
         setUrl('')
         setImageUrl('')
@@ -43,7 +48,6 @@ function UploadFormPage() {
         setDescription('')})
         .catch(async (res) => {
                 const data = await res.json();
-                console.log(res)
                 if (data && data.errors) setErrors(data.errors);
             })
     };

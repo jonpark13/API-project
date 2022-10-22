@@ -54,7 +54,6 @@ const userTracks = (songs) => {
 export const songsGrab = () => async (dispatch) => {
     const response = await csrfFetch('/api/songs')
     const data = await response.json()
-    console.log(data)
     dispatch(getSongs(data))
     return data;
 };
@@ -79,7 +78,6 @@ export const searchQuery = (songTitle) => async (dispatch) => {
         method: 'GET'
     })
     const data = await response.json()
-    // console.log(data)
     dispatch(getSongs(data))
     return data;
 };
@@ -106,7 +104,6 @@ export const editingSong = (song) => async (dispatch) => {
         })
     })
     const data = await response.json()
-    console.log(data, 'hit')
     dispatch(editSong(data))
     return data;
 }
@@ -116,7 +113,6 @@ export const deleteSong = (id) => async (dispatch) => {
         method: 'DELETE'
     })
     const data = await response.json()
-    // console.log(data)
     dispatch(delSong(data, id))
     return data;
 };
@@ -142,7 +138,7 @@ export const createSong = (song) => async (dispatch) => {
     })
     const data = await response.json()
     dispatch(addSong(data))
-    return Promise.resolve();
+    return data;
 };
 
 const initialState = {}
@@ -171,7 +167,8 @@ const songsReducer = (state = initialState, action) => {
                 userTracks: {...res}
             }
         case ADD_SONG:
-            return { ...state, Songs: [...state.Songs, action.song], userTracks: {...state.userTracks, [action.song.id]: action.song}}
+            console.log(state)
+            return { ...state, Songs: [...state.Songs, action.song], userTracks: {...state.userTracks, [action.song.id]: {...action.song}}}
         case EDIT_SONG:
             let newArr = state.Songs.map(e => {
                 if(e.id === action.song.id){
@@ -179,7 +176,6 @@ const songsReducer = (state = initialState, action) => {
                 }
                 return e
             })
-            console.log(newArr)
             return {...state, Songs: [...newArr], userTracks: {...state.userTracks, [action.song.id]: action.song}}
         case DELETE_SONG:
             const rem = {...state}
