@@ -47,7 +47,7 @@ function MusicPlayer() {
     }
 
     return (
-        <>{Object.keys(currPlay).length &&
+        <>{!!Object.keys(currPlay).length &&
             <>
                 <div className='musicFoot'>
                     <div className='musicCont'>

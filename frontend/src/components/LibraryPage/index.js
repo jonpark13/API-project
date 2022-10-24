@@ -15,19 +15,17 @@ function LibraryPage() {
     const sessionUser = useSelector((state) => state.session.user);
     const songsList = useSelector(state => state.songs)
     const playlists = useSelector(state => state.playlists)
-    const [galLength, setGalLength] = useState(12)
+    const [galLength, setGalLength] = useState(6)
 
     useEffect(() => {
         // dispatch(sessionActions.refreshUser())
         dispatch(songsActions.songsGrab())
         dispatch(playlistActions.playlistsCurrGrab())
         dispatch(songsActions.userSongsGrab())
-    },[dispatch])
-
-    useEffect(() => {
         if(!!songsList.userTracks){
-        let mult = Object.values(songsList.userTracks).length/6
-        setGalLength(Math.ceil(mult) * 6)}
+            let mult = Object.values(songsList.userTracks).length/6
+            setGalLength(Math.ceil(mult) * 6)
+        }
     },[dispatch])
 
     return (
