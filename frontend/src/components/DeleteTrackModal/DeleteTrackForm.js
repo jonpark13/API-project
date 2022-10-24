@@ -25,7 +25,11 @@ function DeleteTrackForm({track, showModal, setShowModal}) {
   return (
     <>
     <div className="deleteFormCont">
-      <div className="editImgCont"><img ref={ref} className="editImg" src={track.previewImage || logo}/></div>
+      <div className="editImgCont"><img ref={ref} className="editImg" src={track.previewImage || logo} onError={(e) => {
+                            e.target.onerror = "";
+                            e.target.src = logo;
+                            return true;
+                        }}/></div>
     <form onSubmit={handleSubmit} className='editFormModal'>
         <div className="delNote">Permanently delete this track?</div>
 
