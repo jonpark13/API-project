@@ -1,6 +1,7 @@
 import React, {useEffect, useRef, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {Redirect} from "react-router-dom";
+import logo from '../../assets/images/VVlogo.png'
 import * as playlistActions from "../../store/playlists";
 
 function DeletePlaylistForm({playlist, showModal, setShowModal}) {

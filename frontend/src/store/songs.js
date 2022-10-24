@@ -23,16 +23,18 @@ const getSong = (single_song) => {
     }
 }
 
-const addSong = (song) => {
+const addSong = (song, user) => {
     return {
         type: ADD_SONG,
-        song
+        song,
+        user
     }
 }
-const editSong = (song) => {
+const editSong = (song, user) => {
     return {
         type: EDIT_SONG,
-        song
+        song,
+        user
     }
 }
 
@@ -83,7 +85,6 @@ export const searchQuery = (songTitle) => async (dispatch) => {
 };
 
 export const editingSong = (song) => async (dispatch) => {
-    console.log('inc song', song)
     const {
         title,
         description,
@@ -103,8 +104,13 @@ export const editingSong = (song) => async (dispatch) => {
             albumId
         })
     })
+    const response2 = await csrfFetch('/api/session')
+    const data2 = await response2.json()
+    let { username } = data2
+    let userInfo = { id, username}
+
     const data = await response.json()
-    dispatch(editSong(data))
+    dispatch(editSong(data, userInfo))
     return data;
 }
 
@@ -136,8 +142,12 @@ export const createSong = (song) => async (dispatch) => {
             imageUrl
         })
     })
+    const response2 = await csrfFetch('/api/session')
+    const data2 = await response2.json()
+    let { username } = data2
+    let userInfo = { 'id':userId, username}
     const data = await response.json()
-    dispatch(addSong(data))
+    dispatch(addSong(data, userInfo))
     return data;
 };
 
@@ -167,16 +177,17 @@ const songsReducer = (state = initialState, action) => {
                 userTracks: {...res}
             }
         case ADD_SONG:
-            console.log(state)
-            return { ...state, Songs: [...state.Songs, action.song], userTracks: {...state.userTracks, [action.song.id]: {...action.song}}}
+            console.log(action.user)
+            return { ...state, Songs: [...state.Songs, action.song], userTracks: {...state.userTracks, [action.song.id]: {...action.song, "User":action.user}}}
         case EDIT_SONG:
+            console.log(action.user)
             let newArr = state.Songs.map(e => {
                 if(e.id === action.song.id){
                     return {...e, ...action.song}
                 }
                 return e
             })
-            return {...state, Songs: [...newArr], userTracks: {...state.userTracks, [action.song.id]: action.song}}
+            return {...state, Songs: [...newArr], userTracks: {...state.userTracks, [action.song.id]: {...action.song, "User":action.user}}}
         case DELETE_SONG:
             const rem = {...state}
             delete rem.userTracks[action.id]
