@@ -27,7 +27,7 @@ function ProfileButton({ user }) {
   }, [showMenu]);
 
   const logout = (e) => {
-    console.log('Logout pressed')
+    console.log('Logout')
     e.preventDefault();
     dispatch(sessionActions.logoutUser())
     .then(() => history.replace('/'))

@@ -38,7 +38,7 @@ function MusicPlayer() {
       }, [showMenu]);
 
     useEffect(() => {
-        console.log('next')
+        console.log('Next')
     },[dispatch])
 
     const handlePlay = () => {

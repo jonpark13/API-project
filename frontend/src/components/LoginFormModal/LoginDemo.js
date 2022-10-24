@@ -7,9 +7,7 @@ function LoginDemo({css}) {
   const [errors, setErrors] = useState([]);
 
   const loginAsDemo = () => {
-    console.log('hit')
     setErrors([]);
-    console.log('loginformdemo')
     return dispatch(sessionActions.login({ credential:'Demo-lition', password: 'password' })).catch(
       async (res) => {
         const data = await res.json();

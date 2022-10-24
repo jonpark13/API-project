@@ -3,7 +3,6 @@ import './Dropdown.css'
 
 const Dropdown = (state) => {
     const [open, setOpen] = useState(false)
-    console.log('hitdrop')
     return (
         <div className="container">
             <button class="button" onClick={() => setOpen(!open)} onBlur={setOpen(false)}>

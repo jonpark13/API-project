@@ -9,7 +9,6 @@ function DeletePlaylistForm({playlist, showModal, setShowModal}) {
     const onImageError = () => ref.current.src = playlist.previewImage;
     const sessionUser = useSelector((state) => state.session.user);
     const [imageUrl, setImageUrl] = useState("");
-    console.log(playlist)
 
 
     const [errors, setErrors] = useState([]);

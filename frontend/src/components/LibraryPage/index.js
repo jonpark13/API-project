@@ -28,7 +28,7 @@ function LibraryPage() {
         if(!!songsList.userTracks){
         let mult = Object.values(songsList.userTracks).length/6
         setGalLength(Math.ceil(mult) * 6)}
-    },[galLength])
+    },[dispatch])
 
     return (
         <>

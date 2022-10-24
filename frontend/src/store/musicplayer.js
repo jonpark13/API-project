@@ -43,7 +43,6 @@ export const addToNext = (id) => async (dispatch) => {
 };
 
 export const nextInLine = () => async (dispatch) => {
-    console.log('hit')
     dispatch(playNext())
 };
 
@@ -78,7 +77,6 @@ const musicPlayerReducer = (state = initialState, action) => {
                 }
             }
             else{
-                console.log('here')
                 return {
                     ...state,
                     nextSongs: [
@@ -89,12 +87,10 @@ const musicPlayerReducer = (state = initialState, action) => {
                 }
             }
         case CONT:
-            console.log('here2')
             if (!state.nextSongs.length) {
                 return {...state}
             }
             else{
-                console.log('here1')
                 return {
                     currentSong: {...state.nextSongs[0]},
                     nextSongs: [
