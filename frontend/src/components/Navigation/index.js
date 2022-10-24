@@ -37,7 +37,7 @@ function Navigation({ isLoaded }) {
     sessionLinks = (
       <>
         <LoginFormModal name={'Sign in'} css={'signInCond'} />
-        <CreateAccountModal name={'Create Account'} />
+        <CreateAccountModal name={'Create Account'} css={'createAccCond'}/>
       </>
     )
     libraryBut = (

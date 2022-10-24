@@ -97,7 +97,7 @@ function HomePage() {
                         }
                     </div>
                     <div>
-                       <button className='exploreBut' onClick={() => history.push('/discover')}>Explore trending playlists</button>
+                       <button className='exploreBut' onClick={() => history.push('/discover')}>Explore trending songs</button>
                     </div>
                     <div className='botSplashCont'>
                         <div className='botSplashLeft'>
