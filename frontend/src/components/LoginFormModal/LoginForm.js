@@ -32,7 +32,6 @@ function LoginForm() {
           type="username"
           value={credential}
           onChange={(e) => setCredential(e.target.value)}
-          required
         />
 
         <input
@@ -42,9 +41,8 @@ function LoginForm() {
           autoComplete="current-password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          required
         />
-        <div className="errorModalCont">
+        <div className="errorModalContLogin">
           {errors.map((error, idx) => (
             <div className="errorModalText" key={idx}>{error}</div>
           ))}

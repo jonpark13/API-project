@@ -136,6 +136,13 @@
   padding: 0%;
 }
 
+.errorModalContLogin {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 5px 0px;
+  padding: 0%;
+}
+
 .errorModalText {
   font-size: small;
   color: crimson
@@ -172,6 +179,7 @@
   font-size: larger;
   font-family: Interstate, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Garuda, Verdana, Tahoma, sans-serif;
   padding: 0%;
+  margin-top: 15px
 }
 
 .saveBut {
