@@ -92,7 +92,9 @@ function UploadFormPage({setRecCreated}) {
           placeholder="Description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
+          maxLength='250'
         />
+        <div className={`${description.length === 250 ? 'errorModalText' : 'ModalText'}`}>{`${description.length}/250`}</div>
         <div>Track Url</div>
         <input
           className="errorModalCont"
