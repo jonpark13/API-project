@@ -68,12 +68,14 @@ function UploadFormPage({setRecCreated}) {
         </div>
         <div className="createFormCont">
           <div className="editImgCont">
-            <img className="editImg" src={imageUrl} onError={(e) => {
+            <img className="imgChecker" hidden src={imageUrl} onLoad={(e) => {setErrors(delete errors['imageUrl'])}} onError={() => setErrors({...errors, 'imageUrl':'Please check the image url'})}/>
+            <img className="editImg" src={imageUrl || logo} onError={(e) => {
                             e.target.onerror = "";
                             e.target.src = logo;
                             e.target.style.background = "linear-gradient(90deg, rgba(255, 247, 255, 1) 0%, rgba(118, 194, 210, 1) 100%)"
                             return true;
-                        }}/>
+                        }}
+                        />
           </div>
         <form onSubmit={handleSubmit} className='createSongForm'>
         <div>Title</div>
@@ -112,6 +114,7 @@ function UploadFormPage({setRecCreated}) {
           value={imageUrl}
           onChange={(e) => setImageUrl(e.target.value)}
         />
+        <div className="errorModalText">{Object.keys(errors).includes('imageUrl') && errors['imageUrl']}</div>
             {/* <div>
           {Object.values(errors).map((error, idx) => <div className="errorModalText" key={idx}>{error}</div>)}
         </div> */}

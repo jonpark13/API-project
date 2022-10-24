@@ -41,8 +41,16 @@ function PlaylistOptions({song, showModal, setShowModal}) {
             </div>
             <div className="plCont">
                 <div className="createFormCont">
-                    <div className="editImgCont"><img className="editImg"
-                            src={imageUrl || logo}/></div>
+                    <div className="editImgCont">
+                    <img className="imgChecker" hidden src={imageUrl} onLoad={(e) => {setErrors(delete errors['imageUrl'])}} onError={() => setErrors({...errors, 'imageUrl':'Please check the image url'})}/>
+                        <img className="editImg"
+                            src={imageUrl || logo}
+                            onError={(e) => {
+                                e.target.onerror = "";
+                                e.target.src = logo;
+                                e.target.style.background = "linear-gradient(90deg, rgba(255, 247, 255, 1) 0%, rgba(118, 194, 210, 1) 100%)"
+                                return true;
+                            }}/></div>
                     <form onSubmit={handleCreatePlaylist}
                         className='createPlaylistForm'>
                         <div>Playlist title</div>
@@ -52,12 +60,13 @@ function PlaylistOptions({song, showModal, setShowModal}) {
                                 (e) => setName(e.target.value)
                         }/>
                         <div className="errorModalText">{Object.keys(errors).includes('name') && errors['name']}</div>
-                        <div>Playlist url</div>
+                        <div>Playlist image url</div>
                         <input className="errorModalCont" type="text" placeholder="Image Url"
                             value={imageUrl}
                             onChange={
                                 (e) => setImageUrl(e.target.value)
                             }/>
+                            <div className="errorModalText">{Object.keys(errors).includes('imageUrl') && errors['imageUrl']}</div>
                         <div className="saveAlign">
                             <button className="createpl" type='submit'>Save</button>    
                             <button className="cancelpl" onClick={(e) => setShowModal(false)}>Cancel </button>

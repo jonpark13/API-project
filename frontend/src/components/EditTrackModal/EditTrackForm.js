@@ -49,11 +49,13 @@ function EditTrackForm({track, showModal, setShowModal}) {
     Basic Info
     </div>
     <div className="editFormCont">
-      <div className="editImgCont"><img ref={ref} className="editImg" src={imageUrl || logo} onError={(e) => {
-                            e.target.onError = "";
-                            e.target.src = logo;
-                            return true;
-                        }}/></div>
+      <div className="editImgCont">
+      <img className="imgChecker" hidden src={imageUrl} onLoad={(e) => {setErrors(delete errors['imageUrl'])}} onError={() => setErrors({...errors, 'imageUrl':'Please check the image url'})}/>
+        <img ref={ref} className="editImg" src={imageUrl || logo} onError={(e) => {
+              e.target.onError = "";
+              e.target.src = logo;
+              return true;
+          }}/></div>
     <form onSubmit={handleSubmit} className='editFormModal'>
         <div>Title</div>
         <input
@@ -91,6 +93,7 @@ function EditTrackForm({track, showModal, setShowModal}) {
           value={imageUrl}
           onChange={(e) => setImageUrl(e.target.value)}
         />
+        <div className="errorModalText">{Object.keys(errors).includes('imageUrl') && errors['imageUrl']}</div>
         {/* <div>
           {Object.values(errors).map((error, idx) => <div className="errorModalText" key={idx}>{error}</div>)}
         </div> */}

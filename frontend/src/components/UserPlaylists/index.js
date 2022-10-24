@@ -47,7 +47,11 @@ function UserPlaylists() {
                         <div className='trackContainer'>
                             {/* <img src={e.previewImage} alt={e.title}/> */}
                             <div className='trackImgCont'>
-                            <img className='trackImg' src={playlist.Playlists[e].imageUrl || logo} alt='test' />
+                            <img className='trackImg' src={playlist.Playlists[e].imageUrl || logo} onError={(e) => {
+                                e.target.onerror = "";
+                                e.target.src = logo;
+                                return true;
+                            }}/>
                             </div>
                             <div className='trackDetails'>
                             <div className='trackTitle'>{playlist.Playlists[e].name}</div>
