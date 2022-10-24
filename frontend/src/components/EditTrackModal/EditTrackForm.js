@@ -70,8 +70,10 @@ function EditTrackForm({track, showModal, setShowModal}) {
           type="text"
           placeholder="Description"
           value={description}
+          maxLength='250'
           onChange={(e) => setDescription(e.target.value)}
         />
+        <div className={`${description.length === 250 ? 'errorModalText' : 'ModalText'}`}>{`${description.length}/250`}</div>
         <div>Track Url</div>
         <input
           className="errorModalCont"
