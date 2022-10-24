@@ -63,7 +63,6 @@ function CreateAccountForm() {
           placeholder="Your email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          required
         />
 
         <input
@@ -72,7 +71,6 @@ function CreateAccountForm() {
           placeholder="Your user name"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          required
         />
 
 
@@ -82,7 +80,6 @@ function CreateAccountForm() {
           placeholder="Your password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          required
         />
 
 
@@ -92,7 +89,6 @@ function CreateAccountForm() {
           placeholder="Confirm your password"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
-          required
         />
         <div>
           {errors.map((error, idx) => <div className="errorModalText" key={idx}>{error}</div>)}
