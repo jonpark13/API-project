@@ -1,5 +1,5 @@
 
-# Vibe Vapor
+# Wave Vapor
 
 [Check out the Demo](https://api-auth-proj.herokuapp.com/)
 
@@ -7,7 +7,7 @@
 
 ![Image](./frontend/src/assets/images/VVlogo.png)
 
-Vibe Vapor is a full stack web app, cloned from one of the largest music discovery platforms, SoundCloud. With Vibe Vapor you can check out other artists, try playlists and play music, all with keeping the same vibe as SoundCloud.
+Wave Vapor is a full stack web app, cloned from one of the largest music discovery platforms, SoundCloud. With Wave Vapor you can check out other artists, try playlists and play music, all with keeping the same vibe as SoundCloud.
 
 ## Tech Stacks
 
