@@ -1,7 +1,7 @@
 
 # Wave Vapor
 
-[Check out the Demo](https://api-auth-proj.herokuapp.com/)
+[Check out the Demo](https://wave-vapor.onrender.com/)
 
 ## About The Project
 
