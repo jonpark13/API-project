@@ -131,11 +131,11 @@ export const createSong = (song) => async (dispatch) => {
         imageUrl } = song
     const formData = new FormData();
     formData.append("userId", userId);
-    formData.append("albumId", albumId);
     formData.append("title", title);
-    formData.append("description", description);
     formData.append("url", url);
-
+    
+    if (albumId) formData.append("albumId", albumId);
+    if (description) formData.append("description", description);
     if (imageUrl) formData.append("imageUrl", imageUrl);
     const response = await csrfFetch('/api/songs', {
         method: 'POST',
