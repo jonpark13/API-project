@@ -13,6 +13,7 @@ function UploadFormPage() {
     const sessionUser = useSelector((state) => state.session.user);
     const [url, setUrl] = useState("");
     const [imageUrl, setImageUrl] = useState("");
+    const [image, setImage] = useState(null);
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [albumId, setAlbumId] = useState("");
@@ -34,18 +35,26 @@ function UploadFormPage() {
     const handleSubmit = (e) => {
         e.preventDefault();
         setErrors({});
-        return dispatch(songsActions.createSong({ userId: sessionUser.id, url, imageUrl, title, description }))
+        return dispatch(songsActions.createSong({ userId: sessionUser.id, url, imageUrl:image, title, description }))
         .then(() => {e.preventDefault()
         setErrors([])
         setUrl('')
         setImageUrl('')
         setTitle('')
-        setDescription('')})
+        setDescription('')
+        setImage(null)
+      })
         .catch(async (res) => {
                 const data = await res.json();
                 console.log(res)
                 if (data && data.errors) setErrors(data.errors);
             })
+    };
+
+    const updateFile = (e) => {
+      const file = e.target.files[0];
+      console.log(file)
+      if (file) setImage(file);
     };
 
     const handleReset = (e) => {
@@ -99,6 +108,9 @@ function UploadFormPage() {
         />
         <div className="errorModalText">{Object.keys(errors).includes('Valid MP3') && errors['Valid MP3']}</div>
         <div>Track Image Url</div>
+        <label>
+          <input type="file" onChange={updateFile} />
+        </label>
         <input
           className="errorModalCont"
           type="text"

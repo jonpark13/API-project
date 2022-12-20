@@ -68,6 +68,26 @@ export const logoutUser = () => async (dispatch) => {
   return response
 }
 
+export const test = (user) => async (dispatch) => {
+  const { images } = user;
+  const formData = new FormData();
+
+  // for multiple files
+  if (images && images.length !== 0) {
+    for (var i = 0; i < images.length; i++) {
+      formData.append("images", images[i]);
+    }
+  }
+
+  const res = await csrfFetch(`/api/users/test`, {
+    method: "POST",
+    body: formData,
+  });
+
+  const data = await res.json();
+  return data
+};
+
 const initialState = { user: { id: null, username: null, firstName: null } }
 
 const sessionReducer = (state = initialState, action) => {

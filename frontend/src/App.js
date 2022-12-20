@@ -12,6 +12,7 @@ import UploadPage from './components/UploadPage';
 import UserTracks from './components/UserTracks';
 import UserPlaylists from './components/UserPlaylists';
 import * as sessionActions from './store/session';
+import TestAws from './components/test';
 
 function App() {
   const dispatch = useDispatch()
@@ -29,6 +30,9 @@ function App() {
         <Switch>
           <Route exact path="/">
             <HomePage />
+          </Route>
+          <Route path="/test" >
+            <TestAws />
           </Route>
           <Route path="/login">
             <LoginFormPage />
