@@ -35,10 +35,9 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <button onClick={onClick}>
-        <i className="fa-solid fa-user-astronaut icon" />
-      </button>
-      <div className={`navBut${showMenu ? ' drk' : ''}`}>
+
+      <div className={`navBut${showMenu ? ' drk' : ' light'}`} onClick={onClick} style={{marginRight: "0px"}}>
+      <i className="fa-solid fa-user-astronaut icon" />
         {user.firstName}
       </div>
       <div className={`menu ${showMenu ? 'active' : 'inactive'}`}>
