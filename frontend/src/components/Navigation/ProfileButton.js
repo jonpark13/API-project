@@ -38,7 +38,7 @@ function ProfileButton({ user }) {
 
       <div className={`navBut${showMenu ? ' drk' : ' light'}`} onClick={onClick} style={{marginRight: "0px"}}>
       <i className="fa-solid fa-user-astronaut icon" />
-        {user.firstName}
+        <div style={{marginRight: "8px"}}>{user.firstName}</div>
       </div>
       <div className={`menu ${showMenu ? 'active' : 'inactive'}`}>
           <button className="log" onClick={logout}>Log Out</button>

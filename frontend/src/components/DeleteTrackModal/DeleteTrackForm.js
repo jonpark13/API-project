@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as songsActions from "../../store/songs";
+import logo from '../../assets/images/VVlogo.png'
 
 function DeleteTrackForm({track, showModal, setShowModal}) {
   const dispatch = useDispatch();
@@ -24,7 +25,7 @@ function DeleteTrackForm({track, showModal, setShowModal}) {
   return (
     <>
     <div className="deleteFormCont">
-      <div className="editImgCont"><img ref={ref} className="editImg" src={track.previewImage}/></div>
+      <div className="editImgCont"><img ref={ref} className="editImg" src={track.previewImage || logo}/></div>
     <form onSubmit={handleSubmit} className='editFormModal'>
         <div className="delNote">Permanently delete this track?</div>
 

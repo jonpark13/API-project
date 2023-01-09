@@ -13,7 +13,9 @@ function UploadFormPage() {
     const sessionUser = useSelector((state) => state.session.user);
     const [url, setUrl] = useState("");
     const [imageUrl, setImageUrl] = useState("");
+    const [imgPrev, setImgPrev] = useState([])
     const [image, setImage] = useState(null);
+    const [songFile, setSongFile] = useState([]);
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [albumId, setAlbumId] = useState("");
@@ -33,9 +35,10 @@ function UploadFormPage() {
     }
 
     const handleSubmit = (e) => {
+      console.log(url, image,"URRL")
         e.preventDefault();
         setErrors({});
-        return dispatch(songsActions.createSong({ userId: sessionUser.id, url, imageUrl:image, title, description }))
+        return dispatch(songsActions.createSong({ userId: sessionUser.id, url:url, imageUrl:image, title, description }))
         .then(() => {e.preventDefault()
         setErrors([])
         setUrl('')
@@ -43,19 +46,38 @@ function UploadFormPage() {
         setTitle('')
         setDescription('')
         setImage(null)
+      }).then(async (res) => {
+        let data = await res.json()
       })
         .catch(async (res) => {
-                const data = await res.json();
+                // const data = await res.json();
                 console.log(res)
-                if (data && data.errors) setErrors(data.errors);
+                // if (data && data.errors) setErrors(data.errors);
             })
     };
 
-    const updateFile = (e) => {
+    const updateImageFile = (e) => {
       const file = e.target.files[0];
       console.log(file)
       if (file) setImage(file);
     };
+
+    const updateSongFile = (e) => {
+      const file = e.target.files[0];
+      console.log(file)
+      if (file) setUrl(file);
+    };
+
+    const imgPreviews = (e) => {
+      let image = e.target
+      if (image && image.files.length) {
+          setImgPrev(Array.from(image.files))
+          // console.log(imgPrev, "imgprev")
+      }
+      else {
+          setImgPrev([])
+      }
+  }
 
     const handleReset = (e) => {
         e.preventDefault()
@@ -73,7 +95,7 @@ function UploadFormPage() {
         </div>
         <div className="createFormCont">
           <div className="editImgCont">
-            <img className="editImg" src={imageUrl} onError={(e) => {
+            <img className="editImg" src={imgPrev[0] ? URL.createObjectURL(imgPrev[0]) : imageUrl} onError={(e) => {
                             e.target.onerror = "";
                             e.target.src = logo;
                             e.target.style.background = "linear-gradient(90deg, rgba(255, 247, 255, 1) 0%, rgba(118, 194, 210, 1) 100%)"
@@ -99,6 +121,9 @@ function UploadFormPage() {
           onChange={(e) => setDescription(e.target.value)}
         />
         <div>Track Url</div>
+        <label>
+          <input type="file" name="url" onChange={e => {updateSongFile(e, 0)}} />
+        </label>
         <input
           className="errorModalCont"
           type="text"
@@ -107,22 +132,22 @@ function UploadFormPage() {
           onChange={(e) => setUrl(e.target.value)}
         />
         <div className="errorModalText">{Object.keys(errors).includes('Valid MP3') && errors['Valid MP3']}</div>
-        <div>Track Image Url</div>
+        <div>Track Cover Image</div>
         <label>
-          <input type="file" onChange={updateFile} />
+          <input type="file" name="imageUrl" onChange={e => {updateImageFile(e, 1);imgPreviews(e)}} />
         </label>
-        <input
+        {/* <input
           className="errorModalCont"
           type="text"
           placeholder="Image URL"
           value={imageUrl}
-          onChange={(e) => setImageUrl(e.target.value)}
-        />
+          onChange={(e) => {setImageUrl(e.target.value);imgPreviews(e)}}
+        /> */}
             {/* <div>
           {Object.values(errors).map((error, idx) => <div className="errorModalText" key={idx}>{error}</div>)}
         </div> */}
         <div className="editSaveBut">
-        <ReactAudioPlayer muted={true} autoPlay src={url} onCanPlay={() => setErrors(delete errors['Valid MP3'])} onError={() => setErrors({...errors, 'Valid MP3':'Please enter a valid MP3 url'})}/>
+        <ReactAudioPlayer muted={true} autoPlay src={songFile[0] ? URL.createObjectURL(songFile[0]) : null} onCanPlay={() => setErrors(delete errors['Valid MP3'])} onError={() => setErrors({...errors, 'Valid MP3':'Please enter a valid MP3 url'})}/>
         <button type="submit" className="uploadSaveBut" disabled={Object.keys(errors).includes('Valid MP3')}>Save</button>
         <button className="cancelBut" onClick={handleReset}>Cancel</button>
         </div>

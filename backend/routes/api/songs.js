@@ -1,6 +1,6 @@
 const express = require('express')
 
-const {singlePublicFileUpload, singleMulterUpload } = require('../../awsS3')
+const {singlePublicFileUpload, singleMulterUpload, multipleMulterUpload, multiplePublicFileUpload } = require('../../awsS3')
 const { restoreUser, requireAuth } = require('../../utils/auth');
 const { User, Song, Album, Comment } = require('../../db/models');
 // const { check } = require('express-validator');
@@ -84,11 +84,14 @@ router.get('/', async (req, res) => {
 });
 
 // Create a song w / w/o album
-router.post('/', restoreUser, singleMulterUpload("imageUrl"), async (req, res) => {
+router.post('/', restoreUser, multipleMulterUpload(), async (req, res) => {
     const { user } = req
-    const { title, description, url, albumId } = req.body
-    const songImageUrl = await singlePublicFileUpload(req.file);
-    if(!title || !url){
+    const { title, description,albumId } = req.body
+    console.log(req.file, "URL")
+    console.log(req.files, "URL2")
+    const urls = await multiplePublicFileUpload(req.files);
+    // const songImageUrl = await singlePublicFileUpload("imageUrl");
+    if(!title || !urls){
         const errors = {}
         if(!title) errors.title = "Song title is required"
         if(!url) errors.url = "Audio is required"
@@ -116,8 +119,8 @@ router.post('/', restoreUser, singleMulterUpload("imageUrl"), async (req, res) =
         albumId,
         title,
         description,
-        url,
-        previewImage: songImageUrl // adding in preview Images
+        url: urls[0],
+        previewImage: urls[1] ? urls[1] : ''// adding in preview Images
     })
     await newSong.save() //?
     return res.json(newSong)
