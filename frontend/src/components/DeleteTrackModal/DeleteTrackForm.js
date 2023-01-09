@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import logo from '../../assets/images/VVlogo.png'
 import * as songsActions from "../../store/songs";
-import logo from '../../assets/images/VVlogo.png'
 
 function DeleteTrackForm({track, showModal, setShowModal}) {
   const dispatch = useDispatch();

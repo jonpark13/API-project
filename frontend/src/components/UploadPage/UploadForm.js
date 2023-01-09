@@ -120,7 +120,7 @@ function UploadFormPage({setRecCreated}) {
           onChange={(e) => setTitle(e.target.value)}
         />
         <div className="errorModalText">{Object.keys(errors).includes('title') && errors['title']}</div>
-        <div className="errorModalText">{JSON.stringify(errors)}</div>
+        {/* <div className="errorModalText">{JSON.stringify(errors)}</div> */}
         <div>Description</div>
         <textarea
           className="errorModalCont txtArea"
