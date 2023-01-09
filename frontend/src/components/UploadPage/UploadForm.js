@@ -14,6 +14,9 @@ function UploadFormPage({setRecCreated}) {
     const sessionUser = useSelector((state) => state.session.user);
     const [url, setUrl] = useState("");
     const [imageUrl, setImageUrl] = useState("");
+    const [imgPrev, setImgPrev] = useState([])
+    const [image, setImage] = useState(null);
+    const [songFile, setSongFile] = useState([]);
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [albumId, setAlbumId] = useState("");
@@ -27,6 +30,10 @@ function UploadFormPage({setRecCreated}) {
     //   url,
     //   previewImage: imageUrl
 
+    // useEffect(() => { 
+
+    // }, [url])
+
     const songVal = () => {
       let newErr = errors
       delete newErr['Valid MP3']
@@ -34,27 +41,54 @@ function UploadFormPage({setRecCreated}) {
     }
 
     const handleSubmit = (e) => {
-        e.preventDefault()
-        setErrors({})
-        return dispatch(songsActions.createSong({ userId: sessionUser.id, url, imageUrl, title, description }))
+        e.preventDefault();
+        setErrors({});
+        return dispatch(songsActions.createSong({ userId: sessionUser.id, url:url, imageUrl:image, title, description }))
         .then(() => {
-          dispatch(songsActions.userSongsGrab())
-          setRecCreated({User:{...sessionUser}, userId: sessionUser.id, url, previewImage: imageUrl, title, description })
           e.preventDefault()
-        setErrors([])
-        setUrl('')
-        setImageUrl('')
-        setTitle('')
-        setDescription('')})
+          setErrors({})
+          setUrl('')
+          setImageUrl('')
+          setTitle('')
+          setDescription('')
+          setImage(null)
+      }).then(async (res) => {
+        let data = await res.json()
+        console.log(data, "data")
+      })
         .catch(async (res) => {
                 const data = await res.json();
-                if (data && data.errors) setErrors(data.errors);
+                if (data.errors) setErrors(data.errors);
             })
     };
 
+    const updateImageFile = (e) => {
+      const file = e.target.files[0];
+      console.log(file)
+      if (file) setImage(file);
+    };
+
+    const updateSongFile = (e) => {
+      const file = e.target.files[0];
+      console.log(file)
+      if (file) setUrl(file);
+      else setUrl(null)
+    };
+
+    const imgPreviews = (e) => {
+      let image = e.target
+      if (image && image.files.length) {
+          setImgPrev(Array.from(image.files))
+          // console.log(imgPrev, "imgprev")
+      }
+      else {
+          setImgPrev([])
+      }
+  }
+
     const handleReset = (e) => {
         e.preventDefault()
-        setErrors([])
+        setErrors({})
         setUrl('')
         setImageUrl('')
         setTitle('')
@@ -68,8 +102,7 @@ function UploadFormPage({setRecCreated}) {
         </div>
         <div className="createFormCont">
           <div className="editImgCont">
-            <img className="imgChecker" hidden src={imageUrl} onLoad={(e) => {setErrors(delete errors['imageUrl'])}} onError={() => setErrors({...errors, 'imageUrl':'Please check the image url'})}/>
-            <img className="editImg" src={imageUrl || logo} onError={(e) => {
+            <img className="editImg" src={imgPrev[0] ? URL.createObjectURL(imgPrev[0]) : imageUrl} onError={(e) => {
                             e.target.onerror = "";
                             e.target.src = logo;
                             e.target.style.background = "linear-gradient(90deg, rgba(255, 247, 255, 1) 0%, rgba(118, 194, 210, 1) 100%)"
@@ -87,6 +120,7 @@ function UploadFormPage({setRecCreated}) {
           onChange={(e) => setTitle(e.target.value)}
         />
         <div className="errorModalText">{Object.keys(errors).includes('title') && errors['title']}</div>
+        <div className="errorModalText">{JSON.stringify(errors)}</div>
         <div>Description</div>
         <textarea
           className="errorModalCont txtArea"
@@ -96,31 +130,35 @@ function UploadFormPage({setRecCreated}) {
           onChange={(e) => setDescription(e.target.value)}
           maxLength='250'
         />
-        <div className={`${description.length === 250 ? 'errorModalText' : 'ModalText'}`}>{`${description.length}/250`}</div>
-        <div>Track Url</div>
-        <input
+        <div>Track</div>
+        <label>
+          <input type="file" name="url" onChange={e => {updateSongFile(e, 0)}} />
+        </label>
+        {/* <input
           className="errorModalCont"
           type="text"
           placeholder="URL"
           value={url}
           onChange={(e) => setUrl(e.target.value)}
-        />
+        /> */}
         <div className="errorModalText">{Object.keys(errors).includes('Valid MP3') && errors['Valid MP3']}</div>
-        <div>Track Image Url</div>
-        <input
+        <div>Upload Image</div>
+        <label>
+          <input type="file" name="imageUrl" onChange={e => {updateImageFile(e, 1);imgPreviews(e)}} />
+        </label>
+        {/* <input
           className="errorModalCont"
           type="text"
           placeholder="Image URL"
           value={imageUrl}
-          onChange={(e) => setImageUrl(e.target.value)}
-        />
-        <div className="errorModalText">{Object.keys(errors).includes('imageUrl') && errors['imageUrl']}</div>
+          onChange={(e) => {setImageUrl(e.target.value);imgPreviews(e)}}
+        /> */}
             {/* <div>
           {Object.values(errors).map((error, idx) => <div className="errorModalText" key={idx}>{error}</div>)}
         </div> */}
         <div className="editSaveBut">
-        <ReactAudioPlayer muted={true} autoPlay src={url} onCanPlay={() => setErrors(delete errors['Valid MP3'])} onError={() => setErrors({...errors, 'Valid MP3':'Please enter a valid MP3 url'})}/>
-        <button type="submit" className="uploadSaveBut" disabled={Object.keys(errors).includes('Valid MP3')}>Save</button>
+        <ReactAudioPlayer muted={true} autoPlay src={url ? URL.createObjectURL(url) : null} onCanPlay={() => setErrors(prev => delete prev['Valid MP3'])} onError={() => setErrors({...errors, 'Valid MP3':'Please enter a valid MP3 url'})}/>
+        <button type="submit" className="uploadSaveBut" disabled={Object.keys(errors).includes('Valid MP3') || !url}>Save</button>
         <button className="cancelBut" onClick={handleReset}>Cancel</button>
         </div>
         </form>
