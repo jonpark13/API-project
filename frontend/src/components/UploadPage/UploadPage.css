@@ -82,61 +82,31 @@
   margin-left: 5px;
 }
 
-.createdSong {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width:60%
+.toast-container {
+  position: fixed;
+  top: 2rem;
+  right:1.5rem;
+  display: grid;
+  justify-items: end;
+  gap: 1.5rem;
 }
 
-.createdDetailsList {
-  display: flex;
-  height: 150px;
-  width: 100%;
+.toast {
+  font-size: 1rem;
+  font-weight: bold;
+  line-height: 1;
+  padding: 0.5em 1em;
+  background-color: lightblue;
+  animation: toast 3000ms cubic-bezier(0.785, 0.135, 0.15, 0.86) forwards;
 }
 
-.createdPic {
-  height: 150px;
-  width: 150px
-}
-
-.createdTextCont {
-  display: flex;
-  flex-direction: column;
-  height: 150px;
-  margin-left: 10px;
-  width: 100%;
-}
-
-.createdTitleText {
-  width: 100%;
-  color: #333;
-  font-size: 20px;
-}
-
-.createdArtistText {
-  width: 100%;
-  color: #999;
-  font-size: 18px;
-}
-
-.createdDescText {
-  word-wrap: break-word;
-  word-break: normal;
-  overflow-wrap:break-word;
-  width:100%;
-  color: #333;
-  font-size: 20px;
-}
-
-.createdUplText {
-  width: 100%;
-  color: #999;
-  font-size: 18px;
-}
-
-.imgChecker {
-  height:0;
-  width: 0;
+@keyframes toast {
+  0%, 100% {
+    transform: translateY(-150%);
+    opacity:0 
+  }
+  10%, 90% {
+    transform: translateY(0%);
+    opacity:1
+  }
 }

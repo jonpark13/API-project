@@ -90,37 +90,30 @@ function UploadPage() {
             <div className='uploadContent'>
                 <MiniNav/>
 
-                <UploadFormPage setRecCreated={setRecCreated}/> 
-                {
-                !!recCreated && <div className='createdSong'>
-                    <div className='createdDetailsList'>
-                        <img className='createdPic'
-                            src={
-                                recCreated.previewImage || logo
-                            }
-                            onError={
-                                (e) => {
-                                    e.target.onError = "";
-                                    e.target.src = logo;
-                                    e.target.style.background = "linear-gradient(90deg, rgba(255, 247, 255, 1) 0%, rgba(118, 194, 210, 1) 100%)"
-                                    return true;
-                                }
-                            }/>
-                        <div className='createdTextCont'>
-                            <div className='createdTitleText'>
-                                {
-                                recCreated.title
-                            }</div>
-                            <div className='createdArtistText'>
-                                {
-                                recCreated.User.username
-                            }</div>
-                            <div className='createdDescText'>{recCreated.description || ''}</div>
-                            <div className='createdUplText'>Upload complete!</div>
-                        </div>
-                    </div>
-                </div>
-            } </div>
+                <UploadFormPage />
+
+            {/* <div>
+                <button onClick={handleSubmit}>delete song 6</button>
+                <button onClick={handleSubmit2}>edit song</button>
+            </div>
+            <div>
+                {JSON.stringify(songsList)}
+            </div>
+            <div>
+                <button onClick={handleSubmit3}>create playlist</button>
+            </div>
+            <div>
+                <button onClick={handleSubmit4}>add song to playlist</button>
+            </div>
+            <div>
+                <button onClick={handleSubmit5}>delete playlist</button>
+            </div>
+            <div>
+                {JSON.stringify(playlist)}
+            </div> */}
+            <div className='toast-container'>
+            </div>
+            </div>
         </div>
     );
 }
