@@ -94,7 +94,7 @@ router.post('/', restoreUser, multipleMulterUpload(), async (req, res) => {
     if(!title || !urls){
         const errors = {}
         if(!title) errors.title = "Song title is required"
-        if(!url) errors.url = "Audio is required"
+        if(!urls) errors.url = "Audio is required"
         res.status(400)
         return res.json({
             "message": "Validation Error",

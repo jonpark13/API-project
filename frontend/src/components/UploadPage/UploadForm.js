@@ -28,6 +28,10 @@ function UploadFormPage() {
     //   url,
     //   previewImage: imageUrl
 
+    // useEffect(() => { 
+
+    // }, [url])
+
     const songVal = () => {
       let newErr = errors
       delete newErr['Valid MP3']
@@ -35,24 +39,24 @@ function UploadFormPage() {
     }
 
     const handleSubmit = (e) => {
-      console.log(url, image,"URRL")
         e.preventDefault();
         setErrors({});
         return dispatch(songsActions.createSong({ userId: sessionUser.id, url:url, imageUrl:image, title, description }))
-        .then(() => {e.preventDefault()
-        setErrors([])
-        setUrl('')
-        setImageUrl('')
-        setTitle('')
-        setDescription('')
-        setImage(null)
+        .then(() => {
+          e.preventDefault()
+          setErrors({})
+          setUrl('')
+          setImageUrl('')
+          setTitle('')
+          setDescription('')
+          setImage(null)
       }).then(async (res) => {
         let data = await res.json()
+        console.log(data, "data")
       })
         .catch(async (res) => {
-                // const data = await res.json();
-                console.log(res)
-                // if (data && data.errors) setErrors(data.errors);
+                const data = await res.json();
+                if (data.errors) setErrors(data.errors);
             })
     };
 
@@ -66,6 +70,7 @@ function UploadFormPage() {
       const file = e.target.files[0];
       console.log(file)
       if (file) setUrl(file);
+      else setUrl(null)
     };
 
     const imgPreviews = (e) => {
@@ -81,7 +86,7 @@ function UploadFormPage() {
 
     const handleReset = (e) => {
         e.preventDefault()
-        setErrors([])
+        setErrors({})
         setUrl('')
         setImageUrl('')
         setTitle('')
@@ -112,6 +117,7 @@ function UploadFormPage() {
           onChange={(e) => setTitle(e.target.value)}
         />
         <div className="errorModalText">{Object.keys(errors).includes('title') && errors['title']}</div>
+        <div className="errorModalText">{JSON.stringify(errors)}</div>
         <div>Description</div>
         <textarea
           className="errorModalCont txtArea"
@@ -120,19 +126,19 @@ function UploadFormPage() {
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
-        <div>Track Url</div>
+        <div>Track</div>
         <label>
           <input type="file" name="url" onChange={e => {updateSongFile(e, 0)}} />
         </label>
-        <input
+        {/* <input
           className="errorModalCont"
           type="text"
           placeholder="URL"
           value={url}
           onChange={(e) => setUrl(e.target.value)}
-        />
+        /> */}
         <div className="errorModalText">{Object.keys(errors).includes('Valid MP3') && errors['Valid MP3']}</div>
-        <div>Track Cover Image</div>
+        <div>Upload Image</div>
         <label>
           <input type="file" name="imageUrl" onChange={e => {updateImageFile(e, 1);imgPreviews(e)}} />
         </label>
@@ -147,8 +153,8 @@ function UploadFormPage() {
           {Object.values(errors).map((error, idx) => <div className="errorModalText" key={idx}>{error}</div>)}
         </div> */}
         <div className="editSaveBut">
-        <ReactAudioPlayer muted={true} autoPlay src={songFile[0] ? URL.createObjectURL(songFile[0]) : null} onCanPlay={() => setErrors(delete errors['Valid MP3'])} onError={() => setErrors({...errors, 'Valid MP3':'Please enter a valid MP3 url'})}/>
-        <button type="submit" className="uploadSaveBut" disabled={Object.keys(errors).includes('Valid MP3')}>Save</button>
+        <ReactAudioPlayer muted={true} autoPlay src={url ? URL.createObjectURL(url) : null} onCanPlay={() => setErrors(prev => delete prev['Valid MP3'])} onError={() => setErrors({...errors, 'Valid MP3':'Please enter a valid MP3 url'})}/>
+        <button type="submit" className="uploadSaveBut" disabled={Object.keys(errors).includes('Valid MP3') || !url}>Save</button>
         <button className="cancelBut" onClick={handleReset}>Cancel</button>
         </div>
         </form>

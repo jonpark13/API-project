@@ -133,7 +133,6 @@ export const createSong = (song) => async (dispatch) => {
     formData.append("userId", userId);
     formData.append("title", title);
     formData.append("url", url);
-    console.log(url, "thunk")
     
     if (albumId) formData.append("albumId", albumId);
     if (description) formData.append("description", description);
