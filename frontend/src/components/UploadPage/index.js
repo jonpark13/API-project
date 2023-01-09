@@ -106,7 +106,8 @@ function UploadPage() {
             <div>
                 {JSON.stringify(playlist)}
             </div> */}
-
+            <div className='toast-container'>
+            </div>
             </div>
         </div>
     );

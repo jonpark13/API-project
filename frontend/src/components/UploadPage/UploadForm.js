@@ -40,8 +40,9 @@ function UploadFormPage() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        let inputFind = document.getElementById("songFile")
         setErrors({});
-        return dispatch(songsActions.createSong({ userId: sessionUser.id, url:url, imageUrl:image, title, description }))
+        return dispatch(songsActions.createSong({User:sessionUser, userId: sessionUser.id, url:url, imageUrl:image, title, description }))
         .then(() => {
           e.preventDefault()
           setErrors({})
@@ -50,6 +51,9 @@ function UploadFormPage() {
           setTitle('')
           setDescription('')
           setImage(null)
+          setImgPrev([])
+          inputFind.value = null
+          toast()
       }).then(async (res) => {
         let data = await res.json()
         console.log(data, "data")
@@ -92,6 +96,17 @@ function UploadFormPage() {
         setTitle('')
         setDescription('')
     }
+    
+    const toast = () => {
+      let toastContainer = document.querySelector('.toast-container')
+      toastContainer.insertAdjacentHTML('beforeend', `<p class="toast" 
+        style={{
+        animation-duration: "300ms"}}>
+        Song uploaded successfully
+      </p>`)
+      const toast = toastContainer.lastElementChild;
+      toast.addEventListener('animationend', () => toast.remove())
+    }
 
     return (
         <>
@@ -117,7 +132,7 @@ function UploadFormPage() {
           onChange={(e) => setTitle(e.target.value)}
         />
         <div className="errorModalText">{Object.keys(errors).includes('title') && errors['title']}</div>
-        <div className="errorModalText">{JSON.stringify(errors)}</div>
+        {/* <div className="errorModalText">{JSON.stringify(errors)}</div> */}
         <div>Description</div>
         <textarea
           className="errorModalCont txtArea"
@@ -128,7 +143,7 @@ function UploadFormPage() {
         />
         <div>Track</div>
         <label>
-          <input type="file" name="url" onChange={e => {updateSongFile(e, 0)}} />
+          <input type="file" id="songFile" name="url" onChange={e => {updateSongFile(e, 0)}} />
         </label>
         {/* <input
           className="errorModalCont"

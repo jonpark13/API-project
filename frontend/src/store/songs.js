@@ -123,6 +123,7 @@ export const deleteSong = (id) => async (dispatch) => {
 
 export const createSong = (song) => async (dispatch) => {
     const {
+        User,
         userId,
         albumId,
         title,
@@ -146,7 +147,7 @@ export const createSong = (song) => async (dispatch) => {
     })
     console.log(response, "res")
     const data = await response.json()
-    console.log(data, "data")
+    data["User"] = User
     dispatch(addSong(data))
     return Promise.resolve();
 };
